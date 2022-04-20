@@ -110,7 +110,7 @@ function displayFooter() {
 
 //Baseline Date
 var a = new Date(); // Current date now.
-var b = new Date(2022, 3, 15, 0, 0, 0, 0); // Start of TENIZ.
+var b = new Date(2022, 3, 14, 0, 0, 0, 0); // Start of TENIZ.
 var d = (a - b); // Difference in milliseconds.
 var days = parseInt((d / 1000) / 86400);
 if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameover' + days) != 1) {
