@@ -1,13 +1,26 @@
 <html lang="en">
+
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B1TW81HLYQ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-B1TW81HLYQ');
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/tsparticles-preset-confetti@1.22.0/tsparticles.preset.confetti.bundle.min.js"></script>
+	<!-- 	<script src="https://cdn.jsdelivr.net/npm/tsparticles"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tsparticles-preset-confetti"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/tsparticles-preset-confetti/dist/tsparticles.preset.confetti.bundle.min.js"></script> -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/tsparticles-preset-confetti@1.22.0/tsparticles.preset.confetti.bundle.min.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>TENIZ - Tennis Quiz of GS Champions </title>
-	<link href="test.css" rel="stylesheet">
-	<script defer src="test.js"></script>
+	<link href="teniz.css" rel="stylesheet">
+	<script defer src="teniz.js"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 	<!-- FB Meta Tags -->
 	<meta property="og:url" content="https://tenizgame.github.io/">
@@ -24,7 +37,7 @@
 </head>
 
 <body>
-	<button id="btnParty" type="button">Party</button>
+	<button id="btnParty" type="button" hidden></button>
 	<div id="tsparticles"></div>
 	<div id="title">
 		<div class="waviy1">
@@ -68,11 +81,6 @@
 		<span style="--i:19">d</span>
 		<span style="--i:20">a</span>
 		<span style="--i:21">y</span>
-		<span style="--i:22">-</span>
-		<span style="--i:23">D</span>
-		<span style="--i:24">A</span>
-		<span style="--i:25">Y</span>
-		<span style="--i:26" id="daycount"></span>
 	</div>
 	<!-- <div id="mycounter"></div> -->
 	<!-- <button data-modal-target="#modal">Start Game</button>  -->
@@ -94,28 +102,31 @@
 			<button data-close-button class="close-button">&times;</button>
 		</div>
 		<div class="modal-body">
-			TENIZ is a spin-off on WORDLE, to test your knowledge on Tennis Grand Slam Champions of the Open Era. The
-			objective is to identify the Tennis Player every day.
+			(i) <strong style="color:green;">TENIZ</strong> is a spin-off on <strong style="color:red;">WORDLE</strong>, to test your knowledge on Tennis Grand Slam Champions of the Open Era.
+			The objective is to identify the Tennis Player every day using the <strong style="color:green;">least number of clues.</strong>
 			<br><br>
-			Use the on-screen keyboard to key in your answer. Hit Enter to submit. A new clue will be revelaed after
-			each incorrect guess.
+			(ii) Your <strong style="color:red;">First Clue </strong>is in the number of letters in the players first and last names. 
+			For most days, this is the only clue needed :), if you know your Tennis well.
+			<br><br>			
+			(iii) Use the on-screen keyboard to key in your answer. Hit Enter to submit. A new clue will be revelaed
+			after each <strong style="color:red;">INCORRECT</strong> guess. 
 			<br><br>
-			Hints include Year, Tournament, Nationality, Gender, First Name First Letter and Last Name First Letter.
+			(iv)Look for the disapperaing Tennis Balls on the screen for the clues.
+			<center><img class="howtogif" src="howto.gif" alt="clue"></center>
 			<br><br>
-			Pay attention to the number of letters in the players first and last names. This is another clue, that could
-			be of help.
+			(v) Hints include Year, Slam, Nationality, Gender, First Name First Letter and Last Name First Letter.
 			<br><br>
-			A <strong style="color:green;">Green Tile </strong>highlight indicates that the right letter is at the right
-			position, while a <strong style="color:yellow;">Yellow Tile </strong>highlight indicates that the right
-			letter is at the wrong position. First and Last name are evaluated separately.
+			(vi) A <strong style="color:green;">Green Tile </strong>highlight indicates that the right letter is at the
+			right position, while a <strong style="color:yellow;">Yellow Tile </strong>highlight indicates that the
+			right letter is at the wrong position. First and Last name are evaluated separately.
 			<br><br>
-			An <strong style="color:orange;">Orange Key </strong>highlight indicates a letter part of the name yet to be
-			correctly placed . <strong style="color:green;">Green Letter Tracker</strong> helps keep track of correctly
-			placed letters.
+			(vii) An <strong style="color:orange;">Orange Key </strong>highlight indicates a letter part of the name yet
+			to be correctly placed . <strong style="color:green;">Green Letter Tracker</strong> helps keep track of
+			correctly placed letters.
 			<br>
 			<h5>
-				<center>Legend : GS - Grand Slam | AO - Australian Open | FO - French Open | WIM - Wimbledon | USO - US
-					Open | FN FL - First Name First Letter | LN FL - Last Name First Letter
+				<center>Legend :AO - Australian Open | FO - French Open | WIM - Wimbledon | USO - US
+					Open | FN FL - First Name 1st Letter | LN FL - Last Name 1st Letter
 			</h5>
 			</center>
 			<center>
@@ -151,11 +162,11 @@
 
 			<!-- The button used to copy the text -->
 			<div class="button-row">
-				&nbsp; 
-				<button id="HTMLButton" class="buttonrad" onclick="myFunction()" >Share Stats🔊</button>
+				&nbsp;
+				<button id="HTMLButton" class="buttonrad" onclick="myFunction()">Share Stats🔊</button>
 				&nbsp; &nbsp; &nbsp; &nbsp;
-				<a href="https://www.buymeacoffee.com/sank0403/" target="_"><input type="button" class="buttonrad" id="CoffeButton"
-						value="Buy Me a Coffee❤️" /><a>
+				<a href="https://www.buymeacoffee.com/sank0403/" target="_"><input type="button" class="buttonrad"
+						id="CoffeButton" value="Buy Me a Coffee❤️" /><a>
 			</div>
 		</div>
 		<hr>
@@ -166,10 +177,14 @@
 			</div>
 			<div>
 				<div id="pzlhdr">Try a different puzzle.</div>
-				<div id="pzl"><b><a href="https://indlegame.github.io/indle"target="_">Play <u>INDLE</u> 🇮🇳 </a></b></div>
+				<div id="pzl"><b><a href="https://indlegame.github.io/indle" target="_">Play <u>INDLE</u> 🇮🇳 </a></b>
+				</div>
 			</div>
 		</div><br>
-		<div><a href="https://twitter.com/TenizGame?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @TenizGame</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+		<div><a href="https://twitter.com/TenizGame?ref_src=twsrc%5Etfw" class="twitter-follow-button"
+				data-show-count="false">Follow @TenizGame</a>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
 		<br>
 	</div>
 	<div id="overlay"></div>
