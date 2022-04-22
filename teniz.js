@@ -162,7 +162,7 @@ function displayFooter() {
 }
 //Baseline Date
 var a = new Date(); // Current date now.
-var b = new Date(2022, 3, 18, 0, 0, 0, 0); // Start of TENIZ.
+var b = new Date(2022, 3, 11, 0, 0, 0, 0); // Start of TENIZ.
 var d = (a - b); // Difference in milliseconds.
 var days = parseInt((d / 1000) / 86400);
 if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameover' + days) != 1) {
@@ -183,6 +183,7 @@ if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameov
 	localStorage.try6topen = "";
 	//localStorage.try7topen = "";	
 	localStorage.firsttload = 0;	
+	localStorage.gltttext = "1";	
 }
 
 function tryload(){
@@ -192,6 +193,7 @@ function tryload(){
 	localStorage.try4topen = document.getElementById('try4').innerText;
 	localStorage.try5topen = document.getElementById('try5').innerText;
 	localStorage.try6topen = document.getElementById('try6').innerText;
+	localStorage.gltttext = document.getElementById('glt').innerText;
 	//localStorage.try7topen = document.getElementById('try7').innerText;
 }
 
@@ -540,6 +542,7 @@ function intialize() {
 	document.getElementById('try4').innerText = localStorage.try4topen;
 	document.getElementById('try5').innerText = localStorage.try5topen;
 	document.getElementById('try6').innerText = localStorage.try6topen;
+	document.getElementById('glt').innerText = localStorage.gltttext;
 	//document.getElementById('try7').innerText = localStorage.try7topen;
 	// Create the game board
 	for (let clueindex = 0; clueindex < 6; clueindex++) {
@@ -634,7 +637,7 @@ function intialize() {
 	// Default Path
 	else {
 		if (localStorage.firsttload == 0){
-			setTimeout(FetchData, 3500);
+			setTimeout(FetchData, 1000);
 			localStorage.firsttload = 1
 		}
 		else{
@@ -674,11 +677,12 @@ function intialize() {
 /* 		document.getElementById("answer").classList.remove("popanswer");	
 		if (document.getElementById("answer").classList.contains("popanswer")){
 		} */		
+		document.getElementById('try1').classList.add("tryborder");
 		document.getElementById("answer").style.color = "#FDFEFF";
 		document.getElementById("answer").innerText = "READ THE GAME RULES BEFORE PLAYING!";
 		//setTimeout(FinalClue, 2000);
 
-		var mybr = document.createElement('br');
+/* 		var mybr = document.createElement('br');
 		document.body.appendChild(mybr);
 		var mybr = document.createElement('br');
 		document.body.appendChild(mybr);
@@ -693,7 +697,7 @@ function intialize() {
 		  window.open('https://www.buymeacoffee.com/sank0403/', '_blank'); // _blank will open the site in a new tab
 		});
 		document.body.appendChild(button);
-		button.classList.add("buttonrad");
+		button.classList.add("buttonrad"); */
 
 		// Listen for Key Press
 /* 		document.addEventListener("keyup", (e) => {
@@ -1029,20 +1033,30 @@ function update(input) {
 					break; */
 				case 2: document.getElementById('try1').innerText += " ❌";
 				document.getElementById("try1").classList.add("shaketile");
+				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('try2').classList.add("tryborder");
 					break;
 				case 3: document.getElementById('try2').innerText += " ❌";
 				document.getElementById("try2").classList.add("shaketile");
+				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('try3').classList.add("tryborder");
 					break;
 				case 4: document.getElementById('try3').innerText += " ❌";
 				document.getElementById("try3").classList.add("shaketile");
+				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('try4').classList.add("tryborder");
 					break;
 				case 5: document.getElementById('try4').innerText += " ❌";
 				document.getElementById("try4").classList.add("shaketile");
+				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('try5').classList.add("tryborder");
 					break;
 				case 7: document.getElementById('try5').innerText += " ❌";
 				document.getElementById("try5").classList.add("shaketile");
+				document.getElementById('glt').innerText += "  6";	
+				document.getElementById('try6').classList.add("tryborder");
 					break;
-			}	
+			}
 		}
 		tryload();
 	}
