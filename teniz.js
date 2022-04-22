@@ -37,10 +37,10 @@ function handleKeyUp(maxNumToShow)
         }
     }
     // When options list whittled to one, select that entry
-    if(selectObj.length == 1)
+/*     if(selectObj.length == 1)
     {
         selectObj.options[0].selected = true;
-    }
+    } */
 }
 function handleSelectClick()
 {
@@ -48,7 +48,7 @@ function handleSelectClick()
     textObj = document.forms[0].functioninput;
     selectedValue = selectObj.options[selectObj.selectedIndex].text;
 	document.getElementById('answertext').value = selectedValue;	
-	document.getElementById("submitbutton").disabled = false; 
+	//document.getElementById("submitbutton").disabled = false; 
 }
 //Confetti Begin
 btnParty.addEventListener("click", () => {
@@ -734,7 +734,7 @@ function submitMe() {
 		}
 		document.getElementById('answertext').value = "";	
 		document.getElementById("functionselect").hidden = true;
-		document.getElementById("submitbutton").disabled = true; 		
+		//document.getElementById("submitbutton").disabled = true; 		
 		update(input);
 	}
 	else{
