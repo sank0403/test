@@ -1,54 +1,43 @@
-var functionlist = Array("Adriano Panatta", "Albert Costa", "Amelie Mauresmo", "Ana Ivanovic", "Anastasia Myskina", "Andre Agassi", "Andres Gimeno", "Andres Gomez", "Andy Murray", "Andy Roddick", "Angelique Kerber", "Arantxa Sanchez", "Arthur Ashe", "Ashleigh Barty", "Barbara Jordan", "Barbora Krejcikova", "Bianca Andreescu", "BillieJean King", "Bjorn Borg", "Boris Becker", "Brian Teacher", "Carlos Moya", "Caroline Wozniacki", "Chris Evert", "Chris ONeil", "Conchita Martinez", "Daniil Medvedev", "Dominic Thiem", "Emma Raducanu", "Evonne Goolagong", "Flavia Pennetta", "Francesca Schiavone", "Gabriela Sabatini", "Garbine Muguruza", "Gaston Gaudio", "Goran Ivanisevic", "Guillermo Vilas", "Gustavo Kuerten", "Hana Mandlikova", "Iga Swiatek", "Ilie Nastase", "Iva Majoli", "Ivan Lendl", "Jan Kodes", "Jana Novotna", "Jelena Ostapenko", "Jennifer Capriati", "Jim Courier", "Jimmy Connors", "Johan Kriek", "John McEnroe", "John Newcombe", "JuanCarlos Ferrero", "JuanMartin DelPotro", "Justine Henin", "Ken Rosewall", "Kerry Reid", "Kim Clijsters", "Li Na", "Lindsay Davenport", "Lleyton Hewitt", "Manuel Orantes", "Marat Safin", "Margaret Court", "Maria Sharapova", "Marin Cilic", "Marion Bartoli", "Mark Edmondson", "Martina Hingis", "Martina Navratilova", "Mary Pierce", "Mats Wilander", "Michael Chang", "Michael Stich", "Mima Jausovec", "Monica Seles", "Nancy Richey", "Naomi Osaka", "Novak Djokovic", "Pat Cash", "Patrick Rafter", "Pete Sampras", "Petr Korda", "Petra Kvitova", "Rafael Nadal", "Richard Krajicek", "Rod Laver", "Roger Federer", "Roscoe Tanner", "Samantha Stosur", "Serena Williams", "Sergi Bruguera", "Simona Halep", "Sloane Stephens", "Sofia Kenin", "Stan Smith", "Stan Wawrinka", "Stefan Edberg", "Steffi Graf", "Sue Barker", "Svetlana Kuznetsova", "Thomas Johansson", "Thomas Muster", "Tracy Austin", "Venus Williams", "Victoria Azarenka", "Virginia Ruzici", "Virginia Wade", "Vitas Gerulaitis", "Yannick Noah", "Yevgeny Kafelnikov",);
-function handleKeyUp(maxNumToShow)
-{
-	document.getElementById("functionselect").hidden = false; 
-    var selectObj, textObj, functionListLength;
-    var i, searchPattern, numShown;
-    // Set references to the form elements
-    selectObj = document.forms[0].functionselect;
-    textObj = document.forms[0].functioninput;
-
-    // Remember the function list length for loop speedup
-    functionListLength = functionlist.length;
-
-    // Set the search pattern depending
-
-    searchPattern = textObj.value;
-
-
-    // Create a regulare expression
-    re = new RegExp(searchPattern,"gi");
-    // Clear the options list
-    selectObj.length = 0;
-
-    // Loop through the array and re-add matching options
-    numShown = 0;
-    for(i = 0; i < functionListLength; i++)
-    {
-        if(functionlist[i].search(re) != -1)
-        {
-            selectObj[numShown] = new Option(functionlist[i],"");
-            numShown++;
-        }
-        // Stop when the number to show is reached
-        if(numShown == maxNumToShow)
-        {
-            break;
-        }
-    }
-    // When options list whittled to one, select that entry
-    if(selectObj.length == 1)
-    {
-        selectObj.options[0].selected = true;
-    }
+var search_terms = ["Adriano Panatta", "Albert Costa", "Amelie Mauresmo", "Ana Ivanovic", "Anastasia Myskina", "Andre Agassi", "Andres Gimeno", "Andres Gomez", "Andy Murray", "Andy Roddick", "Angelique Kerber", "Arantxa Sanchez", "Arthur Ashe", "Ashleigh Barty", "Barbara Jordan", "Barbora Krejcikova", "Bianca Andreescu", "BillieJean King", "Bjorn Borg", "Boris Becker", "Brian Teacher", "Carlos Moya", "Caroline Wozniacki", "Chris Evert", "Chris ONeil", "Conchita Martinez", "Daniil Medvedev", "Dominic Thiem", "Emma Raducanu", "Evonne Goolagong", "Flavia Pennetta", "Francesca Schiavone", "Gabriela Sabatini", "Garbine Muguruza", "Gaston Gaudio", "Goran Ivanisevic", "Guillermo Vilas", "Gustavo Kuerten", "Hana Mandlikova", "Iga Swiatek", "Ilie Nastase", "Iva Majoli", "Ivan Lendl", "Jan Kodes", "Jana Novotna", "Jelena Ostapenko", "Jennifer Capriati", "Jim Courier", "Jimmy Connors", "Johan Kriek", "John McEnroe", "John Newcombe", "JuanCarlos Ferrero", "JuanMartin DelPotro", "Justine Henin", "Ken Rosewall", "Kerry Reid", "Kim Clijsters", "Li Na", "Lindsay Davenport", "Lleyton Hewitt", "Manuel Orantes", "Marat Safin", "Margaret Court", "Maria Sharapova", "Marin Cilic", "Marion Bartoli", "Mark Edmondson", "Martina Hingis", "Martina Navratilova", "Mary Pierce", "Mats Wilander", "Michael Chang", "Michael Stich", "Mima Jausovec", "Monica Seles", "Nancy Richey", "Naomi Osaka", "Novak Djokovic", "Pat Cash", "Patrick Rafter", "Pete Sampras", "Petr Korda", "Petra Kvitova", "Rafael Nadal", "Richard Krajicek", "Rod Laver", "Roger Federer", "Roscoe Tanner", "Samantha Stosur", "Serena Williams", "Sergi Bruguera", "Simona Halep", "Sloane Stephens", "Sofia Kenin", "Stan Smith", "Stan Wawrinka", "Stefan Edberg", "Steffi Graf", "Sue Barker", "Svetlana Kuznetsova", "Thomas Johansson", "Thomas Muster", "Tracy Austin", "Venus Williams", "Victoria Azarenka", "Virginia Ruzici", "Virginia Wade", "Vitas Gerulaitis", "Yannick Noah", "Yevgeny Kafelnikov",];
+var ul = document.getElementById("result");
+  ul.onclick = function(event) {
+    var target = getEventTarget(event);
+	document.getElementById("submitbutton").disabled = false;
+    document.getElementById("answertext").value = target.innerHTML;
+	document.getElementById("result").hidden = true;
+};	
+function autocompleteMatch(input) {
+  input = input.toLowerCase();
+  if (input == '') {
+    return [];
+  }
+  var reg = new RegExp(input)
+  return search_terms.filter(function(term) {
+	  if (term.toLowerCase().match(reg)) {
+  	  return term;
+	  }
+  });
 }
-function handleSelectClick()
-{
-    selectObj = document.forms[0].functionselect;
-    textObj = document.forms[0].functioninput;
-    selectedValue = selectObj.options[selectObj.selectedIndex].text;
-	document.getElementById('answertext').value = selectedValue;	
-	//document.getElementById("submitbutton").disabled = false; 
+ 
+function showResults(val) {
+  document.getElementById("result").hidden = false;	
+  document.getElementById("submitbutton").disabled = true;
+  res = document.getElementById("result");
+  res.innerHTML = '';
+  let list = '';
+  let terms = autocompleteMatch(val);
+  for (i=0; i<terms.length; i++) {
+    if (i === 3) { break; }
+    list += '<li>' + terms[i] + '</li>';
+  }
+  res.innerHTML = '<ul>' + list + '</ul>';
+  document.getElementById("result").focus();  
+}
+
+
+function getEventTarget(e) {
+  e = e || window.event;
+  return e.target || e.srcElement; 
 }
 //Confetti Begin
 btnParty.addEventListener("click", () => {
@@ -175,12 +164,12 @@ if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameov
 	//localStorage.lnfltopen = 0;
 	localStorage.titltopen = 0;
 	localStorage.playtopen = 0;
-	localStorage.try1topen = "";
-	localStorage.try2topen = "";
-	localStorage.try3topen = "";
-	localStorage.try4topen = "";
-	localStorage.try5topen = "";
-	localStorage.try6topen = "";
+	localStorage.try1topen = "-----";
+	localStorage.try2topen = "-----";
+	localStorage.try3topen = "-----";
+	localStorage.try4topen = "-----";
+	localStorage.try5topen = "-----";
+	localStorage.try6topen = "-----";
 	//localStorage.try7topen = "";	
 	localStorage.firsttload = 0;	
 	localStorage.gltttext = "1";	
@@ -230,39 +219,39 @@ function myFunction() {
 	// 	var mshdr = "\n🟢Max Streak: "
 	// }
 	cluehdr = "/6 Clues Used To Win!"
-	if (localStorage.cluetcount == 0) {
+/* 	if (localStorage.cluetcount == 0) {
 		var clueicon = "🟢⚪⚪⚪⚪⚪⚪";
 	}
-	else if (localStorage.cluetcount == 1) {
-		var clueicon = "🔴🟢⚪⚪⚪⚪⚪";
+	else */ if (localStorage.cluetcount == 1) {
+		var clueicon = "🟢⚪⚪⚪⚪⚪";
 	}
 	else if (localStorage.cluetcount == 2) {
-		var clueicon = "🔴🔴🟢⚪⚪⚪⚪";
+		var clueicon = "🔴🟢⚪⚪⚪⚪";
 	}
 	else if (localStorage.cluetcount == 3) {
-		var clueicon = "🔴🔴🔴🟢⚪⚪⚪";
+		var clueicon = "🔴🔴🟢⚪⚪⚪";
 	}
 	else if (localStorage.cluetcount == 4) {
-		var clueicon = "🔴🔴🔴🔴🟢⚪⚪";
+		var clueicon = "🔴🔴🔴🟢⚪⚪";
 	}
 	else if (localStorage.cluetcount == 5) {
-		var clueicon = "🔴🔴🔴🔴🔴🟢⚪";
+		var clueicon = "🔴🔴🔴🔴🟢⚪";
 	}
 	else if (localStorage.cluetcount == 6) {
-		var clueicon = "🔴🔴🔴🔴🔴🔴🟢";
+		var clueicon = "🔴🔴🔴🔴🔴🟢";
 	}
 	else if (localStorage.cluetcount == "X") {
-		var clueicon = "🔴🔴🔴🔴🔴🔴🔴";
+		var clueicon = "🔴🔴🔴🔴🔴🔴";
 		cluehdr = "/6. All Clues Exhausted!";
 	}
 	var avggss = Math.round(((localStorage.cluet1count * 1) + (localStorage.cluet2count * 2) + (localStorage.cluet3count * 3) + (localStorage.cluet4count * 4) + (localStorage.cluet5count * 5) + (localStorage.cluet6count * 6) + (localStorage.cluetxcount * 7)) / (Number(localStorage.cluet1count) + Number(localStorage.cluet2count) + Number(localStorage.cluet3count) + Number(localStorage.cluet4count) + Number(localStorage.cluet5count) + Number(localStorage.cluet6count) + Number(localStorage.cluetxcount)));
 	if (avggss <= 2) {
 		var avggsshdr = "🟢"
 	}
-	else if (avggss > 2 && avggss < 6) {
+	else if (avggss > 2 && avggss < 5) {
 		var avggsshdr = "🟡"
 	}
-	else if (avggss >= 6) {
+	else if (avggss >= 5) {
 		var avggsshdr = "🔴"
 	}
 	//var copyText = "🎾 TENIZ! - Day " + days + " 🎾: " + localStorage.cluetcount + "/6" + "\n\n🟢Played: " + localStorage.totaltgames + winhdr + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + cshdr + localStorage.currenttstreak + mshdr + localStorage.longesttstreak + "\n\n💻https://tenizgame.github.io/";
@@ -732,8 +721,7 @@ function submitMe() {
 				break;
 		}
 		document.getElementById('answertext').value = "";	
-		document.getElementById("functionselect").hidden = true;
-		//document.getElementById("submitbutton").disabled = true; 		
+		document.getElementById("submitbutton").disabled = true; 		
 		update(input);
 	}
 	else{
