@@ -37,10 +37,10 @@ function handleKeyUp(maxNumToShow)
         }
     }
     // When options list whittled to one, select that entry
-/*     if(selectObj.length == 1)
+    if(selectObj.length == 1)
     {
         selectObj.options[0].selected = true;
-    } */
+    }
 }
 function handleSelectClick()
 {
@@ -677,7 +677,6 @@ function intialize() {
 /* 		document.getElementById("answer").classList.remove("popanswer");	
 		if (document.getElementById("answer").classList.contains("popanswer")){
 		} */		
-		document.getElementById('try1').classList.add("tryborder");
 		document.getElementById("answer").style.color = "#FDFEFF";
 		document.getElementById("answer").innerText = "READ THE GAME RULES BEFORE PLAYING!";
 		//setTimeout(FinalClue, 2000);
@@ -1034,27 +1033,22 @@ function update(input) {
 				case 2: document.getElementById('try1').innerText += " ❌";
 				document.getElementById("try1").classList.add("shaketile");
 				document.getElementById('glt').innerText += "  " + (clueCount);	
-				document.getElementById('try2').classList.add("tryborder");
 					break;
 				case 3: document.getElementById('try2').innerText += " ❌";
 				document.getElementById("try2").classList.add("shaketile");
 				document.getElementById('glt').innerText += "  " + (clueCount);	
-				document.getElementById('try3').classList.add("tryborder");
 					break;
 				case 4: document.getElementById('try3').innerText += " ❌";
 				document.getElementById("try3").classList.add("shaketile");
 				document.getElementById('glt').innerText += "  " + (clueCount);	
-				document.getElementById('try4').classList.add("tryborder");
 					break;
 				case 5: document.getElementById('try4').innerText += " ❌";
 				document.getElementById("try4").classList.add("shaketile");
 				document.getElementById('glt').innerText += "  " + (clueCount);	
-				document.getElementById('try5').classList.add("tryborder");
 					break;
 				case 7: document.getElementById('try5').innerText += " ❌";
 				document.getElementById("try5").classList.add("shaketile");
 				document.getElementById('glt').innerText += "  6";	
-				document.getElementById('try6').classList.add("tryborder");
 					break;
 			}
 		}
