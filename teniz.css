@@ -312,7 +312,7 @@ hr {
   margin-left:100px;
   margin-right:20px;
   height: 20px;
-  border: 1px solid #3a3a3c;
+  border: 1.5px solid #3a3a3c;
 }
 
 
@@ -692,7 +692,3 @@ hr {
   }
 }
 
-@media screen and (max-height: 699px) {
-  #board {
-    height: 200px;
-  }
