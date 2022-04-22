@@ -199,15 +199,30 @@
 	<hr>
 	<br>
 	<div id="board">
-		<div id="glt">GREEN LETTER TRACKER</strong></div>
-		<div id="historyfirst"></div>
-		<div id="historylast"></div>
-		<div id="boardfirst"></div>
-		<div id="boardlast"></div>
+		<div id="glt">ANSWER TRACKER</strong></div><br>		
+		<div id="try1"></div><br>
+		<div id="try2"></div><br>
+		<div id="try3"></div><br>
+		<div id="try4"></div><br>
+		<div id="try5"></div><br>
+		<div id="try6"></div><br>		
 	</div>
-	<br>
+		<div id="historyfirst"></div>
+		<div id="historylast"></div>		
 	<hr>
 	<h1 id="answer"></h1>
+	<br>
+	<br>
+	<br>
+<!-- 	<input type="text" name="name" id="answertext" placeholder="Enter player Name" required/>
+	<input type="submit" name="submit" onclick="submitMe()" id="submitbutton"/> -->
+	<form action="#" onsubmit="submitMe();return false">
+	<!-- <input onKeyUp="handleKeyUp(20);" type="text" name="functioninput" VALUE="" style="font-size:10pt;width:34ex;"><br> -->
+	<input  onKeyUp="handleKeyUp(5);" type="text" name="functioninput" id="answertext" placeholder="Enter player Name" >
+	<input type="submit" name="submit" id="submitbutton" disabled="disabled" /><br>
+	<!-- <select onClick="handleSelectClick();" name="functionselect" size="20" style="font-size:10pt;width:34ex;"> -->
+	<select  onClick="handleSelectClick();" name="functionselect" id="functionselect"  size="5" style="font-size:10pt;width:34ex;" hidden ></select>
+	</form>	
 	<br><br>
 </body>
 

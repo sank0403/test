@@ -128,7 +128,7 @@ hr {
 }
 
 #glt {
-  font-size: 12px;
+  font-size: 16px;
   font-weight:bold;
   text-decoration: underline; 
   color:#3a3a3c;;
@@ -176,7 +176,7 @@ hr {
 
 #board {
   width: 350;
-  height: 250px;
+  height: 280px;
   margin: 0 auto;
   margin-top: 3px;
   background-image: url("pitch.jpg");
@@ -202,12 +202,12 @@ hr {
 #historyfirst {
   display: flex;
   flex-wrap: nowrap;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
 }
 
 #historylast {
-  align-items: flex-end;
+  align-items: flex-start;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -294,9 +294,9 @@ hr {
 
 .histile {
   /* Box */
-  width: 10px;
-  height: 10px;
-  border: 2px solid #3a3a3c;
+  width: 15px;
+  height: 15px;
+  /* border: 2px solid #3a3a3c; */
   margin: 1px;
   color: black;
   text-transform: uppercase;
@@ -306,6 +306,15 @@ hr {
   font-size: 0.6rem;
   font-weight: bold;
 }
+
+#try1,#try2, #try3, #try4, #try5, #try6 {
+  /* Box */
+  margin-left:100px;
+  margin-right:20px;
+  height: 20px;
+  border: 1px solid #3a3a3c;
+}
+
 
 .email {
   font-size: 30px;
@@ -368,6 +377,7 @@ hr {
 
 
 .correct {
+  border: 2px solid;
   background-color: #6AAA64;
   color: white;
   border-color: white;
@@ -380,6 +390,7 @@ hr {
 }
 
 .absent {
+  border: 2px solid;
   background-color: #FF0000;
   color: white;
   border-color: white;
