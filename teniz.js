@@ -1,44 +1,3 @@
-var search_terms = ["Adriano Panatta", "Albert Costa", "Amelie Mauresmo", "Ana Ivanovic", "Anastasia Myskina", "Andre Agassi", "Andres Gimeno", "Andres Gomez", "Andy Murray", "Andy Roddick", "Angelique Kerber", "Arantxa Sanchez", "Arthur Ashe", "Ashleigh Barty", "Barbara Jordan", "Barbora Krejcikova", "Bianca Andreescu", "BillieJean King", "Bjorn Borg", "Boris Becker", "Brian Teacher", "Carlos Moya", "Caroline Wozniacki", "Chris Evert", "Chris ONeil", "Conchita Martinez", "Daniil Medvedev", "Dominic Thiem", "Emma Raducanu", "Evonne Goolagong", "Flavia Pennetta", "Francesca Schiavone", "Gabriela Sabatini", "Garbine Muguruza", "Gaston Gaudio", "Goran Ivanisevic", "Guillermo Vilas", "Gustavo Kuerten", "Hana Mandlikova", "Iga Swiatek", "Ilie Nastase", "Iva Majoli", "Ivan Lendl", "Jan Kodes", "Jana Novotna", "Jelena Ostapenko", "Jennifer Capriati", "Jim Courier", "Jimmy Connors", "Johan Kriek", "John McEnroe", "John Newcombe", "JuanCarlos Ferrero", "JuanMartin DelPotro", "Justine Henin", "Ken Rosewall", "Kerry Reid", "Kim Clijsters", "Li Na", "Lindsay Davenport", "Lleyton Hewitt", "Manuel Orantes", "Marat Safin", "Margaret Court", "Maria Sharapova", "Marin Cilic", "Marion Bartoli", "Mark Edmondson", "Martina Hingis", "Martina Navratilova", "Mary Pierce", "Mats Wilander", "Michael Chang", "Michael Stich", "Mima Jausovec", "Monica Seles", "Nancy Richey", "Naomi Osaka", "Novak Djokovic", "Pat Cash", "Patrick Rafter", "Pete Sampras", "Petr Korda", "Petra Kvitova", "Rafael Nadal", "Richard Krajicek", "Rod Laver", "Roger Federer", "Roscoe Tanner", "Samantha Stosur", "Serena Williams", "Sergi Bruguera", "Simona Halep", "Sloane Stephens", "Sofia Kenin", "Stan Smith", "Stan Wawrinka", "Stefan Edberg", "Steffi Graf", "Sue Barker", "Svetlana Kuznetsova", "Thomas Johansson", "Thomas Muster", "Tracy Austin", "Venus Williams", "Victoria Azarenka", "Virginia Ruzici", "Virginia Wade", "Vitas Gerulaitis", "Yannick Noah", "Yevgeny Kafelnikov",];
-var ul = document.getElementById("result");
-  ul.onclick = function(event) {
-    var target = getEventTarget(event);
-	document.getElementById("submitbutton").disabled = false;
-    document.getElementById("answertext").value = target.innerHTML;
-};	
-function autocompleteMatch(input) {
-  input = input.toLowerCase();
-  if (input == '') {
-    return [];
-  }
-  var reg = new RegExp(input)
-  return search_terms.filter(function(term) {
-	  if (term.toLowerCase().match(reg)) {
-  	  return term;
-	  }
-  });
-}
- 
-function showResults(val) {
-  document.getElementById("result").hidden = false;	
-  document.getElementById("submitbutton").disabled = true;
-  res = document.getElementById("result");
-  res.innerHTML = '';
-  let list = '';
-  let terms = autocompleteMatch(val);
-  for (i=0; i<terms.length; i++) {
-    if (i === 3) { break; }
-    list += '<li>' + terms[i] + '</li>';
-  }
-  res.innerHTML = '<ul>' + list + '</ul>';
-  document.getElementById("result").focus();  
-  document.getElementById("result").scrollIntoView(true);
-}
-
-
-function getEventTarget(e) {
-  e = e || window.event;
-  return e.target || e.srcElement; 
-}
 //Confetti Begin
 btnParty.addEventListener("click", () => {
 	confetti("tsparticles", {
@@ -66,7 +25,7 @@ if (!localStorage.totaltgames) {
 	localStorage.setItem("totaltwins", 0)
 	localStorage.setItem("currenttstreak", 0)
 	localStorage.setItem("longesttstreak", 0);
-	//localStorage.setItem("cluet0count", 0);
+	localStorage.setItem("cluet0count", 0);
 	localStorage.setItem("cluet1count", 0);
 	localStorage.setItem("cluet2count", 0);
 	localStorage.setItem("cluet3count", 0);
@@ -76,14 +35,15 @@ if (!localStorage.totaltgames) {
 	localStorage.setItem("cluetxcount", 0);
 	localStorage.setItem("cluetcount", "");
 	localStorage.setItem("gametwon", 0);
-	//setTimeout(OpenRules, 1100);
-}
-
-if (localStorage.cluet0count > 0){
-	localStorage.cluet1count = Number(localStorage.cluet0count) + Number(localStorage.cluet1count);
-	localStorage.setItem("tempcluet0count", 0);
-	localStorage.tempcluet0count = localStorage.cluet0count;
-	localStorage.removeItem("cluet0count");
+	localStorage.setItem("yeartopen", 0);
+	localStorage.setItem("slamtopen", 0);
+	localStorage.setItem("ctrytopen", 0);
+	localStorage.setItem("gndrtopen", 0);
+	//localStorage.setItem("fnfltopen", 0);
+	//localStorage.setItem("lnfltopen", 0);
+	localStorage.setItem("titltopen", 0);
+	localStorage.setItem("playtopen", 0);
+	setTimeout(OpenRules, 1100);
 }
 
 //Counter Construct
@@ -126,13 +86,6 @@ function FinalClue() {
 	document.getElementById("answer").classList.add("popanswer");
 }
 
-function disablederror() {
-	if (document.getElementById("submitbutton").disabled == true){
-	document.getElementById("answer").style.color = "#dc143c";
-	document.getElementById("answer").innerText = "SELECT PLAYER FROM SEARCH RESULTS!";
-	}
-}
-
 //Button Text
 function ResetButton() {
 	let HTMLButton = document.getElementById("HTMLButton");
@@ -156,6 +109,7 @@ function displayFooter() {
 	document.getElementById("HTMLButton").style.display = "block";
 	document.getElementById("CoffeButton").style.display = "block";
 }
+
 //Baseline Date
 var a = new Date(); // Current date now.
 var b = new Date(2022, 3, 11, 0, 0, 0, 0); // Start of TENIZ.
@@ -171,26 +125,6 @@ if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameov
 	//localStorage.lnfltopen = 0;
 	localStorage.titltopen = 0;
 	localStorage.playtopen = 0;
-	localStorage.try1topen = "-----";
-	localStorage.try2topen = "-----";
-	localStorage.try3topen = "-----";
-	localStorage.try4topen = "-----";
-	localStorage.try5topen = "-----";
-	localStorage.try6topen = "-----";
-	//localStorage.try7topen = "";	
-	localStorage.firsttload = 0;	
-	localStorage.gltttext = "1";	
-}
-
-function tryload(){
-	localStorage.try1topen = document.getElementById('try1').innerText;
-	localStorage.try2topen = document.getElementById('try2').innerText;
-	localStorage.try3topen = document.getElementById('try3').innerText;
-	localStorage.try4topen = document.getElementById('try4').innerText;
-	localStorage.try5topen = document.getElementById('try5').innerText;
-	localStorage.try6topen = document.getElementById('try6').innerText;
-	localStorage.gltttext = document.getElementById('glt').innerText;
-	//localStorage.try7topen = document.getElementById('try7').innerText;
 }
 
 //Clipboard Code
@@ -226,39 +160,39 @@ function myFunction() {
 	// 	var mshdr = "\n🟢Max Streak: "
 	// }
 	cluehdr = "/6 Clues Used To Win!"
-/* 	if (localStorage.cluetcount == 0) {
+	if (localStorage.cluetcount == 0) {
 		var clueicon = "🟢⚪⚪⚪⚪⚪⚪";
 	}
-	else */ if (localStorage.cluetcount == 1) {
-		var clueicon = "🟢⚪⚪⚪⚪⚪";
+	else if (localStorage.cluetcount == 1) {
+		var clueicon = "🔴🟢⚪⚪⚪⚪⚪";
 	}
 	else if (localStorage.cluetcount == 2) {
-		var clueicon = "🔴🟢⚪⚪⚪⚪";
+		var clueicon = "🔴🔴🟢⚪⚪⚪⚪";
 	}
 	else if (localStorage.cluetcount == 3) {
-		var clueicon = "🔴🔴🟢⚪⚪⚪";
+		var clueicon = "🔴🔴🔴🟢⚪⚪⚪";
 	}
 	else if (localStorage.cluetcount == 4) {
-		var clueicon = "🔴🔴🔴🟢⚪⚪";
+		var clueicon = "🔴🔴🔴🔴🟢⚪⚪";
 	}
 	else if (localStorage.cluetcount == 5) {
-		var clueicon = "🔴🔴🔴🔴🟢⚪";
+		var clueicon = "🔴🔴🔴🔴🔴🟢⚪";
 	}
 	else if (localStorage.cluetcount == 6) {
-		var clueicon = "🔴🔴🔴🔴🔴🟢";
+		var clueicon = "🔴🔴🔴🔴🔴🔴🟢";
 	}
 	else if (localStorage.cluetcount == "X") {
-		var clueicon = "🔴🔴🔴🔴🔴🔴";
+		var clueicon = "🔴🔴🔴🔴🔴🔴🔴";
 		cluehdr = "/6. All Clues Exhausted!";
 	}
-	var avggss = Math.round(((localStorage.cluet1count * 1) + (localStorage.cluet2count * 2) + (localStorage.cluet3count * 3) + (localStorage.cluet4count * 4) + (localStorage.cluet5count * 5) + (localStorage.cluet6count * 6) + (localStorage.cluetxcount * 7)) / (Number(localStorage.cluet1count) + Number(localStorage.cluet2count) + Number(localStorage.cluet3count) + Number(localStorage.cluet4count) + Number(localStorage.cluet5count) + Number(localStorage.cluet6count) + Number(localStorage.cluetxcount)));
+	var avggss = Math.round(((localStorage.cluet0count * 0) + (localStorage.cluet1count * 1) + (localStorage.cluet2count * 2) + (localStorage.cluet3count * 3) + (localStorage.cluet4count * 4) + (localStorage.cluet5count * 5) + (localStorage.cluet6count * 6) + (localStorage.cluetxcount * 7)) / (Number(localStorage.cluet0count) + Number(localStorage.cluet1count) + Number(localStorage.cluet2count) + Number(localStorage.cluet3count) + Number(localStorage.cluet4count) + Number(localStorage.cluet5count) + Number(localStorage.cluet6count) + Number(localStorage.cluetxcount)));
 	if (avggss <= 2) {
 		var avggsshdr = "🟢"
 	}
-	else if (avggss > 2 && avggss < 5) {
+	else if (avggss > 2 && avggss < 6) {
 		var avggsshdr = "🟡"
 	}
-	else if (avggss >= 5) {
+	else if (avggss >= 6) {
 		var avggsshdr = "🔴"
 	}
 	//var copyText = "🎾 TENIZ! - Day " + days + " 🎾: " + localStorage.cluetcount + "/6" + "\n\n🟢Played: " + localStorage.totaltgames + winhdr + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + cshdr + localStorage.currenttstreak + mshdr + localStorage.longesttstreak + "\n\n💻https://tenizgame.github.io/";
@@ -479,7 +413,7 @@ function closeSummary(summary) {
 }
 
 //Chart Code
-//color0 = "brown"
+color0 = "brown"
 color1 = "brown"
 color2 = "brown"
 color3 = "brown"
@@ -488,13 +422,10 @@ color5 = "brown"
 color6 = "brown"
 colorx = "brown"
 function UpdateChart() {
-	// var xValues = ["0", "1", "2", "3", "4", "5", "6", "X"];
-	var xValues = ["1", "2", "3", "4", "5", "6", "X"];
-	// var yValues = [localStorage.cluet0count, localStorage.cluet1count, localStorage.cluet2count, localStorage.cluet3count, localStorage.cluet4count, localStorage.cluet5count, localStorage.cluet6count, localStorage.cluetxcount];
-	var yValues = [localStorage.cluet1count, localStorage.cluet2count, localStorage.cluet3count, localStorage.cluet4count, localStorage.cluet5count, localStorage.cluet6count, localStorage.cluetxcount];
+	var xValues = ["0", "1", "2", "3", "4", "5", "6", "X"];
+	var yValues = [localStorage.cluet0count, localStorage.cluet1count, localStorage.cluet2count, localStorage.cluet3count, localStorage.cluet4count, localStorage.cluet5count, localStorage.cluet6count, localStorage.cluetxcount];
 	//var barColors = ["red", "green","blue","orange","brown","yellow","cyan","white"];
-	// var barColors = [color0, color1, color2, color3, color4, color5, color6, colorx];
-	var barColors = [color1, color2, color3, color4, color5, color6, colorx];
+	var barColors = [color0, color1, color2, color3, color4, color5, color6, colorx];
 
 	new Chart("myChart", {
 		type: "bar",
@@ -532,14 +463,6 @@ function intialize() {
 	document.getElementById("bb").style.display = "none";
 	document.getElementById("HTMLButton").style.display = "none";
 	document.getElementById("CoffeButton").style.display = "none";
-	document.getElementById('try1').innerText = localStorage.try1topen;
-	document.getElementById('try2').innerText = localStorage.try2topen;
-	document.getElementById('try3').innerText = localStorage.try3topen;
-	document.getElementById('try4').innerText = localStorage.try4topen;
-	document.getElementById('try5').innerText = localStorage.try5topen;
-	document.getElementById('try6').innerText = localStorage.try6topen;
-	document.getElementById('glt').innerText = localStorage.gltttext;
-	//document.getElementById('try7').innerText = localStorage.try7topen;
 	// Create the game board
 	for (let clueindex = 0; clueindex < 6; clueindex++) {
 		// <span id="0-0" class="tile">P</span>
@@ -566,36 +489,38 @@ function intialize() {
 		}
 		document.getElementById("clue-ball").appendChild(clue);
 	}
-
+	// for (let r = 0; r < height; r++) {
 	let f = 1
 	for (let c = 0; c < fnwidth; c++) {
-/* 		let tile = document.createElement("span");
+		// <span id="0-0" class="tile">P</span>
+		let tile = document.createElement("span");
 		tile.id = f.toString() + "-" + c.toString();
 		tile.classList.add("tile");
 		tile.innerText = "";
-		document.getElementById("boardfirst").appendChild(tile); */
+		document.getElementById("boardfirst").appendChild(tile);
 		let histile = document.createElement("span");
 		histile.id = 2 + "-" + c.toString();
 		histile.classList.add("histile");
 		histile.innerText = "";
 		document.getElementById("historyfirst").appendChild(histile);
 	}
-
+	//}
 
 	let l = 1
 	for (let c = fnwidth; c < width; c++) {
-/* 		let tile = document.createElement("span");
+		// <span id="0-0" class="tile">P</span>
+		let tile = document.createElement("span");
 		tile.id = l.toString() + "-" + c.toString();
 		tile.classList.add("tile");
 		tile.innerText = "";
-		document.getElementById("boardlast").appendChild(tile); */
+		document.getElementById("boardlast").appendChild(tile);
 		let histile = document.createElement("span");
 		histile.id = 2 + "-" + c.toString();
 		histile.classList.add("histile");
 		histile.innerText = "";
 		document.getElementById("historylast").appendChild(histile);
 	}
-  
+	//}	  
 	var winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
 	document.getElementById(6).innerText = "Played: " + localStorage.totaltgames;
 	document.getElementById(7).innerText = "Win %: " + winpct;
@@ -604,11 +529,9 @@ function intialize() {
 
 	//Current Day Game Over
 	if (localStorage.getItem('gameover' + days) == 1) {
-		document.getElementById("answertext").disabled = true; 
-		document.getElementById("submitbutton").disabled = true; 
 		if (localStorage.gametwon == 1) {
 			for (let c = 0; c < width; c++) {
-				let gameTile = document.getElementById(2 + '-' + c.toString());
+				let gameTile = document.getElementById(1 + '-' + c.toString());
 				gameTile.innerText = answername[c];
 				gameTile.classList.add("correct", "animated");
 			}
@@ -619,12 +542,12 @@ function intialize() {
 		}
 		else {
 			for (let c = 0; c < width; c++) {
-				let gameTile = document.getElementById(2 + '-' + c.toString());
+				let gameTile = document.getElementById(1 + '-' + c.toString());
 				gameTile.innerText = answername[c];
 				gameTile.classList.remove("correct");
 				gameTile.classList.add("absent", "animated");
 			}
-			document.getElementById("answer").style.color = "#dc143c";
+			document.getElementById("answer").style.color = "red";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY. TRY AGAIN TOMORROW!";
 			setTimeout(OpenStats, 1100);
 		}
@@ -632,59 +555,96 @@ function intialize() {
 	}
 	// Default Path
 	else {
-		if (localStorage.firsttload == 0){
-			setTimeout(FetchData, 1000);
-			localStorage.firsttload = 1
+		if (localStorage.yeartopen == 1) {
+			document.getElementById(0).innerHTML = "<span class='revealcol'>" + year +"</span><br><br><span class='revealsiz'>(Year)</span>";
+			arrayid.splice(arrayid.indexOf(0), 1);
+			SetClueCount();
 		}
-		else{
-			if (localStorage.yeartopen == 1) {
-				document.getElementById(0).innerHTML = "<span class='revealcol'>" + year +"</span><br><br><span class='revealsiz'>(Year)</span>";
-				arrayid.splice(arrayid.indexOf(0), 1);
-				SetClueCount();
-			}
-			if (localStorage.slamtopen == 1) {
-				document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam +"</span><br><br><span class='revealsiz'>(Slam)</span>";
-				arrayid.splice(arrayid.indexOf(1), 1);
-				SetClueCount();
-			}
-			if (localStorage.ctrytopen == 1) {
-				document.getElementById(2).innerHTML = "<span class='revealcol'>" + country +"</span><br><br><span class='revealsiz'>(Country)</span>";
-				arrayid.splice(arrayid.indexOf(2), 1);
-				SetClueCount();
-			}
-			if (localStorage.gndrtopen == 1) {
-				document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender +"</span><br><br><span class='revealsiz'>(Gender)</span>";
-				arrayid.splice(arrayid.indexOf(3), 1);
-				SetClueCount();
-			}
-			//if (localStorage.fnfltopen == 1) {
-			if (localStorage.titltopen == 1) {
-				document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles +"</span><br><br><span class='revealsiz'>(Titles)</span>";
-				arrayid.splice(arrayid.indexOf(4), 1);
-				SetClueCount();
-			}
-			//if (localStorage.lnfltopen == 1) {
-			if (localStorage.playtopen == 1) {
-				document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays +"</span><br><br><span class='revealsiz'>(Plays)</span>";
-				arrayid.splice(arrayid.indexOf(5), 1);
-				SetClueCount();
-			}
+		if (localStorage.slamtopen == 1) {
+			document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam +"</span><br><br><span class='revealsiz'>(Slam)</span>";
+			arrayid.splice(arrayid.indexOf(1), 1);
+			SetClueCount();
 		}
-/* 		document.getElementById("answer").classList.remove("popanswer");	
+		if (localStorage.ctrytopen == 1) {
+			document.getElementById(2).innerHTML = "<span class='revealcol'>" + country +"</span><br><br><span class='revealsiz'>(Country)</span>";
+			arrayid.splice(arrayid.indexOf(2), 1);
+			SetClueCount();
+		}
+		if (localStorage.gndrtopen == 1) {
+			document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender +"</span><br><br><span class='revealsiz'>(Gender)</span>";
+			arrayid.splice(arrayid.indexOf(3), 1);
+			SetClueCount();
+		}
+		//if (localStorage.fnfltopen == 1) {
+		if (localStorage.titltopen == 1) {
+			document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles +"</span><br><br><span class='revealsiz'>(Titles)</span>";
+			arrayid.splice(arrayid.indexOf(4), 1);
+			SetClueCount();
+		}
+		//if (localStorage.lnfltopen == 1) {
+		if (localStorage.playtopen == 1) {
+			document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays +"</span><br><br><span class='revealsiz'>(Plays)</span>";
+			arrayid.splice(arrayid.indexOf(5), 1);
+			SetClueCount();
+		}
+		document.getElementById("answer").classList.remove("popanswer");	
 		if (document.getElementById("answer").classList.contains("popanswer")){
-		} */		
+			console.log("has popanswer");
+		}		
 		document.getElementById("answer").style.color = "#FDFEFF";
 		document.getElementById("answer").innerText = "READ THE GAME RULES BEFORE PLAYING!";
-		//setTimeout(FinalClue, 2000);
+		setTimeout(FinalClue, 2000);
+		// Create the key board
+		let keyboard = [
+			["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+			["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+			["⏎", "Z", "X", "C", "V", "B", "N", "M", "⌫"]
+		]
 
-/* 		var mybr = document.createElement('br');
-		document.body.appendChild(mybr);
+		/*      let keyboard = [
+				["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+				["A", "S", "D", "F", "G", "H", "J", "K", "L", "Clr"],
+				["Enter", "Z", "X", "C", "V", "B", "N", "M", "⌫" ]
+			]	 */
+
+		for (let i = 0; i < keyboard.length; i++) {
+			let currRow = keyboard[i];
+			let keyboardRow = document.createElement("div");
+			keyboardRow.classList.add("keyboard-row");
+
+			for (let j = 0; j < currRow.length; j++) {
+				let keyTile = document.createElement("div");
+
+				let key = currRow[j];
+				keyTile.innerText = key;
+				if (key == "⏎") {
+					keyTile.id = "Enter";
+				}
+				else if (key == "⌫") {
+					keyTile.id = "Backspace";
+				}
+				else if (key == "Clr") {
+					keyTile.id = "Clr";
+				}
+				else if ("A" <= key && key <= "Z") {
+					keyTile.id = "Key" + key; // "Key" + "A";
+				}
+
+				keyTile.addEventListener("click", processKey);
+
+				if (key == "⏎" || key == "⌫") {
+					keyTile.classList.add("enter-key-tile");
+				} else {
+					keyTile.classList.add("key-tile");
+				}
+				keyboardRow.appendChild(keyTile);
+			}
+			document.body.appendChild(keyboardRow);
+		}
 		var mybr = document.createElement('br');
 		document.body.appendChild(mybr);
 		var mybr = document.createElement('br');
 		document.body.appendChild(mybr);
-		var mybr = document.createElement('br');
-		document.body.appendChild(mybr);		
 		var button = document.createElement("button");
 		button.innerText = "Buy Me a Coffee❤️";
 		// attach the event
@@ -692,54 +652,22 @@ function intialize() {
 		  window.open('https://www.buymeacoffee.com/sank0403/', '_blank'); // _blank will open the site in a new tab
 		});
 		document.body.appendChild(button);
-		button.classList.add("buttonrad"); */
+		button.classList.add("buttonrad");
 
 		// Listen for Key Press
-/* 		document.addEventListener("keyup", (e) => {
+		document.addEventListener("keyup", (e) => {
 			processInput(e);
-		}) */
+		})
 	}
 }
 
 
-/* function processKey() {
+function processKey() {
 	e = { "code": this.id };
 	processInput(e);
-} */
-
-function submitMe() {
-	var input = document.getElementById('answertext').value;
-	console.log(clueCount);
-	if (input!= ""){
-		switch (clueCount) {
-/* 			case 0: document.getElementById('try1').innerText = document.getElementById('answertext').value;
-				break; */
-			case 1: document.getElementById('try1').innerText = document.getElementById('answertext').value;
-				break;
-			case 2: document.getElementById('try2').innerText = document.getElementById('answertext').value;
-				break;
-			case 3: document.getElementById('try3').innerText = document.getElementById('answertext').value;
-				break;
-			case 4: document.getElementById('try4').innerText = document.getElementById('answertext').value;
-				break;
-			case 5: document.getElementById('try5').innerText = document.getElementById('answertext').value;
-				break;
-			case 7: document.getElementById('try6').innerText = document.getElementById('answertext').value;
-				break;
-		}
-		document.getElementById('answertext').value = "";	
-		document.getElementById("submitbutton").disabled = true; 
-		document.getElementById("result").hidden = true;		
-		update(input);
-	}
-	else{
-		document.getElementById("answer").style.color = "#dc143c";
-		document.getElementById("answer").innerText = "PLEASE ENTER ANY NAME TO SUBMIT!";
-	}
 }
 
-
-/* function processInput(e) {
+function processInput(e) {
 	if (gameOver) return;
 
 	// alert(e.code);
@@ -806,10 +734,10 @@ function submitMe() {
 	else if (e.code == "Enter") {
 		update();
 	}
-} */
+}
 
-function update(input) {
-	/* enterHit = true;
+function update() {
+	enterHit = true;
 	document.getElementById("boardfirst").classList.remove("shaketile");
 	document.getElementById("boardlast").classList.remove("shaketile");
 	let guess = "";
@@ -838,7 +766,7 @@ function update(input) {
 		else {
 			lnletterCount[letter] = 1;
 		}
-	} */
+	}
 
 	/*     let letterCount = {}; //keep track of letter frequency, ex) KENNY -> {K:1, E:1, N:2, Y: 1}
 		for (let i = 0; i < answername.length; i++) {
@@ -854,43 +782,41 @@ function update(input) {
 	//string up the guesses into the word
 	//first name
 	for (let c = 0; c < fnwidth; c++) {
-		//let currTile = document.getElementById(1 + '-' + c.toString());
+		let currTile = document.getElementById(1 + '-' + c.toString());
 		let historyTile = document.getElementById(2 + '-' + c.toString());
-/* 		let letter = currTile.innerText;
+		let letter = currTile.innerText;
 		if (answername[c] == letter.toLowerCase()) {
 			currTile.classList.add("correct");
 			historyTile.classList.add("correct");
 			historyTile.innerText = currTile.innerText;
 			fnletterCount[letter.toLowerCase()] -= 1;
 			let keyTile = document.getElementById("Key" + letter);
-			keyTile.classList.remove("keypresent"); */
+			keyTile.classList.remove("keypresent");
 
 		}
-		//guess += letter;
-	//}
+		guess += letter;
+	}
 	//last name
 	for (let c = fnwidth; c < width; c++) {
-		//let currTile = document.getElementById(1 + '-' + c.toString());
+		let currTile = document.getElementById(1 + '-' + c.toString());
 		let historyTile = document.getElementById(2 + '-' + c.toString());
-/* 		let letter = currTile.innerText;
+		let letter = currTile.innerText;
 		if (answername[c] == letter.toLowerCase()) {
 			currTile.classList.add("correct");
 			historyTile.classList.add("correct");
 			historyTile.innerText = currTile.innerText;
 			lnletterCount[letter.toLowerCase()] -= 1;
 			let keyTile = document.getElementById("Key" + letter);
-			keyTile.classList.remove("keypresent"); */
+			keyTile.classList.remove("keypresent");
 		}
 
-		//guess += letter;
-	//}
+		guess += letter;
+	}
 
-	//guess = guess.toLowerCase(); //case sensitive	
-	input = input.replace(/\s+/g, '');
-	guess = input.toLowerCase();
+	guess = guess.toLowerCase(); //case sensitive	
 
 	if (guess == answername) {
-/* 		for (let c = 0; c < width; c++) {
+		for (let c = 0; c < width; c++) {
 			let currTile = document.getElementById(1 + '-' + c.toString());
 			let historyTile = document.getElementById(2 + '-' + c.toString());
 			let letter = currTile.innerText;
@@ -902,13 +828,7 @@ function update(input) {
 			//keyTile.classList.add("correct");			
 			currTile.classList.remove("poptile");
 			currTile.classList.add("animated");
-		} */
-		for (let c = 0; c < width; c++) {
-			let gameTile = document.getElementById(2 + '-' + c.toString());
-			gameTile.innerText = answername[c];
-			gameTile.classList.remove("correct", "poptile");
-			gameTile.classList.add("correct", "animated");
-		}		
+		}
 		document.getElementById("answer").style.color = "#FDFEFF";
 		localStorage.totaltgames = Number(localStorage.totaltgames) + 1;
 		localStorage.totaltwins = Number(localStorage.totaltwins) + 1;
@@ -918,36 +838,28 @@ function update(input) {
 		}
 		winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
 		switch (clueCount) {
-			//case 0: localStorage.cluet0count = Number(localStorage.cluet0count) + 1;
-/* 			case 0: document.getElementById('try1').innerText += " ✔️";
-				//color0 = "green";
-				break; */
+			case 0: localStorage.cluet0count = Number(localStorage.cluet0count) + 1;
+				color0 = "green";
+				break;
 			case 1: localStorage.cluet1count = Number(localStorage.cluet1count) + 1;
-				document.getElementById('try1').innerText += " ✔️";			
 				color1 = "green";
 				break;
 			case 2: localStorage.cluet2count = Number(localStorage.cluet2count) + 1;
-				document.getElementById('try2').innerText += " ✔️";			
 				color2 = "green";
 				break;
 			case 3: localStorage.cluet3count = Number(localStorage.cluet3count) + 1;
-				document.getElementById('try3').innerText += " ✔️";			
 				color3 = "green";
 				break;
 			case 4: localStorage.cluet4count = Number(localStorage.cluet4count) + 1;
-				document.getElementById('try4').innerText += " ✔️";			
 				color4 = "green";
 				break;
 			case 5: localStorage.cluet5count = Number(localStorage.cluet5count) + 1;
-				document.getElementById('try5').innerText += " ✔️";			
 				color5 = "green";
 				break;
 			case 7: localStorage.cluet6count = Number(localStorage.cluet6count) + 1;
-				document.getElementById('try6').innerText += " ✔️";			
 				color6 = "green";
 				break;
 		}
-		tryload();
 		if (clueCount == 7) {
 			localStorage.cluetcount = 6;
 		}
@@ -961,46 +873,45 @@ function update(input) {
 		document.getElementById("answer").innerText = "You have identified the player successfully.\nCongrats! Dont forget to share your results.";
 		setTimeout(ConfettiStart, 1000);
 		gameOver = true;
-		document.getElementById("answertext").disabled = true; 
-		document.getElementById("submitbutton").disabled = true; 		
 		displayFooter();
 		localStorage.gametwon = 1;
 		localStorage.setItem(('gameover' + days), 1);
 		setTimeout(OpenStats, 4800);
 	}
-/* 	else if (guess == "") {
+	else if (guess == "") {
 		document.getElementById("boardfirst").classList.add("shaketile");
 		document.getElementById("boardlast").classList.add("shaketile");
 		document.getElementById("answer").style.color = "red";
 		document.getElementById("answer").innerText = "PLEASE ENTER ANY NAME TO SUBMIT!";
-	} */
+	}
 	else {
-		document.getElementById("answer").style.color = "#dc143c";
+		document.getElementById("answer").style.color = "red";
 		if (!gameOver && clueCount < 6) {
-/* 			document.getElementById("boardfirst").classList.add("shaketile");
-			document.getElementById("boardlast").classList.add("shaketile"); */
-			document.getElementById("answer").innerText = "Incorrect Guess! New Clue Revealed. \n Try again.";
+			document.getElementById("boardfirst").classList.add("shaketile");
+			document.getElementById("boardlast").classList.add("shaketile");
+			document.getElementById("answer").innerText = "Incorrect Guess! New Clue Revealed. \n Hit any key to clear and then try again.";
 			FetchData();
 		}
 		if (!gameOver && clueCount == 6) {
-/* 			document.getElementById("boardfirst").classList.add("shaketile");
-			document.getElementById("boardlast").classList.add("shaketile"); */
+			document.getElementById("boardfirst").classList.add("shaketile");
+			document.getElementById("boardlast").classList.add("shaketile");
 			document.getElementById("answer").classList.remove("popanswer");	
 			if (document.getElementById("answer").classList.contains("popanswer")){
+				console.log("has popanswer");
 			}			
-			document.getElementById("answer").style.color = "#dc143c";
+			document.getElementById("answer").style.color = "red";
 			document.getElementById("answer").innerText = "Final Clue Revealed! Players may be repeated across days if they have won multiple GSs.";
 			setTimeout(FinalClue, 2000);
 			clueCount += 1;
 		}
 		else if (!gameOver && clueCount > 6) {
 			for (let c = 0; c < width; c++) {
-				let gameTile = document.getElementById(2 + '-' + c.toString());
+				let gameTile = document.getElementById(1 + '-' + c.toString());
 				gameTile.innerText = answername[c];
 				gameTile.classList.remove("correct", "poptile");
 				gameTile.classList.add("absent", "animated");
 			}
-			document.getElementById("answer").style.color = "#dc143c";
+			document.getElementById("answer").style.color = "red";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY. TRY AGAIN TOMORROW!";
 			localStorage.totaltgames = Number(localStorage.totaltgames) + 1;
 			winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
@@ -1012,45 +923,13 @@ function update(input) {
 			document.getElementById(7).innerText = "Win %: " + winpct;
 			document.getElementById(8).innerText = "Current Streak: " + localStorage.currenttstreak;
 			gameOver = true;
-			document.getElementById('try6').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
-			document.getElementById("try6").classList.add("shaketile");
-			tryload();
-			document.getElementById("answertext").disabled = true; 
-			document.getElementById("submitbutton").disabled = true; 			
 			displayFooter();
 			localStorage.gametwon = 0;
 			localStorage.setItem(('gameover' + days), 1);
 			setTimeout(OpenStats, 3000);
 		}
-		if (!gameOver){
-			switch (clueCount) {
-/* 				case 1: document.getElementById('try1').innerText += " ❌";
-					break; */
-				case 2: document.getElementById('try1').innerText += " ❌\n🔴🔴🔴🔴🔴🟢";
-				document.getElementById("try1").classList.add("shaketile");
-				document.getElementById('glt').innerText += "   " + (clueCount);	
-					break;
-				case 3: document.getElementById('try2').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
-				document.getElementById("try2").classList.add("shaketile");
-				document.getElementById('glt').innerText += "   " + (clueCount);	
-					break;
-				case 4: document.getElementById('try3').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
-				document.getElementById("try3").classList.add("shaketile");
-				document.getElementById('glt').innerText += "   " + (clueCount);	
-					break;
-				case 5: document.getElementById('try4').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
-				document.getElementById("try4").classList.add("shaketile");
-				document.getElementById('glt').innerText += "   " + (clueCount);	
-					break;
-				case 7: document.getElementById('try5').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
-				document.getElementById("try5").classList.add("shaketile");
-				document.getElementById('glt').innerText += "   6";	
-					break;
-			}
-		}
-		tryload();
 	}
-/* 	//go again and mark which ones are present but in wrong position
+	//go again and mark which ones are present but in wrong position
 	//first name
 	if (gameOver) return;
 	for (let c = 0; c < fnwidth; c++) {
@@ -1082,5 +961,5 @@ function update(input) {
 				keyTile.classList.add("keypresent");
 			}
 		}
-	}*/
-} 
+	}
+}
