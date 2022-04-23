@@ -212,17 +212,17 @@
 	<h1 id="answer"></h1>
 	<br>
 	<br>
-<!-- 	<input type="text" name="name" id="answertext" placeholder="Enter player Name" required/>
-	<input type="submit" name="submit" onclick="submitMe()" id="submitbutton"/> -->
-	<form action="#" onsubmit="submitMe();return false" autocomplete="off">
-	<!-- <input onKeyUp="handleKeyUp(20);" type="text" name="functioninput" VALUE="" style="font-size:10pt;width:34ex;"><br> -->
-	<input onKeyUp="showResults(this.value)" type="text" name="functioninput" id="answertext" style="font-size:10pt;width:200px;border-radius=10px;" placeholder="Search Player Name"/>
-	<input type="submit" name="submit" id="submitbutton" disabled="disabled" style="font-size:10pt;width:25x;background-color:gray;" value="SUBMIT"/><br>
-	<!-- <select onClick="handleSelectClick();" name="functionselect" size="20" style="font-size:10pt;width:34ex;"> -->
-	<!-- <select  onClick="handleSelectClick();" name="functionselect" id="functionselect"  size="5" style="font-size:10pt;width:34ex;" class="form-control" hidden></select> -->
+    <div class="containers">
+      <form action="#" onsubmit="submitMe();return false" autocomplete="off" class="form">
+        <input type="text" placeholder="Search Player Name" class="search-field" / onKeyUp="showResults(this.value)" name="functioninput" id="answertext">
+        <!-- <button type="submit" class="search-button" name="submit" id="submitbutton" disabled="disabled" > -->
+		<span  onclick="disablederror();">
+			<button type="submit" class="search-button" name="submit" id="submitbutton" disabled="disabled" onClick="message('PUT MESSAGE HERE')" >
+			  <img src="search.png">
+			</button>
+		</span>
+      </form>
+    </div>
 	<div id="result"></div>
-	</form>	
-	<br><br>
 </body>
-
 </html>

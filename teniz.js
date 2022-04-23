@@ -126,6 +126,13 @@ function FinalClue() {
 	document.getElementById("answer").classList.add("popanswer");
 }
 
+function disablederror() {
+	if (document.getElementById("submitbutton").disabled == true){
+	document.getElementById("answer").style.color = "#dc143c";
+	document.getElementById("answer").innerText = "SELECT PLAYER FROM SEARCH RESULTS!";
+	}
+}
+
 //Button Text
 function ResetButton() {
 	let HTMLButton = document.getElementById("HTMLButton");
@@ -617,7 +624,7 @@ function intialize() {
 				gameTile.classList.remove("correct");
 				gameTile.classList.add("absent", "animated");
 			}
-			document.getElementById("answer").style.color = "red";
+			document.getElementById("answer").style.color = "#dc143c";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY. TRY AGAIN TOMORROW!";
 			setTimeout(OpenStats, 1100);
 		}
@@ -725,7 +732,7 @@ function submitMe() {
 		update(input);
 	}
 	else{
-		document.getElementById("answer").style.color = "red";
+		document.getElementById("answer").style.color = "#dc143c";
 		document.getElementById("answer").innerText = "PLEASE ENTER ANY NAME TO SUBMIT!";
 	}
 }
@@ -967,11 +974,11 @@ function update(input) {
 		document.getElementById("answer").innerText = "PLEASE ENTER ANY NAME TO SUBMIT!";
 	} */
 	else {
-		document.getElementById("answer").style.color = "red";
+		document.getElementById("answer").style.color = "#dc143c";
 		if (!gameOver && clueCount < 6) {
 /* 			document.getElementById("boardfirst").classList.add("shaketile");
 			document.getElementById("boardlast").classList.add("shaketile"); */
-			document.getElementById("answer").innerText = "Incorrect Guess! New Clue Revealed. \n Hit any key to clear and then try again.";
+			document.getElementById("answer").innerText = "Incorrect Guess! New Clue Revealed. \n Try again.";
 			FetchData();
 		}
 		if (!gameOver && clueCount == 6) {
@@ -980,7 +987,7 @@ function update(input) {
 			document.getElementById("answer").classList.remove("popanswer");	
 			if (document.getElementById("answer").classList.contains("popanswer")){
 			}			
-			document.getElementById("answer").style.color = "red";
+			document.getElementById("answer").style.color = "#dc143c";
 			document.getElementById("answer").innerText = "Final Clue Revealed! Players may be repeated across days if they have won multiple GSs.";
 			setTimeout(FinalClue, 2000);
 			clueCount += 1;
@@ -992,7 +999,7 @@ function update(input) {
 				gameTile.classList.remove("correct", "poptile");
 				gameTile.classList.add("absent", "animated");
 			}
-			document.getElementById("answer").style.color = "red";
+			document.getElementById("answer").style.color = "#dc143c";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY. TRY AGAIN TOMORROW!";
 			localStorage.totaltgames = Number(localStorage.totaltgames) + 1;
 			winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
@@ -1004,7 +1011,7 @@ function update(input) {
 			document.getElementById(7).innerText = "Win %: " + winpct;
 			document.getElementById(8).innerText = "Current Streak: " + localStorage.currenttstreak;
 			gameOver = true;
-			document.getElementById('try6').innerText += " ❌";
+			document.getElementById('try6').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
 			document.getElementById("try6").classList.add("shaketile");
 			tryload();
 			document.getElementById("answertext").disabled = true; 
@@ -1018,25 +1025,25 @@ function update(input) {
 			switch (clueCount) {
 /* 				case 1: document.getElementById('try1').innerText += " ❌";
 					break; */
-				case 2: document.getElementById('try1').innerText += " ❌";
+				case 2: document.getElementById('try1').innerText += " ❌\n🔴🔴🔴🔴🔴🟢";
 				document.getElementById("try1").classList.add("shaketile");
-				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('glt').innerText += "   " + (clueCount);	
 					break;
-				case 3: document.getElementById('try2').innerText += " ❌";
+				case 3: document.getElementById('try2').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
 				document.getElementById("try2").classList.add("shaketile");
-				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('glt').innerText += "   " + (clueCount);	
 					break;
-				case 4: document.getElementById('try3').innerText += " ❌";
+				case 4: document.getElementById('try3').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
 				document.getElementById("try3").classList.add("shaketile");
-				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('glt').innerText += "   " + (clueCount);	
 					break;
-				case 5: document.getElementById('try4').innerText += " ❌";
+				case 5: document.getElementById('try4').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
 				document.getElementById("try4").classList.add("shaketile");
-				document.getElementById('glt').innerText += "  " + (clueCount);	
+				document.getElementById('glt').innerText += "   " + (clueCount);	
 					break;
-				case 7: document.getElementById('try5').innerText += " ❌";
+				case 7: document.getElementById('try5').innerText += " ❌\n🟢🟢🔴🔴🔴🟢";
 				document.getElementById("try5").classList.add("shaketile");
-				document.getElementById('glt').innerText += "  6";	
+				document.getElementById('glt').innerText += "   6";	
 					break;
 			}
 		}
