@@ -32,6 +32,7 @@ function showResults(val) {
   }
   res.innerHTML = '<ul>' + list + '</ul>';
   document.getElementById("result").focus();  
+  document.getElementById("result").scrollIntoView(true);
 }
 
 
