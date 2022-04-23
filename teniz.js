@@ -4,7 +4,6 @@ var ul = document.getElementById("result");
     var target = getEventTarget(event);
 	document.getElementById("submitbutton").disabled = false;
     document.getElementById("answertext").value = target.innerHTML;
-	document.getElementById("result").hidden = true;
 };	
 function autocompleteMatch(input) {
   input = input.toLowerCase();
@@ -729,7 +728,8 @@ function submitMe() {
 				break;
 		}
 		document.getElementById('answertext').value = "";	
-		document.getElementById("submitbutton").disabled = true; 		
+		document.getElementById("submitbutton").disabled = true; 
+		document.getElementById("result").hidden = true;		
 		update(input);
 	}
 	else{
