@@ -1201,7 +1201,7 @@ function update(input) {
 			if (document.getElementById("answer").classList.contains("popanswer")) {
 			}
 			document.getElementById("answer").style.color = "#dc143c";
-			document.getElementById("answer").innerText = "MATCH POINT Down!\nTHIS IS YOUR LAST CHANCE.";
+			document.getElementById("answer").innerText = "MATCH POINT DOWN!\nTHIS IS YOUR LAST CHANCE.";
 			setTimeout(FinalClue, 2000);
 			clueCount += 1;
 		}
