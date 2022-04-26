@@ -310,7 +310,7 @@ hr {
 }
 
 .trydetail {
-  width: 345;
+  width: 340;
   margin: 0 auto;
   margin-top: 0px;
   text-align: center;
@@ -782,7 +782,7 @@ padding: 15px;
 
   #board,
   #clue {
-    width: 325px;
+    width: 350px;
   }
 
   hr {
