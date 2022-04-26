@@ -192,9 +192,10 @@ function getindices() {
 			addonctry = "🟡";
 			icon3 = "y";
 		}	
-		else if ((countryList[indices[i]] == "RUS" &&  continentList[index] = "EUR") ||(countryList[index] == "RUS" &&  continentList[indices[i]] = "EUR") ){
+		else if ((countryList[indices[i]] == "RUS" &&  continentList[index] == "EUR") || (countryList[index] == "RUS" &&  continentList[indices[i]] == "EUR")){
 		addonctry = "🟡";
-		icon3 = "y";			
+		icon3 = "y";	
+		}		
 	}
 	if (localStorage.modet == "Normal"){
 		document.getElementById(2).classList.add("zoom-in-box");	
