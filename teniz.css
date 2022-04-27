@@ -625,7 +625,17 @@ padding: 15px;
   text-align: left;
   color: white;
   font-size: 12px;
-  overflow: scroll;
+}
+
+.Contents
+{
+  overflow-y: auto;
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 5% auto 0;
+  max-height: 90vh;
+  padding: 5px;
 }
 
 .summary {
