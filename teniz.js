@@ -1298,6 +1298,13 @@ function getindices() {
 		else if (Math.abs(Number(yearList[idx]) - Number(yearList[index])) <= 3) {
 			addyr = "🟡";
 			icon1 = "y";
+		}
+
+		if (Number(yearList[idx]) > Number(yearList[index])){
+			addyr += "️⬇️";
+		}
+		else{
+			addyr += "⬆️";
 		}		
 	//}
 	document.getElementById("answertext").disabled = true;
@@ -1501,6 +1508,14 @@ function getindices() {
 		addontitle = "🟡";
 		icon5 = "y";
 	}	
+	
+	if (Number(GSTitleList[idx]) > Number(GSTitleList[index])){
+		addontitle += "️⬇️";
+	}
+	else{
+		addontitle += "⬆️";
+	}	
+	
 	if (localStorage.modet == "Normal"){
 		document.getElementById(4).classList.add("zoom-in-box");	
 		document.getElementById(4).innerHTML = "<span class='revealicon'>" + addontitle + "</span><br><span class='revealsiz'>Titles</span>";
