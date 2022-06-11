@@ -1273,7 +1273,10 @@ function storedadd() {
 			}
 			else if (storedaddonelem[k] == "g"){
 				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🟢";
-			}        
+			}    
+			else if (storedaddonelem[k] == "b"){
+				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🔵";
+			} 			
 		}					
 	}
 }
@@ -1339,6 +1342,7 @@ function getindices() {
 		}
 	//}
 	var addongs = "🔴";
+	var allgs = 1;
 	var icon2 = "r";
 	//for (let i = 0; i < indices.length; i++) {
 		if (JSON.stringify(GSList[idx]) == JSON.stringify(GSList[index])) {
@@ -1356,7 +1360,22 @@ function getindices() {
 					}
 				 }
 			 }
+			for (let p = 0; p < GSList[idx].length; p++) {
+				 if (GSList[index].includes(GSList[idx][p])){
+					 allgs = 1;
+				 }
+				 else{
+					 allgs = 0;
+					 break;
+				 }
+			}	
+			if (allgs == 1){
+				addongs = "🔵";
+				icon2 = "b";						 
+			}			
 		}
+
+
 	//}
 	if (localStorage.modet == "Normal"){
 		document.getElementById(1).classList.add("zoom-in-box");
@@ -2478,7 +2497,10 @@ function intialize() {
 						}
 						else if (storedaddonlast[i] == "g"){
 							document.getElementById(i).innerHTML = "<span class='revealicon'>" + "🟢";
-						}                                        
+						}  
+						else if (storedaddonlast[i] == "b"){
+							document.getElementById(i).innerHTML = "<span class='revealicon'>" + "🔵";
+						} 						
 					}
 					document.getElementById(0).innerHTML += "</span><br><span class='revealsiz'>Born</span>";
 					document.getElementById(1).innerHTML += "</span><br><span class='revealsiz'>Slam</span>";
