@@ -2368,7 +2368,7 @@ function intialize() {
 			setTimeout(OpenStats, 1100);
 		}
 		displayFooter();
-	} */ */
+	} */
 	// Default Path
 	//else {
 		//setTimeout(OpenRules, 1100);
