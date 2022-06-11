@@ -1316,10 +1316,10 @@ function getindices() {
 	//}	
 	setTimeout(function(){ 
 		if (Number(yearList[idx]) > Number(yearList[index])){
-			addyr += "️⇩";
+			addyr += "️🔻";
 		}
 		else if (Number(yearList[idx]) < Number(yearList[index])){
-			addyr += "⇧";
+			addyr += "🔺";
 		}	
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex"; 
@@ -1516,10 +1516,10 @@ function getindices() {
 	}
 	  setTimeout(function(){ 
 		if (Number(GSTitleList[idx]) > Number(GSTitleList[index])){
-			addontitle += "️⇩";
+			addontitle += "️🔻";
 		}
 		else if (Number(GSTitleList[idx]) < Number(GSTitleList[index])){
-			addontitle += "⇧";
+			addontitle += "🔺";
 		}		  
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
