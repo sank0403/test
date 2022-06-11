@@ -1299,13 +1299,7 @@ function getindices() {
 			addyr = "🟡";
 			icon1 = "y";
 		}
-
-		if (Number(yearList[idx]) > Number(yearList[index])){
-			addyr += "️⬇️";
-		}
-		else{
-			addyr += "⬆️";
-		}		
+		
 	//}
 	document.getElementById("answertext").disabled = true;
 	document.getElementById("submitbutton").disabled = true;	
@@ -1321,6 +1315,12 @@ function getindices() {
 		//tempyear = [...new Set(tempyear)];
 	//}	
 	setTimeout(function(){ 
+		if (Number(yearList[idx]) > Number(yearList[index])){
+			addyr += "️⇩";
+		}
+		else if (Number(yearList[idx]) < Number(yearList[index])){
+			addyr += "⇧";
+		}	
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex"; 
 			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
@@ -1508,19 +1508,19 @@ function getindices() {
 		addontitle = "🟡";
 		icon5 = "y";
 	}	
-	
-	if (Number(GSTitleList[idx]) > Number(GSTitleList[index])){
-		addontitle += "️⬇️";
-	}
-	else{
-		addontitle += "⬆️";
-	}	
+
 	
 	if (localStorage.modet == "Normal"){
 		document.getElementById(4).classList.add("zoom-in-box");	
 		document.getElementById(4).innerHTML = "<span class='revealicon'>" + addontitle + "</span><br><span class='revealsiz'>Titles</span>";
 	}
 	  setTimeout(function(){ 
+		if (Number(GSTitleList[idx]) > Number(GSTitleList[index])){
+			addontitle += "️⇩";
+		}
+		else if (Number(GSTitleList[idx]) < Number(GSTitleList[index])){
+			addontitle += "⇧";
+		}		  
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
 			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + addontitle;	
