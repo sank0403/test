@@ -77,6 +77,10 @@
 		<span style="--i:16">i</span>
 		<span style="--i:17">l</span>
 		<span style="--i:18">y</span>
+		<span style="--i:19"> </span>
+		<span style="--i:20">#</span>
+		<span style="--i:21"> </span>
+		<span style="--i:22" id="daycount"></span>
 	</div>
 	<!-- <div id="mycounter"></div> -->
 	<!-- <button data-modal-target="#modal">Start Game</button>  -->
@@ -103,16 +107,21 @@
 			(i) <strong style="color:white;">TENIZ</strong>, a game inspired by <strong style="color:white;">WORDLE</strong>, tests your knowledge on Tennis Grand Slam Champions of the Open
 			Era. The objective is to identify the Champion Tennis Player every day, using the Clues.
 			<br><br>
-			(ii) The mystery player needs to be identified based on attributes (shown at the top of the page) based on their <strong style="color:white;">GRAND SLAM CAREER STATS.</strong> These attributes include Year Born, Slams Won, Country (could be multiple countries), Gender, Total GS Singles Titles and Style of Play (RH vs
+			(ii) The mystery player needs to be identified based on attributes (shown at the top of the page) based on their <strong style="color:white;">GRAND SLAM CAREER STATS.</strong> These attributes include Year of first win, Slams Won, Country (could be multiple countries), Gender, Total GS Singles Titles and Style of Play (RH vs
 			LH). 
 			<br><br>			
 			(iii) Use the search area to key in your answer and hit Enter <img src="search.png"style="width:20px;height:20px;">. After each guess, details of the player you entererd are listed. You also get <strong style="color:white;">INDICATORS </strong>to show how the attributes of the player you entered, match against that of the player in question. 
 			<br><br>			
-			(iv) 🟢 Indicates a match, 🔴 indicates a no-match and 🟡 indicates that what you guessed is within a range of +/- 3 (for year and titles only). 🟡 for Country, indicates a match in the Continent. Remember, a person could be a citizen of multiple countries and some contries are part of multiple continents. 🟡 for GS, indicates that the players have won some GS in common but they are not the exact match. 
+			(iv) 🟢 Indicates a match, 🔴 indicates a no-match and 🟡 indicates that what you guessed is within a range of +/- 3 (for year and titles only). Year and Titles also show 🔺 and 🔻 for incorrect guesses. 🔺 means you need to try with a higher number and 🔻 means you need to try with a lower number. 
+			🟡 for Country, indicates a match in the Continent. Remember, a person could be a citizen of multiple countries and some contries are part of multiple continents. 🟡 for GS, indicates that the players have won some GS in common but they are not the exact match. 
 			<br><br>
-			(v) For eg: a 🟢 in the first position (Year), indicates that the player you entered was born in the same year as the player in question. A 🔴 in the first position (Year), indicates that the player you entered was not born within 3 years of the player in question. 
+			(v) For eg: a 🟢 in the first position (Year), indicates that the player you entered won their first title in the same year as the player in question. A 🔴 in the first position (Year), indicates that the player you entered did not win their first title within 3 years of the player in question. 
 			<br><br>
-			(vi) A 🟢 in the second position (Slam), indicates that the person you entered has won the exact same Grand Slams (not the number of titles; just the tournaments) as the player in question. 🟡 for GS, indicates that the players have won some GS in common but they are not the exact match. 🔴 for GS, indicates that there are no common GS wins between the players. 
+			(vi) The indicators for the Grand Slams are as follows:<br>
+				 🟢 - Indicates that the player you entered has won <strong style="color:white;">EXACTLY THE SAME</strong> Grand Slams as the person in question (not the number of titles; just indicates the Grand Slams). <br>
+				 🔵 - Indicates that the person in question has won <strong style="color:white;">ALL</strong> the Grand Slam titles won by the player you entered. <br>
+				 🟡 - Indicates that there are <strong style="color:white;">SOME COMMON</strong> Grand Slam titles between the player your entered and the person in question.  <br>
+				 🔴 - Indicates that there are <strong style="color:white;">NO COMMON</strong> Grand Slam titles between the player your entered and the person in question.  <br>	 
 			<br><br>				
 			(vii) Switch to the <strong style="color:white;">EASY Mode</strong> any time during the game, where the attributes are revealed, as shown below, after each <strong style="color:white;">INCORRECT</strong> guess. The clues are more direct in this Mode.  
 			<center><img class="howtogif" src="howto.gif" alt="clue"></center>
@@ -202,24 +211,7 @@
 				</strong></div>
 			<button data-close3-button class="close-button">&times;</button>
 		</div>
-		<div class="fbmodal-body">
-			Based on User Feedback, the rules of the game have changed in the way the Year and GS titles are used. <strong style="color:white;">Please go through the rules again.</strong>
-			<br><br>
-			<p id="text-area">
-			(i) <strong style="color:white;">TENIZ</strong>, a game inspired by <strong style="color:white;">WORDLE</strong>, tests your knowledge on Tennis Grand Slam Champions of the Open
-			Era. The objective is to identify the Champion Tennis Player every day, using the Clues.
-			<br><br>
-			(ii) The mystery player needs to be identified based on attributes (shown at the top of the page) based on their <strong style="color:white;">GRAND SLAM CAREER STATS.</strong> These attributes include Year Born, Slams Won, Country (could be multiple countries), Gender, Total GS Singles Titles and Style of Play (RH vs
-			LH). 
-			<br><br>			
-			(iii) Use the search area to key in your answer and hit Enter <img src="search.png"style="width:20px;height:20px;">. After each guess, details of the player you entererd are listed. You also get <strong style="color:white;">INDICATORS </strong>to show how the attributes of the player you entered, match against that of the player in question. 
-			<br><br>			
-			(iv) 🟢 Indicates a match, 🔴 indicates a no-match and 🟡 indicates that what you guessed is within a range of +/- 3 (for year and titles only). 🟡 for Country, indicates a match in the Continent. Remember, a person could be a citizen of multiple countries and some contries are part of multiple continents. 🟡 for GS, indicates that the players have won some GS in common but they are not the exact match. 
-			<br><br>
-			(v) For eg: a 🟢 in the first position (Year), indicates that the player you entered was born in the same year as the player in question. A 🔴 in the first position (Year), indicates that the player you entered was not born within 3 years of the player in question. 
-			<br><br>
-			(vi) A 🟢 in the second position (Slam), indicates that the person you entered has won the exact same Grand Slams (not the number of titles; just the tournaments) as the player in question. 🟡 for GS, indicates that the players have won some GS in common but they are not the exact match. 🔴 for GS, indicates that there are no common GS wins between the players. 
-			<br><br>			
+		<div class="fbmodal-body">		
 		</div>
 	</div>	
 
@@ -295,7 +287,7 @@
 	<div id="board" class="scroll">
 		<div id="try1">	</div>
 			<div id="trydetail1" class="trydetail">
-				<div class="detail1">Born</div>
+				<div class="detail1">Year</div>
 				<div class="detail2">Slam</div>
 				<div class="detail3">Country</div>
 				<div class="detail4">Gender</div>
@@ -304,7 +296,7 @@
 			</div><br>
 		<div id="try2"></div>
 			<div id="trydetail2" class="trydetail">
-				<div class="detail1">Born</div>
+				<div class="detail1">Year</div>
 				<div class="detail2">Slam</div>
 				<div class="detail3">Country</div>
 				<div class="detail4">Gender</div>
@@ -313,7 +305,7 @@
 			</div><br>
 		<div id="try3"></div>
 			<div id="trydetail3" class="trydetail">
-				<div class="detail1">Born</div>
+				<div class="detail1">Year</div>
 				<div class="detail2">Slam</div>
 				<div class="detail3">Country</div>
 				<div class="detail4">Gender</div>
@@ -322,7 +314,7 @@
 			</div><br>		
 		<div id="try4"></div>
 			<div id="trydetail4" class="trydetail">
-				<div class="detail1">Born</div>
+				<div class="detail1">Year</div>
 				<div class="detail2">Slam</div>
 				<div class="detail3">Country</div>
 				<div class="detail4">Gender</div>
@@ -331,7 +323,7 @@
 			</div><br>		
 		<div id="try5"></div>
 			<div id="trydetail5" class="trydetail">
-				<div class="detail1">Born</div>
+				<div class="detail1">Year</div>
 				<div class="detail2">Slam</div>
 				<div class="detail3">Country</div>
 				<div class="detail4">Gender</div>
@@ -340,7 +332,7 @@
 			</div><br>		
 		<div id="try6"></div>
 			<div id="trydetail6" class="trydetail">
-				<div class="detail1">Born</div>
+				<div class="detail1">Year</div>
 				<div class="detail2">Slam</div>
 				<div class="detail3">Country</div>
 				<div class="detail4">Gender</div>

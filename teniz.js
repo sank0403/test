@@ -11,117 +11,117 @@ for (_x in localStorage) {
 console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB"); */
 var addontextarr =[];
 var search_terms = ["Adriano Panatta", "Albert Costa", "Amelie Mauresmo", "Ana Ivanovic", "Anastasia Myskina", "Andre Agassi", "Andres Gimeno", "Andres Gomez", "Andy Murray", "Andy Roddick", "Angelique Kerber", "Arantxa Sanchez", "Arthur Ashe", "Ashleigh Barty", "Barbara Jordan", "Barbora Krejcikova", "Bianca Andreescu", "Billie Jean King", "Bjorn Borg", "Boris Becker", "Brian Teacher", "Carlos Moya", "Caroline Wozniacki", "Chris Evert", "Chris O Neil", "Conchita Martinez", "Daniil Medvedev", "Dominic Thiem", "Emma Raducanu", "Evonne Goolagong", "Flavia Pennetta", "Francesca Schiavone", "Gabriela Sabatini", "Garbine Muguruza", "Gaston Gaudio", "Goran Ivanisevic", "Guillermo Vilas", "Gustavo Kuerten", "Hana Mandlikova", "Iga Swiatek", "Ilie Nastase", "Iva Majoli", "Ivan Lendl", "Jan Kodes", "Jana Novotna", "Jelena Ostapenko", "Jennifer Capriati", "Jim Courier", "Jimmy Connors", "Johan Kriek", "John McEnroe", "John Newcombe", "Juan Carlos Ferrero", "Juan Martin Del Potro", "Justine Henin", "Ken Rosewall", "Kerry Reid", "Kim Clijsters", "Li Na", "Lindsay Davenport", "Lleyton Hewitt", "Manuel Orantes", "Marat Safin", "Margaret Court", "Maria Sharapova", "Marin Cilic", "Marion Bartoli", "Mark Edmondson", "Martina Hingis", "Martina Navratilova", "Mary Pierce", "Mats Wilander", "Michael Chang", "Michael Stich", "Mima Jausovec", "Monica Seles", "Nancy Richey", "Naomi Osaka", "Novak Djokovic", "Pat Cash", "Patrick Rafter", "Pete Sampras", "Petr Korda", "Petra Kvitova", "Rafael Nadal", "Richard Krajicek", "Rod Laver", "Roger Federer", "Roscoe Tanner", "Samantha Stosur", "Serena Williams", "Sergi Bruguera", "Simona Halep", "Sloane Stephens", "Sofia Kenin", "Stan Smith", "Stan Wawrinka", "Stefan Edberg", "Steffi Graf", "Sue Barker", "Svetlana Kuznetsova", "Thomas Johansson", "Thomas Muster", "Tracy Austin", "Venus Williams", "Victoria Azarenka", "Virginia Ruzici", "Virginia Wade", "Vitas Gerulaitis", "Yannick Noah", "Yevgeny Kafelnikov",];
-var yearList = ["1962",
-"1973",
-"1951",
-"1942",
-"1985",
-"1956",
+var yearList = ["1979",
+"1990",
+"1977",
 "1960",
-"1970",
-"1998",
-"1943",
-"1938",
-"1976",
+"2004",
 "1978",
-"1990",
-"1970",
-"1988",
-"1956",
-"1993",
-"1946",
-"1956",
-"1980",
-"1970",
-"1959",
-"1981",
-"1980",
-"1981",
-"1969",
-"1987",
-"1964",
-"1968",
-"1986",
-"1934",
-"1956",
-"1988",
-"1958",
-"1960",
-"1982",
-"1952",
-"1997",
-"1952",
-"1987",
-"1987",
-"1944",
-"1975",
-"2001",
-"1967",
-"1945",
-"1991",
-"1976",
-"1980",
-"1946",
-"1985",
-"1972",
-"1951",
-"1943",
-"1962",
-"1956",
-"1947",
-"1954",
-"1971",
-"1966",
-"1971",
-"1976",
-"1971",
-"1988",
-"1990",
-"1971",
-"1995",
-"1982",
-"1987",
-"1981",
-"1982",
-"1965",
-"1950",
-"2002",
-"1955",
-"1954",
-"1976",
-"1960",
-"1974",
-"1993",
-"1954",
-"1946",
-"1982",
-"1989",
-"1967",
-"1942",
-"1996",
-"1975",
-"1996",
-"1937",
-"1954",
 "1983",
-"1984",
+"1990",
+"2020",
+"1966",
+"1960",
+"1998",
+"2004",
+"2011",
+"1992",
+"2016",
+"1976",
+"2016",
+"1970",
+"1977",
 "1997",
+"1991",
+"1979",
+"2003",
+"2000",
+"1999",
+"1987",
+"2008",
+"1982",
+"1991",
+"2005",
+"1953",
+"1974",
+"2014",
+"1981",
+"1984",
+"2011",
+"1977",
+"2018",
+"1974",
+"2004",
+"2008",
+"1967",
+"2002",
+"2020",
+"1985",
+"1968",
+"2018",
+"2001",
+"2010",
+"1971",
+"2014",
+"1997",
+"1971",
 "1968",
 "1980",
-"1957",
-"1981",
+"1978",
+"1977",
+"1974",
+"1990",
+"1985",
+"1989",
+"1998",
+"2001",
+"2009",
+"2018",
+"1996",
+"2021",
+"2015",
+"2012",
+"2004",
+"2003",
+"1987",
+"1976",
+"2021",
+"1978",
+"1977",
+"1997",
+"1990",
+"1996",
+"2020",
+"1976",
 "1972",
-"1975",
-"1971",
+"2003",
+"2012",
+"1995",
+"1967",
+"2019",
+"1995",
+"2021",
+"1972",
+"1980",
+"2005",
+"2013",
+"2017",
+"1998",
 "2000",
 "1979",
+"2001",
+"1994",
+"2002",
 "1993",
-"1949",
-"1980",
-"1968",
-"1977",
-"1972",
-"1984",
+"2019",
+"2006",
+"2017",
+"1975",
+"2003",
+"1998",
+"1997",
+"1989",
+"2011",
 ]
 var countryList = [["USA"],
 ["YUG","USA"],
@@ -1309,7 +1309,7 @@ function getindices() {
 	document.getElementById("MODEButton").disabled = true;		
 	if (localStorage.modet == "Normal"){
 		document.getElementById(0).classList.add("zoom-in-box");
-		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>Born</span>";
+		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>Year</span>";
 	}
 	//var tempyear = [];
 	//for (let j = 0; j < indices.length; j++) {
@@ -1868,7 +1868,7 @@ function myFunction() {
 
 //clue reveal 
 function ballvanish0() {
-	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
+	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Year)</span>";
 }
 function ballvanish1() {
 	document.getElementById(1).innerHTML = "";
@@ -1916,7 +1916,7 @@ function ballvanish5() {
 
 //final clue reveal 
 function finalcluereveal() {
-	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>Born</span>";
+	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>Year</span>";
 	document.getElementById(1).innerHTML = "";
 	switch (GSList[index].length) {
 		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slam</span>";
@@ -2309,7 +2309,7 @@ function intialize() {
 		clue.id = clueindex;
 		clue.classList.add("clue-ball");
 		if (clueindex == 0) {
-			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Born</div>';
+			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Year</div>';
 		}
 		else if (clueindex == 1) {
 			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slam</div>';
@@ -2415,7 +2415,7 @@ function intialize() {
 			}
 			if (localStorage.yeartopen == 1) {
 				if (localStorage.modet == "Easy") {
-					document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
+					document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Year)</span>";
 				}
 				arrayid.splice(arrayid.indexOf(0), 1);
 				SetClueCount();
@@ -2502,7 +2502,7 @@ function intialize() {
 							document.getElementById(i).innerHTML = "<span class='revealicon'>" + "🔵";
 						} 						
 					}
-					document.getElementById(0).innerHTML += "</span><br><span class='revealsiz'>Born</span>";
+					document.getElementById(0).innerHTML += "</span><br><span class='revealsiz'>Year</span>";
 					document.getElementById(1).innerHTML += "</span><br><span class='revealsiz'>Slam</span>";
 					document.getElementById(2).innerHTML += "</span><br><span class='revealsiz'>Country</span>";
 					document.getElementById(3).innerHTML += "</span><br><span class='revealsiz'>Gender</span>";
@@ -2547,7 +2547,7 @@ function switchmode() {
     for (let i = 0; i < 6; i++) {
         document.getElementById(i).innerHTML = "";
     }
-	document.getElementById(0).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Born</div>';	
+	document.getElementById(0).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Year</div>';	
 	document.getElementById(1).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slam</div>';
 	document.getElementById(2).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Country</div>';
 	document.getElementById(3).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Gender</div>';
@@ -2562,7 +2562,7 @@ function switchmode() {
 		 document.getElementById("answer").innerText = "ADDITIONAL HINT ENABLED!";
 	}	
 	if (localStorage.yeartopen == 1) {
-		document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
+		document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Year)</span>";
 	}
 	if (localStorage.slamtopen == 1) {
 		document.getElementById(1).innerHTML = "";
