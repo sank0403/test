@@ -1,15 +1,16 @@
+/* var _lsTotal = 0,
+    _xLen, _x;
+for (_x in localStorage) {
+    if (!localStorage.hasOwnProperty(_x)) {
+        continue;
+    }
+    _xLen = ((localStorage[_x].length + _x.length) * 2);
+    _lsTotal += _xLen;
+    console.log(_x.substr(0, 50) + " = " + (_xLen / 1024).toFixed(2) + " KB")
+};
+console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB"); */
 var addontextarr =[];
 var search_terms = ["Adriano Panatta", "Albert Costa", "Amelie Mauresmo", "Ana Ivanovic", "Anastasia Myskina", "Andre Agassi", "Andres Gimeno", "Andres Gomez", "Andy Murray", "Andy Roddick", "Angelique Kerber", "Arantxa Sanchez", "Arthur Ashe", "Ashleigh Barty", "Barbara Jordan", "Barbora Krejcikova", "Bianca Andreescu", "Billie Jean King", "Bjorn Borg", "Boris Becker", "Brian Teacher", "Carlos Moya", "Caroline Wozniacki", "Chris Evert", "Chris O Neil", "Conchita Martinez", "Daniil Medvedev", "Dominic Thiem", "Emma Raducanu", "Evonne Goolagong", "Flavia Pennetta", "Francesca Schiavone", "Gabriela Sabatini", "Garbine Muguruza", "Gaston Gaudio", "Goran Ivanisevic", "Guillermo Vilas", "Gustavo Kuerten", "Hana Mandlikova", "Iga Swiatek", "Ilie Nastase", "Iva Majoli", "Ivan Lendl", "Jan Kodes", "Jana Novotna", "Jelena Ostapenko", "Jennifer Capriati", "Jim Courier", "Jimmy Connors", "Johan Kriek", "John McEnroe", "John Newcombe", "Juan Carlos Ferrero", "Juan Martin Del Potro", "Justine Henin", "Ken Rosewall", "Kerry Reid", "Kim Clijsters", "Li Na", "Lindsay Davenport", "Lleyton Hewitt", "Manuel Orantes", "Marat Safin", "Margaret Court", "Maria Sharapova", "Marin Cilic", "Marion Bartoli", "Mark Edmondson", "Martina Hingis", "Martina Navratilova", "Mary Pierce", "Mats Wilander", "Michael Chang", "Michael Stich", "Mima Jausovec", "Monica Seles", "Nancy Richey", "Naomi Osaka", "Novak Djokovic", "Pat Cash", "Patrick Rafter", "Pete Sampras", "Petr Korda", "Petra Kvitova", "Rafael Nadal", "Richard Krajicek", "Rod Laver", "Roger Federer", "Roscoe Tanner", "Samantha Stosur", "Serena Williams", "Sergi Bruguera", "Simona Halep", "Sloane Stephens", "Sofia Kenin", "Stan Smith", "Stan Wawrinka", "Stefan Edberg", "Steffi Graf", "Sue Barker", "Svetlana Kuznetsova", "Thomas Johansson", "Thomas Muster", "Tracy Austin", "Venus Williams", "Victoria Azarenka", "Virginia Ruzici", "Virginia Wade", "Vitas Gerulaitis", "Yannick Noah", "Yevgeny Kafelnikov",];
-var yearList = ["1984", "2007", "2001", "2013", "1991", "2008", "1985", "1991", "1984", "1993", "2010", "1971", "1977", "2014", "1982", "1985", "1987", "2014", "1978", "2019", "2018", "1988", "2017", "1974", "2008", "1987", "2011", "1985", "1992", "1973", "2005", "2002", "1974", "2008", "2020", "1998", "1977", "1991", "1972", "2019", "2002", "1997", "1995", "2010", "1972", "2016", "1998", "2014", "2004", "1977", "2010", "1970", "2000", "1988", "1985", "1981", "2003", "2019", "1983", "1998", "1988", "1994", "2000", "2012", "2015", "2000", "1979", "2015", "1991", "2008", "1992", "1975", "1977", "1971", "1974", "1971", "1985", "1995", "1970", "2018", "1972", "1978", "1971", "2021", "1985", "2009", "2004", "1995", "1978", "1983", "2009", "1988", "1990", "1990", "1971", "2014", "1989", "1984", "1999", "2020", "1981", "2012", "1972", "1970", "1977", "2006", "1969", "1987", "1998", "1987", "2004", "2011", "2000", "1981", "1986", "2018", "2006", "1968", "1976", "1978", "1974", "2016", "1971", "1984", "1989", "1997", "2022", "1975", "2012", "1992", "2013", "1987", "1983", "1983", "2010", "2014", "2008", "2001", "1969", "1991", "1978", "1984", "1995", "2020", "2009", "2001", "1976", "1997", "1984", "1986", "2007", "2016", "2015", "1969", "2009", "1994", "2012", "2010", "2004", "1992", "2018", "1996", "2019", "1985", "1973", "1981", "1989", "2021", "2015", "1994", "1981", "1993", "1996", "2012", "2013", "2004", "2013", "2003", "1987", "1976", "1980", "2021", "2007", "2011", "1988", "1973", "1971", "1982", "1977", "1990", "2002", "1996", "1990", "1994", "2000", "1990", "1998", "2004", "1999", "2016", "1998", "2011", "2005", "1977", "1999", "1975", "1983", "1999", "2020", "2018", "1993", "1976", "1999", "2013", "1972", "1995", "1993", "2003", "1972", "1990", "1989", "2012", "2021", "1995", "1968", "1991", "1979", "2022", "2000", "1968", "1976", "2021", "1996", "1997", "2011", "1976", "1986", "2006", "1972", "2004", "1992", "2013", "1980", "2009", "2011", "1969", "2021", "2014", "2007", "1980", "1970", "2013", "2001", "1990", "2020", "1995", "1983", "2017", "1993", "1975", "2002", "1998", "2005", "1973", "2005", "2019", "1969", "1982", "2003", "2020", "2017", "1974", "2007", "1996", "1980", "1980", "1991", "1982", "1992", "2008", "2009", "1976", "1979", "2001", "1969", "1994", "1996", "1970", "2016", "1991", "1970", "2002", "1993", "1979", "1994", "2017", "2001", "2006", "2008", "1977", "1996", "2002", "2019", "1986", "2006", "2007", "2006", "1979", "2009", "1994", "1982", "1981", "1995", "1989", "1997", "2011", "2017", "1968", "1970", "1975", "1990", "1996", "1984", "2000", "2007", "2006", "2009", "2021", "2002", "1978", "1997", "2003", "1992", "2017", "1975", "2018", "2005", "1980", "2017", "2003", "2005", "2004", "1989", "1974", "1975", "1999", "2014", "1975", "2021", "2001", "2005", "1981", "2001", "1982", "1974", "2016", "1980", "1993", "1979", "1988", "1999", "1970", "2018", "1979", "1976", "2003", "2013", "1989", "1985", "1998", "2010", "1987", "1968", "2016", "1978", "1997", "2012", "1988", "2017", "2012", "1973", "1997", "1974", "1968", "1983", "1989", "2010", "1979", "2015", "1988", "1992", "2015", "2008", "1981", "1999", "2016", "1973", "1972", "1971", "1973", "1969", "2005", "1983", "2019", "1982", "2011", "1984", "1993", "1987", "1980", "2003", "1969", "1978", "2018", "2007", "1977", "1982", "2010", "1994", "2015", "1973", "1986", "2002", "2019", "2000", "1986", "2015", "2006", "1977", "2014",]
-var countryList = ["USA", "SWI", "USA", "USA", "GER", "SRB", "SWE", "GER", "USA", "USA", "ESP", "AUS", "SWE", "CRO", "USA", "CZE", "GER", "CHN", "ARG", "ESP", "JPN", "SWE", "USA", "USA", "RUS", "CZE", "SRB", "USA", "GER", "AUS", "ESP", "ESP", "USA", "USA", "POL", "ESP", "ARG", "GER", "GBR", "ROM", "USA", "USA", "GER", "ITA", "USA", "SWI", "AUS", "SRB", "SWI", "AUS", "USA", "USA", "USA", "GER", "CZE", "USA", "SWI", "JPN", "USA", "USA", "SWE", "ESP", "USA", "USA", "SWI", "USA", "USA", "SRB", "SWE", "ESP", "YUG", "USA", "USA", "USA", "USA", "AUS", "GER", "USA", "AUS", "ESP", "USA", "SWE", "AUS", "SRB", "USA", "RUS", "RUS", "GER", "AUS", "FRA", "USA", "SWE", "SWE", "ARG", "AUS", "ESP", "GER", "USA", "USA", "USA", "USA", "SRB", "USA", "AUS", "USA", "SWI", "AUS", "SWE", "ESP", "CZE", "ARG", "CZE", "USA", "USA", "GER", "GER", "ESP", "USA", "GBR", "USA", "USA", "ESP", "CZE", "USA", "GER", "SWI", "ESP", "USA", "SWI", "SWE", "USA", "USA", "SWE", "USA", "ESP", "SWI", "SRB", "USA", "AUS", "USA", "SWE", "CZE", "GER", "SRB", "SWI", "CRO", "USA", "USA", "USA", "USA", "USA", "GER", "SRB", "AUS", "ARG", "USA", "RUS", "USA", "RUS", "YUG", "DEN", "NLD", "AUS", "USA", "AUS", "SWE", "GER", "CZE", "ITA", "USA", "SAF", "GER", "USA", "ESP", "GBR", "RUS", "SRB", "BEL", "AUS", "ITA", "SWE", "GBR", "USA", "SRB", "GER", "AUS", "USA", "USA", "USA", "USA", "USA", "GER", "CZE", "USA", "BRA", "ECU", "SWI", "BEL", "USA", "SRB", "USA", "ESP", "USA", "ARG", "SWI", "USA", "USA", "RUS", "AUT", "SWI", "USA", "AUS", "GER", "ESP", "ROM", "USA", "YUG", "USA", "AUS", "USA", "GER", "BLR", "SRB", "AUT", "USA", "YUG", "ARG", "AUS", "FRA", "AUS", "SWE", "RUS", "GER", "AUS", "CHN", "USA", "CZE", "RUS", "ESP", "SWI", "USA", "ESP", "USA", "BEL", "SRB", "AUS", "AUS", "CZE", "SWI", "USA", "CZE", "FRA", "USA", "YUG", "ESP", "USA", "USA", "LAT", "GER", "USA", "USA", "CZE", "SWI", "USA", "RUS", "ESP", "AUS", "USA", "BEL", "JPN", "ESP", "AUS", "SWI", "GER", "USA", "SWE", "YUG", "USA", "USA", "SWI", "ESP", "USA", "USA", "AUS", "USA", "ESP", "GER", "AUS", "GBR", "YUG", "AUS", "SWE", "GER", "USA", "ESP", "ESP", "USA", "SWI", "USA", "GBR", "USA", "USA", "CAN", "USA", "FRA", "ESP", "BEL", "SWE", "USA", "ESP", "USA", "USA", "FRA", "GER", "SWI", "BEL", "USA", "GBR", "AUS", "ESP", "GER", "RUS", "SWE", "USA", "BEL", "FRA", "SWI", "JPN", "AUS", "USA", "SWI", "ESP", "YUG", "SWI", "AUS", "SRB", "BEL", "CZE", "ESP", "USA", "USA", "SWI", "ESP", "USA", "AUS", "USA", "RUS", "SWE", "SRB", "BRA", "SWI", "CZE", "USA", "SWE", "SWE", "SRB", "AUS", "ESP", "USA", "GER", "USA", "AUS", "ROM", "SWE", "AUS", "USA", "BLR", "CZE", "SWE", "CZE", "ESP", "USA", "AUS", "GER", "USA", "BRA", "USA", "SWE", "SWI", "GBR", "AUS", "CRO", "USA", "USA", "USA", "USA", "SWI", "USA", "USA", "GER", "USA", "SRB", "ESP", "USA", "USA", "USA", "ROM", "USA", "AUS", "CZE", "AUS", "BEL", "USA", "SRB", "USA", "AUS", "USA", "USA", "CZE", "USA", "USA", "AUS", "ROM", "SRB", "BEL", "AUS", "USA", "BEL", "GER", "USA", "AUS", "USA", "USA", "SRB", "RUS", "CZE", "USA", "SWI", "YUG", "USA",]
-var continentList = ["NAM", "EUR", "NAM", "NAM", "EUR", "EUR", "EUR", "EUR", "NAM", "NAM", "EUR", "AUS", "EUR", "EUR", "NAM", "EUR", "EUR", "ASA", "SAM", "EUR", "ASA", "EUR", "NAM", "NAM", "ASA", "EUR", "EUR", "NAM", "EUR", "AUS", "EUR", "EUR", "NAM", "NAM", "EUR", "EUR", "SAM", "EUR", "EUR", "EUR", "NAM", "NAM", "EUR", "EUR", "NAM", "EUR", "AUS", "EUR", "EUR", "AUS", "NAM", "NAM", "NAM", "EUR", "EUR", "NAM", "EUR", "ASA", "NAM", "NAM", "EUR", "EUR", "NAM", "NAM", "EUR", "NAM", "NAM", "EUR", "EUR", "EUR", "EUR", "NAM", "NAM", "NAM", "NAM", "AUS", "EUR", "NAM", "AUS", "EUR", "NAM", "EUR", "AUS", "EUR", "NAM", "ASA", "ASA", "EUR", "AUS", "EUR", "NAM", "EUR", "EUR", "SAM", "AUS", "EUR", "EUR", "NAM", "NAM", "NAM", "NAM", "EUR", "NAM", "AUS", "NAM", "EUR", "AUS", "EUR", "EUR", "EUR", "SAM", "EUR", "NAM", "NAM", "EUR", "EUR", "EUR", "NAM", "EUR", "NAM", "NAM", "EUR", "EUR", "NAM", "EUR", "EUR", "EUR", "NAM", "EUR", "EUR", "NAM", "NAM", "EUR", "NAM", "EUR", "EUR", "EUR", "NAM", "AUS", "NAM", "EUR", "EUR", "EUR", "EUR", "EUR", "EUR", "NAM", "NAM", "NAM", "NAM", "NAM", "EUR", "EUR", "AUS", "SAM", "NAM", "ASA", "NAM", "ASA", "EUR", "EUR", "EUR", "AUS", "NAM", "AUS", "EUR", "EUR", "EUR", "EUR", "NAM", "AFR", "EUR", "NAM", "EUR", "EUR", "ASA", "EUR", "EUR", "AUS", "EUR", "EUR", "EUR", "NAM", "EUR", "EUR", "AUS", "NAM", "NAM", "NAM", "NAM", "NAM", "EUR", "EUR", "NAM", "SAM", "SAM", "EUR", "EUR", "NAM", "EUR", "NAM", "EUR", "NAM", "SAM", "EUR", "NAM", "NAM", "ASA", "EUR", "EUR", "NAM", "AUS", "EUR", "EUR", "EUR", "NAM", "EUR", "NAM", "AUS", "NAM", "EUR", "EUR", "EUR", "EUR", "NAM", "EUR", "SAM", "AUS", "EUR", "AUS", "EUR", "ASA", "EUR", "AUS", "ASA", "NAM", "EUR", "ASA", "EUR", "EUR", "NAM", "EUR", "NAM", "EUR", "EUR", "AUS", "AUS", "EUR", "EUR", "NAM", "EUR", "EUR", "NAM", "EUR", "EUR", "NAM", "NAM", "EUR", "EUR", "NAM", "NAM", "EUR", "EUR", "NAM", "ASA", "EUR", "AUS", "NAM", "EUR", "ASA", "EUR", "AUS", "EUR", "EUR", "NAM", "EUR", "EUR", "NAM", "NAM", "EUR", "EUR", "NAM", "NAM", "AUS", "NAM", "EUR", "EUR", "AUS", "EUR", "EUR", "AUS", "EUR", "EUR", "NAM", "EUR", "EUR", "NAM", "EUR", "NAM", "EUR", "NAM", "NAM", "NAM", "NAM", "EUR", "EUR", "EUR", "EUR", "NAM", "EUR", "NAM", "NAM", "EUR", "EUR", "EUR", "EUR", "NAM", "EUR", "AUS", "EUR", "EUR", "ASA", "EUR", "NAM", "EUR", "EUR", "EUR", "ASA", "AUS", "NAM", "EUR", "EUR", "EUR", "EUR", "AUS", "EUR", "EUR", "EUR", "EUR", "NAM", "NAM", "EUR", "EUR", "NAM", "AUS", "NAM", "ASA", "EUR", "EUR", "SAM", "EUR", "EUR", "NAM", "EUR", "EUR", "EUR", "AUS", "EUR", "NAM", "EUR", "NAM", "AUS", "EUR", "EUR", "AUS", "NAM", "EUR", "EUR", "EUR", "EUR", "EUR", "NAM", "AUS", "EUR", "NAM", "SAM", "NAM", "EUR", "EUR", "EUR", "AUS", "EUR", "NAM", "NAM", "NAM", "NAM", "EUR", "NAM", "NAM", "EUR", "NAM", "EUR", "EUR", "NAM", "NAM", "NAM", "EUR", "NAM", "AUS", "EUR", "AUS", "EUR", "NAM", "EUR", "NAM", "AUS", "NAM", "NAM", "EUR", "NAM", "NAM", "AUS", "EUR", "EUR", "EUR", "AUS", "NAM", "EUR", "EUR", "NAM", "AUS", "NAM", "NAM", "EUR", "ASA", "EUR", "NAM", "EUR", "EUR", "NAM",]
-var firstnameList = ["John", "Roger", "Venus", "Serena", "Steffi", "Ana", "Mats", "Michael", "Chris", "Pete", "Rafael", "Ken", "Bjorn", "Marin", "Johan", "Ivan", "Steffi", "Li", "Guillermo", "Rafael", "Naomi", "Mats", "Serena", "Jimmy", "Maria", "Ivan", "Novak", "Chris", "Steffi", "John", "Rafael", "Albert", "Jimmy", "Serena", "Iga", "Arantxa", "Guillermo", "Boris", "Virginia", "Simona", "Jennifer", "Pete", "Steffi", "Francesca", "Stan", "Stan", "Patrick", "Novak", "Roger", "Evonne", "Serena", "Arthur", "Venus", "Steffi", "Hana", "Martina", "Roger", "Naomi", "Chris", "Pete", "Stefan", "Arantxa", "Lindsay", "Serena", "Stan", "Venus", "Tracy", "Novak", "Stefan", "Rafael", "Monica", "Arthur", "Roscoe", "Stan", "Chris", "Evonne", "Boris", "Pete", "Margaret", "Rafael", "BillieJean", "Bjorn", "Evonne", "Novak", "Martina", "Svetlana", "Maria", "Steffi", "Chris", "Yannick", "Serena", "Mats", "Stefan", "Gabriela", "John", "Rafael", "Steffi", "Martina", "Serena", "Sofia", "John", "Novak", "BillieJean", "Margaret", "Chris", "Roger", "Rod", "Stefan", "Carlos", "Hana", "Gaston", "Petra", "Andre", "Tracy", "Boris", "Angelique", "Rafael", "BillieJean", "Sue", "Jimmy", "Chris", "Garbine", "Jan", "Martina", "Boris", "Martina", "Rafael", "BillieJean", "Roger", "Stefan", "Serena", "Martina", "Mats", "Jimmy", "Rafael", "Stan", "Novak", "Venus", "Rod", "Jim", "Bjorn", "Ivan", "Steffi", "Novak", "Roger", "Goran", "Jimmy", "Pete", "Martina", "Chris", "Venus", "Angelique", "Novak", "Rod", "JuanMartin", "Andre", "Maria", "Serena", "Svetlana", "Monica", "Caroline", "Richard", "Ashleigh", "Martina", "Margaret", "Bjorn", "Boris", "Barbora", "Flavia", "Pete", "Johan", "Steffi", "Monica", "Rafael", "Andy", "Anastasia", "Novak", "Justine", "Pat", "Adriano", "Bjorn", "Emma", "Serena", "Novak", "Steffi", "Margaret", "BillieJean", "Chris", "Vitas", "Martina", "Serena", "Steffi", "Ivan", "Pete", "Gustavo", "Andres", "Martina", "Justine", "Andre", "Novak", "Lindsay", "Rafael", "Venus", "Guillermo", "Martina", "Chris", "Martina", "Yevgeny", "Dominic", "Roger", "Jim", "Mark", "Steffi", "Rafael", "Ilie", "Andre", "Monica", "Andy", "Ken", "Pete", "Steffi", "Victoria", "Novak", "Thomas", "Nancy", "Monica", "Guillermo", "Ashleigh", "Mary", "Ken", "Bjorn", "Daniil", "Steffi", "Patrick", "Li", "Chris", "Ivan", "Maria", "Andres", "Roger", "Jim", "Rafael", "Brian", "Kim", "Novak", "Margaret", "Ashleigh", "Petra", "Roger", "Chris", "Jan", "Marion", "Jennifer", "Monica", "Rafael", "Pete", "Martina", "Jelena", "Steffi", "Chris", "Serena", "Petr", "Roger", "BillieJean", "Marat", "Rafael", "Margaret", "Martina", "Justine", "Naomi", "Garbine", "Evonne", "Roger", "Steffi", "John", "Bjorn", "Monica", "Jimmy", "Andre", "Roger", "Rafael", "Chris", "Barbara", "Lleyton", "BillieJean", "Conchita", "Boris", "Margaret", "Andy", "Monica", "Ken", "Thomas", "Steffi", "Martina", "Sergi", "Rafael", "Jennifer", "Roger", "Venus", "Virginia", "Pete", "Serena", "Bianca", "Martina", "Amelie", "Rafael", "Justine", "Bjorn", "Serena", "Arantxa", "Martina", "Chris", "Mary", "Steffi", "Martina", "Kim", "Sloane", "Virginia", "Margaret", "Manuel", "Steffi", "Yevgeny", "Mats", "Pete", "Justine", "Amelie", "Roger", "Naomi", "Lleyton", "Martina", "Martina", "JuanCarlos", "Monica", "Roger", "Evonne", "Novak", "Kim", "Hana", "Rafael", "Andre", "Serena", "Roger", "Arantxa", "BillieJean", "John", "Lindsay", "Maria", "Bjorn", "Novak", "Gustavo", "Roger", "Hana", "Andre", "Mats", "Bjorn", "Novak", "Evonne", "Sergi", "John", "Steffi", "Pete", "John", "Simona", "Bjorn", "Evonne", "Serena", "Victoria", "Ivan", "Stefan", "Jana", "Rafael", "Martina", "Rod", "Angelique", "Chris", "Gustavo", "Serena", "Mats", "Roger", "Andy", "John", "Iva", "Jimmy", "Arthur", "John", "Michael", "Roger", "Chris", "Serena", "Steffi", "Jim", "Novak", "Rafael", "John", "Andre", "Serena", "Ilie", "BillieJean", "Margaret", "Jan", "Rod", "Justine", "Martina", "Novak", "Jimmy", "Samantha", "John", "Pete", "Ivan", "Chris", "Serena", "Margaret", "Virginia", "Novak", "Justine", "Kerry", "Chris", "Kim", "Steffi", "Serena", "Margaret", "Martina", "Pete", "Novak", "Marat", "Ivan", "Serena", "Roger", "Mima", "Serena",]
-var lastnameList = ["McEnroe", "Federer", "Williams", "Williams", "Graf", "Ivanovic", "Wilander", "Stich", "Evert", "Sampras", "Nadal", "Rosewall", "Borg", "Cilic", "Kriek", "Lendl", "Graf", "Na", "Vilas", "Nadal", "Osaka", "Wilander", "Williams", "Connors", "Sharapova", "Lendl", "Djokovic", "Evert", "Graf", "Newcombe", "Nadal", "Costa", "Connors", "Williams", "Swiatek", "Sanchez", "Vilas", "Becker", "Wade", "Halep", "Capriati", "Sampras", "Graf", "Schiavone", "Smith", "Wawrinka", "Rafter", "Djokovic", "Federer", "Goolagong", "Williams", "Ashe", "Williams", "Graf", "Mandlikova", "Navratilova", "Federer", "Osaka", "Evert", "Sampras", "Edberg", "Sanchez", "Davenport", "Williams", "Wawrinka", "Williams", "Austin", "Djokovic", "Edberg", "Nadal", "Seles", "Ashe", "Tanner", "Smith", "Evert", "Goolagong", "Becker", "Sampras", "Court", "Nadal", "King", "Borg", "Goolagong", "Djokovic", "Navratilova", "Kuznetsova", "Sharapova", "Graf", "ONeil", "Noah", "Williams", "Wilander", "Edberg", "Sabatini", "Newcombe", "Nadal", "Graf", "Navratilova", "Williams", "Kenin", "McEnroe", "Djokovic", "King", "Court", "Evert", "Federer", "Laver", "Edberg", "Moya", "Mandlikova", "Gaudio", "Kvitova", "Agassi", "Austin", "Becker", "Kerber", "Nadal", "King", "Barker", "Connors", "Evert", "Muguruza", "Kodes", "Navratilova", "Becker", "Hingis", "Nadal", "King", "Federer", "Edberg", "Williams", "Navratilova", "Wilander", "Connors", "Nadal", "Wawrinka", "Djokovic", "Williams", "Laver", "Courier", "Borg", "Lendl", "Graf", "Djokovic", "Federer", "Ivanisevic", "Connors", "Sampras", "Navratilova", "Evert", "Williams", "Kerber", "Djokovic", "Laver", "DelPotro", "Agassi", "Sharapova", "Williams", "Kuznetsova", "Seles", "Wozniacki", "Krajicek", "Barty", "Navratilova", "Court", "Borg", "Becker", "Krejcikova", "Pennetta", "Sampras", "Kriek", "Graf", "Seles", "Nadal", "Murray", "Myskina", "Djokovic", "Henin", "Cash", "Panatta", "Borg", "Raducanu", "Williams", "Djokovic", "Graf", "Court", "King", "Evert", "Gerulaitis", "Navratilova", "Williams", "Graf", "Lendl", "Sampras", "Kuerten", "Gomez", "Hingis", "Henin", "Agassi", "Djokovic", "Davenport", "Nadal", "Williams", "Vilas", "Hingis", "Evert", "Navratilova", "Kafelnikov", "Thiem", "Federer", "Courier", "Edmondson", "Graf", "Nadal", "Nastase", "Agassi", "Seles", "Roddick", "Rosewall", "Sampras", "Graf", "Azarenka", "Djokovic", "Muster", "Richey", "Seles", "Vilas", "Barty", "Pierce", "Rosewall", "Borg", "Medvedev", "Graf", "Rafter", "Na", "Evert", "Lendl", "Sharapova", "Gimeno", "Federer", "Courier", "Nadal", "Teacher", "Clijsters", "Djokovic", "Court", "Barty", "Kvitova", "Federer", "Evert", "Kodes", "Bartoli", "Capriati", "Seles", "Nadal", "Sampras", "Navratilova", "Ostapenko", "Graf", "Evert", "Williams", "Korda", "Federer", "King", "Safin", "Nadal", "Court", "Navratilova", "Henin", "Osaka", "Muguruza", "Goolagong", "Federer", "Graf", "McEnroe", "Borg", "Seles", "Connors", "Agassi", "Federer", "Nadal", "Evert", "Jordan", "Hewitt", "King", "Martinez", "Becker", "Court", "Murray", "Seles", "Rosewall", "Johansson", "Graf", "Navratilova", "Bruguera", "Nadal", "Capriati", "Federer", "Williams", "Wade", "Sampras", "Williams", "Andreescu", "Navratilova", "Mauresmo", "Nadal", "Henin", "Borg", "Williams", "Sanchez", "Navratilova", "Evert", "Pierce", "Graf", "Hingis", "Clijsters", "Stephens", "Wade", "Court", "Orantes", "Graf", "Kafelnikov", "Wilander", "Sampras", "Henin", "Mauresmo", "Federer", "Osaka", "Hewitt", "Navratilova", "Hingis", "Ferrero", "Seles", "Federer", "Goolagong", "Djokovic", "Clijsters", "Mandlikova", "Nadal", "Agassi", "Williams", "Federer", "Sanchez", "King", "Newcombe", "Davenport", "Sharapova", "Borg", "Djokovic", "Kuerten", "Federer", "Mandlikova", "Agassi", "Wilander", "Borg", "Djokovic", "Goolagong", "Bruguera", "McEnroe", "Graf", "Sampras", "Newcombe", "Halep", "Borg", "Goolagong", "Williams", "Azarenka", "Lendl", "Edberg", "Novotna", "Nadal", "Navratilova", "Laver", "Kerber", "Evert", "Kuerten", "Williams", "Wilander", "Federer", "Murray", "Newcombe", "Majoli", "Connors", "Ashe", "McEnroe", "Chang", "Federer", "Evert", "Williams", "Graf", "Courier", "Djokovic", "Nadal", "McEnroe", "Agassi", "Williams", "Nastase", "King", "Court", "Kodes", "Laver", "Henin", "Navratilova", "Djokovic", "Connors", "Stosur", "McEnroe", "Sampras", "Lendl", "Evert", "Williams", "Court", "Ruzici", "Djokovic", "Henin", "Reid", "Evert", "Clijsters", "Graf", "Williams", "Court", "Navratilova", "Sampras", "Djokovic", "Safin", "Lendl", "Williams", "Federer", "Jausovec", "Williams",]
-var nameList = ["johnmcenroe", "rogerfederer", "venuswilliams", "serenawilliams", "steffigraf", "anaivanovic", "matswilander", "michaelstich", "chrisevert", "petesampras", "rafaelnadal", "kenrosewall", "bjornborg", "marincilic", "johankriek", "ivanlendl", "steffigraf", "lina", "guillermovilas", "rafaelnadal", "naomiosaka", "matswilander", "serenawilliams", "jimmyconnors", "mariasharapova", "ivanlendl", "novakdjokovic", "chrisevert", "steffigraf", "johnnewcombe", "rafaelnadal", "albertcosta", "jimmyconnors", "serenawilliams", "igaswiatek", "arantxasanchez", "guillermovilas", "borisbecker", "virginiawade", "simonahalep", "jennifercapriati", "petesampras", "steffigraf", "francescaschiavone", "stansmith", "stanwawrinka", "patrickrafter", "novakdjokovic", "rogerfederer", "evonnegoolagong", "serenawilliams", "arthurashe", "venuswilliams", "steffigraf", "hanamandlikova", "martinanavratilova", "rogerfederer", "naomiosaka", "chrisevert", "petesampras", "stefanedberg", "arantxasanchez", "lindsaydavenport", "serenawilliams", "stanwawrinka", "venuswilliams", "tracyaustin", "novakdjokovic", "stefanedberg", "rafaelnadal", "monicaseles", "arthurashe", "roscoetanner", "stansmith", "chrisevert", "evonnegoolagong", "borisbecker", "petesampras", "margaretcourt", "rafaelnadal", "billiejeanking", "bjornborg", "evonnegoolagong", "novakdjokovic", "martinanavratilova", "svetlanakuznetsova", "mariasharapova", "steffigraf", "chrisoneil", "yannicknoah", "serenawilliams", "matswilander", "stefanedberg", "gabrielasabatini", "johnnewcombe", "rafaelnadal", "steffigraf", "martinanavratilova", "serenawilliams", "sofiakenin", "johnmcenroe", "novakdjokovic", "billiejeanking", "margaretcourt", "chrisevert", "rogerfederer", "rodlaver", "stefanedberg", "carlosmoya", "hanamandlikova", "gastongaudio", "petrakvitova", "andreagassi", "tracyaustin", "borisbecker", "angeliquekerber", "rafaelnadal", "billiejeanking", "suebarker", "jimmyconnors", "chrisevert", "garbinemuguruza", "jankodes", "martinanavratilova", "borisbecker", "martinahingis", "rafaelnadal", "billiejeanking", "rogerfederer", "stefanedberg", "serenawilliams", "martinanavratilova", "matswilander", "jimmyconnors", "rafaelnadal", "stanwawrinka", "novakdjokovic", "venuswilliams", "rodlaver", "jimcourier", "bjornborg", "ivanlendl", "steffigraf", "novakdjokovic", "rogerfederer", "goranivanisevic", "jimmyconnors", "petesampras", "martinanavratilova", "chrisevert", "venuswilliams", "angeliquekerber", "novakdjokovic", "rodlaver", "juanmartindelpotro", "andreagassi", "mariasharapova", "serenawilliams", "svetlanakuznetsova", "monicaseles", "carolinewozniacki", "richardkrajicek", "ashleighbarty", "martinanavratilova", "margaretcourt", "bjornborg", "borisbecker", "barborakrejcikova", "flaviapennetta", "petesampras", "johankriek", "steffigraf", "monicaseles", "rafaelnadal", "andymurray", "anastasiamyskina", "novakdjokovic", "justinehenin", "patcash", "adrianopanatta", "bjornborg", "emmaraducanu", "serenawilliams", "novakdjokovic", "steffigraf", "margaretcourt", "billiejeanking", "chrisevert", "vitasgerulaitis", "martinanavratilova", "serenawilliams", "steffigraf", "ivanlendl", "petesampras", "gustavokuerten", "andresgomez", "martinahingis", "justinehenin", "andreagassi", "novakdjokovic", "lindsaydavenport", "rafaelnadal", "venuswilliams", "guillermovilas", "martinahingis", "chrisevert", "martinanavratilova", "yevgenykafelnikov", "dominicthiem", "rogerfederer", "jimcourier", "markedmondson", "steffigraf", "rafaelnadal", "ilienastase", "andreagassi", "monicaseles", "andyroddick", "kenrosewall", "petesampras", "steffigraf", "victoriaazarenka", "novakdjokovic", "thomasmuster", "nancyrichey", "monicaseles", "guillermovilas", "ashleighbarty", "marypierce", "kenrosewall", "bjornborg", "daniilmedvedev", "steffigraf", "patrickrafter", "lina", "chrisevert", "ivanlendl", "mariasharapova", "andresgimeno", "rogerfederer", "jimcourier", "rafaelnadal", "brianteacher", "kimclijsters", "novakdjokovic", "margaretcourt", "ashleighbarty", "petrakvitova", "rogerfederer", "chrisevert", "jankodes", "marionbartoli", "jennifercapriati", "monicaseles", "rafaelnadal", "petesampras", "martinanavratilova", "jelenaostapenko", "steffigraf", "chrisevert", "serenawilliams", "petrkorda", "rogerfederer", "billiejeanking", "maratsafin", "rafaelnadal", "margaretcourt", "martinanavratilova", "justinehenin", "naomiosaka", "garbinemuguruza", "evonnegoolagong", "rogerfederer", "steffigraf", "johnmcenroe", "bjornborg", "monicaseles", "jimmyconnors", "andreagassi", "rogerfederer", "rafaelnadal", "chrisevert", "barbarajordan", "lleytonhewitt", "billiejeanking", "conchitamartinez", "borisbecker", "margaretcourt", "andymurray", "monicaseles", "kenrosewall", "thomasjohansson", "steffigraf", "martinanavratilova", "sergibruguera", "rafaelnadal", "jennifercapriati", "rogerfederer", "venuswilliams", "virginiawade", "petesampras", "serenawilliams", "biancaandreescu", "martinanavratilova", "ameliemauresmo", "rafaelnadal", "justinehenin", "bjornborg", "serenawilliams", "arantxasanchez", "martinanavratilova", "chrisevert", "marypierce", "steffigraf", "martinahingis", "kimclijsters", "sloanestephens", "virginiawade", "margaretcourt", "manuelorantes", "steffigraf", "yevgenykafelnikov", "matswilander", "petesampras", "justinehenin", "ameliemauresmo", "rogerfederer", "naomiosaka", "lleytonhewitt", "martinanavratilova", "martinahingis", "juancarlosferrero", "monicaseles", "rogerfederer", "evonnegoolagong", "novakdjokovic", "kimclijsters", "hanamandlikova", "rafaelnadal", "andreagassi", "serenawilliams", "rogerfederer", "arantxasanchez", "billiejeanking", "johnnewcombe", "lindsaydavenport", "mariasharapova", "bjornborg", "novakdjokovic", "gustavokuerten", "rogerfederer", "hanamandlikova", "andreagassi", "matswilander", "bjornborg", "novakdjokovic", "evonnegoolagong", "sergibruguera", "johnmcenroe", "steffigraf", "petesampras", "johnnewcombe", "simonahalep", "bjornborg", "evonnegoolagong", "serenawilliams", "victoriaazarenka", "ivanlendl", "stefanedberg", "jananovotna", "rafaelnadal", "martinanavratilova", "rodlaver", "angeliquekerber", "chrisevert", "gustavokuerten", "serenawilliams", "matswilander", "rogerfederer", "andymurray", "johnnewcombe", "ivamajoli", "jimmyconnors", "arthurashe", "johnmcenroe", "michaelchang", "rogerfederer", "chrisevert", "serenawilliams", "steffigraf", "jimcourier", "novakdjokovic", "rafaelnadal", "johnmcenroe", "andreagassi", "serenawilliams", "ilienastase", "billiejeanking", "margaretcourt", "jankodes", "rodlaver", "justinehenin", "martinanavratilova", "novakdjokovic", "jimmyconnors", "samanthastosur", "johnmcenroe", "petesampras", "ivanlendl", "chrisevert", "serenawilliams", "margaretcourt", "virginiaruzici", "novakdjokovic", "justinehenin", "kerryreid", "chrisevert", "kimclijsters", "steffigraf", "serenawilliams", "margaretcourt", "martinanavratilova", "petesampras", "novakdjokovic", "maratsafin", "ivanlendl", "serenawilliams", "rogerfederer", "mimajausovec", "serenawilliams",]
-var GSList = ["USO", "WIM", "USO", "USO", "WIM", "FO", "FO", "WIM", "AO", "USO", "FO", "AO", "WIM", "USO", "AO", "USO", "FO", "AO", "AO", "USO", "USO", "USO", "AO", "USO", "AO", "USO", "USO", "FO", "WIM", "AO", "FO", "FO", "AO", "USO", "FO", "FO", "FO", "AO", "AO", "WIM", "AO", "AO", "FO", "FO", "WIM", "USO", "USO", "WIM", "AO", "AO", "AO", "AO", "USO", "FO", "USO", "AO", "WIM", "AO", "FO", "WIM", "WIM", "FO", "AO", "WIM", "FO", "WIM", "USO", "WIM", "USO", "WIM", "AO", "WIM", "AO", "USO", "WIM", "WIM", "WIM", "USO", "WIM", "FO", "USO", "WIM", "FO", "WIM", "WIM", "FO", "WIM", "WIM", "AO", "FO", "WIM", "FO", "WIM", "USO", "WIM", "FO", "WIM", "FO", "USO", "AO", "WIM", "AO", "FO", "USO", "USO", "USO", "USO", "AO", "FO", "AO", "FO", "WIM", "AO", "USO", "WIM", "WIM", "FO", "WIM", "FO", "USO", "FO", "FO", "FO", "USO", "USO", "USO", "AO", "WIM", "WIM", "USO", "FO", "USO", "AO", "USO", "USO", "AO", "AO", "WIM", "FO", "FO", "FO", "FO", "USO", "AO", "FO", "WIM", "USO", "WIM", "WIM", "FO", "WIM", "AO", "AO", "AO", "USO", "USO", "FO", "WIM", "USO", "USO", "AO", "WIM", "FO", "AO", "FO", "FO", "WIM", "FO", "USO", "WIM", "AO", "USO", "AO", "FO", "WIM", "FO", "AO", "USO", "WIM", "FO", "FO", "USO", "AO", "AO", "USO", "USO", "USO", "AO", "AO", "WIM", "USO", "USO", "AO", "AO", "FO", "FO", "AO", "AO", "FO", "AO", "USO", "FO", "WIM", "USO", "AO", "USO", "USO", "AO", "USO", "AO", "AO", "AO", "FO", "FO", "USO", "AO", "AO", "USO", "AO", "USO", "USO", "AO", "AO", "FO", "FO", "AO", "AO", "AO", "FO", "FO", "WIM", "USO", "WIM", "USO", "FO", "WIM", "USO", "USO", "FO", "USO", "AO", "USO", "AO", "USO", "WIM", "USO", "WIM", "WIM", "AO", "USO", "FO", "WIM", "FO", "FO", "FO", "WIM", "AO", "FO", "WIM", "FO", "WIM", "AO", "WIM", "WIM", "AO", "FO", "FO", "FO", "FO", "USO", "WIM", "AO", "USO", "FO", "USO", "WIM", "FO", "WIM", "WIM", "USO", "AO", "USO", "AO", "USO", "WIM", "WIM", "AO", "FO", "WIM", "USO", "USO", "AO", "FO", "WIM", "FO", "FO", "AO", "AO", "WIM", "WIM", "USO", "FO", "USO", "WIM", "AO", "FO", "FO", "WIM", "AO", "USO", "WIM", "WIM", "AO", "AO", "AO", "AO", "USO", "USO", "AO", "USO", "AO", "FO", "AO", "WIM", "FO", "WIM", "WIM", "AO", "WIM", "WIM", "WIM", "FO", "FO", "AO", "AO", "WIM", "USO", "AO", "USO", "AO", "AO", "WIM", "FO", "USO", "AO", "WIM", "FO", "FO", "FO", "FO", "USO", "FO", "AO", "FO", "FO", "FO", "WIM", "FO", "USO", "WIM", "WIM", "WIM", "FO", "FO", "AO", "WIM", "AO", "AO", "AO", "WIM", "WIM", "WIM", "WIM", "USO", "USO", "FO", "USO", "AO", "WIM", "USO", "USO", "FO", "WIM", "USO", "WIM", "FO", "AO", "FO", "FO", "AO", "FO", "USO", "FO", "USO", "USO", "WIM", "FO", "WIM", "AO", "WIM", "WIM", "FO", "WIM", "AO", "USO", "USO", "WIM", "WIM", "FO", "FO", "AO", "AO", "FO", "USO", "USO", "AO", "USO", "USO", "AO", "WIM", "AO", "USO", "USO", "WIM", "USO", "FO", "AO", "WIM", "FO", "USO",]
-var GenList = ["HE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "HE", "HE", "HE", "HE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "HE", "HE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "HE", "HE", "SHE", "HE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "HE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "HE", "HE", "HE", "SHE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "HE", "HE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "HE", "SHE", "SHE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "HE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "HE", "HE", "SHE", "HE", "HE", "HE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "HE", "HE", "HE", "SHE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "HE", "SHE", "HE", "HE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "SHE", "HE", "HE", "HE", "HE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "SHE", "SHE", "HE", "HE", "HE", "HE", "HE", "SHE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "SHE", "HE", "HE", "SHE", "HE", "HE", "HE", "SHE", "SHE", "SHE", "SHE", "HE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "HE", "HE", "HE", "HE", "SHE", "HE", "SHE", "SHE",]
-var GSTitleList = ["7", "20", "7", "23", "22", "1", "7", "1", "18", "14", "21", "8", "11", "1", "2", "8", "22", "2", "4", "21", "4", "7", "23", "8", "5", "8", "20", "18", "22", "7", "21", "1", "8", "23", "1", "4", "4", "6", "3", "2", "3", "14", "22", "1", "2", "3", "2", "20", "20", "7", "23", "3", "7", "22", "4", "18", "20", "4", "18", "14", "6", "4", "3", "23", "3", "7", "2", "20", "6", "21", "9", "3", "1", "2", "18", "7", "6", "14", "24", "21", "12", "11", "7", "20", "18", "2", "5", "22", "1", "1", "23", "7", "6", "1", "7", "21", "22", "18", "23", "1", "7", "20", "12", "24", "18", "20", "11", "6", "1", "4", "1", "2", "8", "2", "6", "3", "21", "12", "1", "8", "18", "2", "3", "18", "6", "5", "21", "12", "20", "6", "23", "18", "7", "8", "21", "3", "20", "7", "11", "4", "11", "8", "22", "20", "20", "1", "8", "14", "18", "18", "7", "3", "20", "11", "1", "8", "5", "23", "2", "9", "1", "1", "3", "18", "24", "11", "6", "1", "1", "14", "2", "22", "9", "21", "3", "1", "20", "7", "1", "1", "11", "1", "23", "20", "22", "24", "12", "18", "1", "18", "23", "22", "8", "14", "3", "1", "5", "7", "8", "20", "3", "21", "7", "4", "5", "18", "18", "2", "1", "20", "4", "1", "22", "21", "2", "8", "9", "1", "8", "14", "22", "2", "20", "1", "2", "9", "4", "3", "2", "8", "11", "1", "22", "2", "2", "18", "8", "5", "1", "20", "4", "21", "1", "4", "20", "24", "3", "2", "20", "18", "3", "1", "3", "9", "21", "14", "18", "1", "22", "18", "23", "1", "20", "12", "2", "21", "24", "18", "7", "4", "2", "7", "20", "22", "7", "11", "9", "8", "8", "20", "21", "18", "1", "2", "12", "1", "6", "24", "3", "9", "8", "1", "22", "18", "2", "21", "3", "20", "7", "3", "14", "23", "1", "18", "2", "21", "7", "11", "23", "4", "18", "18", "2", "22", "5", "4", "1", "3", "24", "1", "22", "2", "7", "14", "7", "2", "20", "4", "2", "18", "5", "1", "9", "20", "7", "20", "4", "4", "21", "8", "23", "20", "4", "12", "7", "3", "5", "11", "20", "3", "20", "4", "8", "7", "11", "20", "7", "2", "7", "22", "14", "7", "2", "11", "7", "23", "2", "8", "6", "1", "21", "18", "11", "3", "18", "3", "23", "7", "20", "3", "7", "1", "8", "3", "7", "1", "20", "18", "23", "22", "4", "20", "21", "7", "8", "23", "2", "12", "24", "3", "11", "7", "18", "20", "8", "1", "7", "14", "8", "18", "23", "24", "1", "20", "7", "1", "18", "4", "22", "23", "24", "18", "14", "20", "2", "8", "23", "20", "1", "23",]
-var PlaysList = ["LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "LH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "LH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "RH", "LH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "LH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "LH", "RH", "LH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "LH", "RH", "RH", "RH", "RH", "RH", "RH", "RH", "RH",]
 var ul = document.getElementById("result");
 ul.onclick = function (event) {
 	var target = getEventTarget(event);
@@ -51,10 +52,6 @@ function getEventTarget(e) {
 	return e.target || e.srcElement;
 }
 
-function Dummy() {
-	//do nothing
-}
-
 function clearzoomin() {
 	document.getElementById(0).classList.remove("zoom-in-box");
 	document.getElementById(1).classList.remove("zoom-in-box");
@@ -69,10 +66,64 @@ document.getElementById("clue-ball").classList.remove("animated");
 }
 
 function changemode() {
-	localStorage.modet = "Easy";	
-	localStorage.gltttext = localStorage.gltttext.replace("Normal", "Easy");
-	//document. location. reload();
-	switchmode();
+	if (confirm("Acknowledge Penalty Points?\n - 2 Points docked for Easy Mode.\n - 2 more Points docked for Additional Hint.") == true) {
+		localStorage.modet = "Easy";	
+		localStorage.gltttext = localStorage.gltttext.replace("Normal", "Easy");
+		//document. location. reload();
+		switchmode();
+	}
+}
+
+function calculatepoints() {
+	if (localStorage.gametwon == 1) {
+		switch (clueCount) {
+			case 1: localStorage.dailytpoints = 10;
+				break;
+			case 2: localStorage.dailytpoints = 9;
+				break;
+			case 3: localStorage.dailytpoints = 8;
+				break;
+			case 4: localStorage.dailytpoints = 7;
+				break;
+			case 5: localStorage.dailytpoints = 6;
+				break;
+			case 7: localStorage.dailytpoints = 5;
+				break;
+		}
+		if (localStorage.modet == "Easy"){
+		localStorage.dailytpoints = Number(localStorage.dailytpoints) - 2;
+		}
+		if (localStorage.hinttused == 1){
+		localStorage.dailytpoints = Number(localStorage.dailytpoints) - 2;
+		}		
+	}
+	else {
+		localStorage.dailytpoints = 0;
+	}
+}
+
+function computetier() {
+	if (localStorage.totaltpoints < 100){
+		localStorage.tiert = "FUTURES"
+	}
+	else if (localStorage.totaltpoints >= 100 && localStorage.totaltpoints < 250){
+		localStorage.tiert = "CHALLENGERS"
+	}
+	else if (localStorage.totaltpoints >= 250 && localStorage.totaltpoints < 500){
+		localStorage.tiert = "LEVEL 250"
+	}
+	else if (localStorage.totaltpoints >= 500 && localStorage.totaltpoints < 1000){
+		localStorage.tiert = "LEVEL 500"
+	}
+	else if (localStorage.totaltpoints >= 1000 && localStorage.totaltpoints < 1500){
+		localStorage.tiert = "LEVEL 1000"
+	}
+	else if (localStorage.totaltpoints >= 1500 && localStorage.totaltpoints < 2000){
+		localStorage.tiert = "TOUR FINALS"
+	}
+	else if (localStorage.totaltpoints >= 2000){
+		localStorage.tiert = "GRAND SLAMS"
+	}	
 }
 
 function additionalhint() {
@@ -109,39 +160,39 @@ function storedadd() {
 
 function getindices() {
 	const indices = [];
-	const element = guess;
-	let idx = nameList.indexOf(element);
-	while (idx != -1) {
-		indices.push(idx);
-		idx = nameList.indexOf(element, idx + 1);
-	}
+	//const element = guess;
+	let idx = nameList.indexOf(guess);
+	//while (idx != -1) {
+	indices.push(idx);
+		//idx = nameList.indexOf(element, idx + 1);
+	//}
 	//console.log(indices);
 	var addyr = "🔴";
 	var icon1 = "r";
-	for (let i = 0; i < indices.length; i++) {
-		if (yearList[indices[i]] == yearList[index]) {
+	//for (let i = 0; i < indices.length; i++) {
+		if (yearList[idx] == yearList[index]) {
 			addyr = "🟢";
 			icon1 = "g";
-			break;
+			//break;
 		}
-		else if (Math.abs(Number(yearList[indices[i]]) - Number(yearList[index])) <= 3) {
+		else if (Math.abs(Number(yearList[idx]) - Number(yearList[index])) <= 3) {
 			addyr = "🟡";
 			icon1 = "y";
 		}		
-	}
+	//}
 	document.getElementById("answertext").disabled = true;
 	document.getElementById("submitbutton").disabled = true;	
 	document.getElementById("MODEButton").disabled = true;		
 	if (localStorage.modet == "Normal"){
 		document.getElementById(0).classList.add("zoom-in-box");
-		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>Year</span>";
+		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>Born</span>";
 	}
-	var tempyear = [];
-	for (let j = 0; j < indices.length; j++) {
-	    tempyear.push(yearList[indices[j]]);
-		tempyear.sort();
-		tempyear = [...new Set(tempyear)];
-	}	
+	//var tempyear = [];
+	//for (let j = 0; j < indices.length; j++) {
+	    //tempyear.push(yearList[indices[0]]);
+		//tempyear.sort();
+		//tempyear = [...new Set(tempyear)];
+	//}	
 	setTimeout(function(){ 
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex"; 
@@ -152,33 +203,44 @@ function getindices() {
 			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
 		}
 	}, 0);
-	for (let k = 0; k < tempyear.length; k++) { 
+	//for (let k = 0; k < tempyear.length; k++) { 
 		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + tempyear[k] + "</span>";	
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + yearList[idx] + "</span>";	
 		}
 		else{
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + tempyear[k] + "</span>";
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + yearList[idx] + "</span>";
 		}
-	}
+	//}
 	var addongs = "🔴";
 	var icon2 = "r";
-	for (let i = 0; i < indices.length; i++) {
-		if (GSList[indices[i]] == GSList[index]) {
+	//for (let i = 0; i < indices.length; i++) {
+		if (JSON.stringify(GSList[idx]) == JSON.stringify(GSList[index])) {
 			addongs = "🟢";
 			icon2 = "g";
-			break;
+			//break;
 		}
-	}
+		else {
+			 for (let m = 0; m < GSList[idx].length; m++) {
+				 for (let n = 0; n < GSList[index].length; n++) {
+					if (JSON.stringify(GSList[idx][m]) == JSON.stringify(GSList[index][n])){
+						addongs = "🟡";
+						icon2 = "y";
+						break;						
+					}
+				 }
+			 }
+		}
+	//}
 	if (localStorage.modet == "Normal"){
 		document.getElementById(1).classList.add("zoom-in-box");
 		document.getElementById(1).innerHTML = "<span class='revealicon'>" + addongs + "</span><br><span class='revealsiz'>Slam</span>";
 	}
-	var tempslam = [];
+/* 	var tempslam = [];
 	for (let j = 0; j < indices.length; j++) {
 	    tempslam.push(GSList[indices[j]]);
 		tempslam.sort();
 		tempslam = [...new Set(tempslam)];
-	}	
+	}	 */
 	  setTimeout(function(){ 
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";
@@ -189,17 +251,58 @@ function getindices() {
 			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + addongs;
 		}
 	}, 300);
-	for (let k = 0; k < tempslam.length; k++) { 
+	for (let k = 0; k < GSList[idx].length; k++) { 
 		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + tempslam[k] + "</span>";	
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSList[idx][k] + "</span>";	
 		}
 		else{
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + tempslam[k] + "</span>";
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSList[idx][k] + "</span>";
 		}
 	}	
 	var addonctry = "🔴";
 	var icon3 = "r";
-	for (let i = 0; i < indices.length; i++) {
+	
+	//for (let i = 0; i < indices.length; i++) {
+/* 		if (JSON.stringify(countryList[idx]) == JSON.stringify(countryList[index])) {
+			addonctry = "🟢";
+			icon3 = "g";
+			//break;
+		}
+		else {
+			 for (let m = 0; m < continentList[idx].length; m++) {
+				 for (let n = 0; n < continentList[index].length; n++) {
+					if (JSON.stringify(continentList[idx][m]) == JSON.stringify(continentList[index][n])){
+						addonctry = "🟡";
+						icon3 = "y";
+						break;						
+					}
+				 }
+			 }
+		} */
+	//}
+	
+	 for (let m = 0; m < continentList[idx].length; m++) {
+		 for (let n = 0; n < continentList[index].length; n++) {
+			if (JSON.stringify(continentList[idx][m]) == JSON.stringify(continentList[index][n])){
+				addonctry = "🟡";
+				icon3 = "y";
+				break;						
+			}
+		 }
+	 }	
+	 
+	 for (let m = 0; m < countryList[idx].length; m++) {
+		 for (let n = 0; n < countryList[index].length; n++) {
+			if (JSON.stringify(countryList[idx][m]) == JSON.stringify(countryList[index][n])){
+				addonctry = "🟢";
+				icon3 = "g";
+				break;						
+			}
+		 }
+	 }		 
+	
+	
+/* 	for (let i = 0; i < indices.length; i++) {
 		if (countryList[indices[i]] == countryList[index]) {
 			addonctry = "🟢";
 			icon3 = "g";
@@ -213,17 +316,17 @@ function getindices() {
 		addonctry = "🟡";
 		icon3 = "y";	
 		}		
-	}
+	} */
 	if (localStorage.modet == "Normal"){
 		document.getElementById(2).classList.add("zoom-in-box");	
 		document.getElementById(2).innerHTML = "<span class='revealicon'>" + addonctry + "</span><br><span class='revealsiz'>Country</span>";
 	}
-	var tempctry = [];
+/* 	var tempctry = [];
 	for (let j = 0; j < indices.length; j++) {
 	    tempctry.push(countryList[indices[j]]);
 		tempctry.sort();
 		tempctry = [...new Set(tempctry)];
-	}
+	} */
 	  setTimeout(function(){ 
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
@@ -234,12 +337,12 @@ function getindices() {
 			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + addonctry;
 		}
 	}, 600);	
-	for (let k = 0; k < tempctry.length; k++) { 
+	for (let k = 0; k < countryList[idx].length; k++) { 
 		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + tempctry[k] + "</span>";
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + countryList[idx][k] + "</span>";
 		}
 		else{
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + tempctry[k] + "</span>";
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + countryList[idx][k] + "</span>";
 		}
 	}	
 	var addongnder = "🔴";
@@ -381,6 +484,11 @@ if (!localStorage.totaltgames) {
 	//setTimeout(OpenRules, 1100);
 }
 
+if (!localStorage.totaltpoints) {
+	localStorage.setItem("totaltpoints", 0);
+	localStorage.setItem("tiert", "FUTURES");
+}
+
 if (localStorage.cluet0count > 0) {
 	localStorage.cluet1count = Number(localStorage.cluet0count) + Number(localStorage.cluet1count);
 	localStorage.setItem("tempcluet0count", 0);
@@ -417,6 +525,10 @@ function OpenStats() {
 function OpenRules() {
 	document.getElementById("rulesbutton").click();
 }
+
+/* function OpenFeedback() {
+	document.getElementById("fbmodalbut").click();
+} */
 
 //Confetti after game successfully completed 
 function ConfettiStart() {
@@ -457,13 +569,15 @@ function displayFooter() {
 	document.getElementById("bb").style.display = "block";
 	document.getElementById("HTMLButton").style.display = "block";
 	document.getElementById("CoffeButton").style.display = "block";
+	document.getElementById("tier-item").innerHTML = "<center>🏆 TIER : " + localStorage.tiert + " 🏆 </center>";
+	document.getElementById("points-item").innerHTML = "<center>⭐ You Won " + localStorage.dailytpoints + " Ranking Points Today ⭐ </center>";
+	document.getElementById("points-item").style.display = "block";
 }
 //Baseline Date
 var a = new Date(); // Current date now.
 var b = new Date(2022, 3, 11, 0, 0, 0, 0); // Start of TENIZ.
 var d = (a - b); // Difference in milliseconds.
-//var days = parseInt((d / 1000) / 86400);
-var days = [Math.floor(Math.random()*yearList.length)];
+var days = parseInt((d / 1000) / 86400);
 if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameover' + days) != 1) {
 	localStorage['gameover' + days] = 0;
 	localStorage.yeartopen = 0;
@@ -486,6 +600,11 @@ if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameov
 	localStorage.gltttext = "ATTEMPT: 1/6 " + "MODE: " + localStorage.modet;	
 	localStorage.setItem("addonttext", JSON.stringify(""));
 	localStorage.hinttused = 0;
+	localStorage.dailytpoints = 0;
+}
+
+for (var d = 1; d < Number(days) ; d++){
+	localStorage.removeItem('gameover' + d);
 }
 
 function tryload() {
@@ -515,12 +634,13 @@ function myFunction() {
 	if (localStorage.currenttstreak == 0) {
 		var cshdr = "🔴"
 	}
-	else if (localStorage.currenttstreak > 0 && localStorage.currenttstreak < 10) {
+	else if (localStorage.currenttstreak > 0 && localStorage.currenttstreak < 5) {
 		var cshdr = "🟡"
 	}
-	else if (localStorage.currenttstreak >= 10) {
+	else if (localStorage.currenttstreak >= 5) {
 		var cshdr = "🟢"
 	}
+	
 	// //
 	// if (localStorage.longesttstreak == 0) {
 	// 	var mshdr = "\n🔴Max Streak: "
@@ -531,7 +651,7 @@ function myFunction() {
 	// else if (localStorage.longesttstreak >= 20) {
 	// 	var mshdr = "\n🟢Max Streak: "
 	// }
-	cluehdr = "/6 Clues Used To Win!"
+	cluehdr = "/6 Attempts | Ranking Points: " + localStorage.dailytpoints;
 /* 	if (localStorage.cluetcount == 0) {
 		var clueicon = "🟢⚪⚪⚪⚪⚪⚪";
 	}
@@ -555,25 +675,33 @@ function myFunction() {
 	}
 	else if (localStorage.cluetcount == "X") {
 		var clueicon = "🔴🔴🔴🔴🔴🔴";
-		cluehdr = "/6. All Clues Exhausted!";
+		//cluehdr = "/6. All Clues Exhausted!";
 	}
 	var avggss = Math.round(((localStorage.cluet1count * 1) + (localStorage.cluet2count * 2) + (localStorage.cluet3count * 3) + (localStorage.cluet4count * 4) + (localStorage.cluet5count * 5) + (localStorage.cluet6count * 6) + (localStorage.cluetxcount * 7)) / (Number(localStorage.cluet1count) + Number(localStorage.cluet2count) + Number(localStorage.cluet3count) + Number(localStorage.cluet4count) + Number(localStorage.cluet5count) + Number(localStorage.cluet6count) + Number(localStorage.cluetxcount)));
-	if (avggss <= 2) {
+	if (avggss <= 3) {
 		var avggsshdr = "🟢"
 	}
-	else if (avggss > 2 && avggss < 5) {
+	else if (avggss > 3 && avggss < 6) {
 		var avggsshdr = "🟡"
 	}
-	else if (avggss >= 5) {
+	else if (avggss >= 6) {
 		var avggsshdr = "🔴"
 	}		
 	//var copyText = "🎾 TENIZ! - Day " + days + " 🎾: " + localStorage.cluetcount + "/6" + "\n\n🟢Played: " + localStorage.totaltgames + winhdr + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + cshdr + localStorage.currenttstreak + mshdr + localStorage.longesttstreak + "\n\n💻https://tenizgame.github.io/";
-	if (localStorage.hinttused == 0) {
-		var copyText = "🎾 TENIZ - Day " + days + " (Mode : " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "|Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "|Avg. Clues: " + avggss + avggsshdr + "\n\n💻https://tenizgame.github.io/";
+/* 	if (localStorage.hinttused == 0) {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";
 	}
 	else {
-		var copyText = "🎾 TENIZ - Day " + days + " (Mode : " + localStorage.modet + " - Hint Used) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "|Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "|Avg. Clues: " + avggss + avggsshdr + "\n\n💻https://tenizgame.github.io/";	
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";	
+	} */
+	
+	if (localStorage.hinttused == 0) {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";
 	}
+	else {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";	
+	}
+	
 	/* Copy the text inside the text field */
 	navigator.clipboard.writeText(copyText);
 
@@ -585,13 +713,41 @@ function myFunction() {
 
 //clue reveal 
 function ballvanish0() {
-	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Year)</span>";
+	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
 }
 function ballvanish1() {
-	document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+	document.getElementById(1).innerHTML = "";
+	switch (GSList[index].length) {
+		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+			break;	
+		case 2: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+			break;
+		case 3: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+			break;	
+		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+			break;				
+	}
 }
 function ballvanish2() {
-	document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+	document.getElementById(2).innerHTML = "";
+	switch (countryList[index].length) {
+		case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+			break;	
+		case 2: for (let k = 0; k < countryList[index].length; k++) { 
+					document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
+				}
+				document.getElementById(2).innerHTML += "<span class='revealsiz'>(Country)</span>";
+			break;			
+	}	
 }
 function ballvanish3() {
 	document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>(Gender)</span>";
@@ -605,9 +761,37 @@ function ballvanish5() {
 
 //final clue reveal 
 function finalcluereveal() {
-	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>Year</span>";
-	document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slam</span>";
-	document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
+	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>Born</span>";
+	document.getElementById(1).innerHTML = "";
+	switch (GSList[index].length) {
+		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slam</span>";
+			break;	
+		case 2: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+			break;
+		case 3: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+			break;	
+		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+			break;				
+	}
+	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
+	document.getElementById(2).innerHTML = "";
+	switch (countryList[index].length) {
+		case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
+			break;	
+		case 2: for (let k = 0; k < countryList[index].length; k++) { 
+					document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
+				}
+				document.getElementById(2).innerHTML += "<span class='revealsiz'>Country</span>";
+			break;			
+	}		
 	document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>Gender</span>";
 	document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles + "</span><br><br><span class='revealsiz'>Titles</span>";
 	document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays + "</span><br><br><span class='revealsiz'>Plays</span>";
@@ -693,7 +877,1139 @@ var enterHit = false;
 var clueCount = 0;
 var gameOver = false;
 var arrayid = [0, 1, 2, 3, 4, 5]
-var index = days;
+var yearList = ["1962",
+"1973",
+"1951",
+"1942",
+"1985",
+"1956",
+"1960",
+"1970",
+"1998",
+"1943",
+"1938",
+"1976",
+"1978",
+"1990",
+"1970",
+"1988",
+"1956",
+"1993",
+"1946",
+"1956",
+"1980",
+"1970",
+"1959",
+"1981",
+"1980",
+"1981",
+"1969",
+"1987",
+"1964",
+"1968",
+"1986",
+"1934",
+"1956",
+"1988",
+"1958",
+"1960",
+"1982",
+"1952",
+"1997",
+"1952",
+"1987",
+"1987",
+"1944",
+"1975",
+"2001",
+"1967",
+"1945",
+"1991",
+"1976",
+"1980",
+"1946",
+"1985",
+"1972",
+"1951",
+"1943",
+"1962",
+"1956",
+"1947",
+"1954",
+"1971",
+"1966",
+"1971",
+"1976",
+"1971",
+"1988",
+"1990",
+"1971",
+"1995",
+"1982",
+"1987",
+"1981",
+"1982",
+"1965",
+"1950",
+"2002",
+"1955",
+"1954",
+"1976",
+"1960",
+"1974",
+"1993",
+"1954",
+"1946",
+"1982",
+"1989",
+"1967",
+"1942",
+"1996",
+"1975",
+"1996",
+"1937",
+"1954",
+"1983",
+"1984",
+"1997",
+"1968",
+"1980",
+"1957",
+"1981",
+"1972",
+"1975",
+"1971",
+"2000",
+"1979",
+"1993",
+"1949",
+"1980",
+"1968",
+"1977",
+"1972",
+"1984",
+]
+var countryList = [["USA"],
+["YUG","USA"],
+["USA"],
+["AUS"],
+["RUS"],
+["AUS"],
+["FRA"],
+["ARG"],
+["USA"],
+["USA"],
+["AUS"],
+["ESP"],
+["ARG"],
+["CZE"],
+["USA"],
+["GER"],
+["GBR"],
+["ESP"],
+["CZE"],
+["YUG"],
+["SWI"],
+["USA"],
+["USA"],
+["SWI"],
+["USA"],
+["USA"],
+["GER"],
+["SRB"],
+["SWE"],
+["GER"],
+["ESP"],
+["AUS"],
+["SWE"],
+["CRO"],
+["USA","SAF"],
+["CZE"],
+["CHN"],
+["ARG"],
+["JPN"],
+["USA"],
+["RUS"],
+["SRB"],
+["AUS"],
+["ESP"],
+["POL"],
+["GER"],
+["GBR"],
+["ROM"],
+["USA"],
+["ITA"],
+["USA"],
+["SWI"],
+["AUS"],
+["AUS"],
+["USA"],
+["CZE"],
+["USA"],
+["AUS"],
+["USA"],
+["USA"],
+["SWE"],
+["ESP"],
+["USA"],
+["CRO"],
+["ARG"],
+["DEN"],
+["NLD"],
+["CZE"],
+["ITA"],
+["GBR"],
+["RUS"],
+["BEL"],
+["AUS"],
+["ITA"],
+["GBR"],
+["ROM"],
+["USA"],
+["BRA"],
+["ECU"],
+["RUS"],
+["AUT"],
+["AUS"],
+["ROM"],
+["USA"],
+["BLR"],
+["AUT"],
+["USA"],
+["AUS"],
+["FRA"],
+["RUS"],
+["ESP"],
+["USA"],
+["BEL"],
+["FRA"],
+["LAT"],
+["CZE"],
+["RUS"],
+["USA"],
+["AUS"],
+["ESP"],
+["SWE"],
+["ESP"],
+["CAN"],
+["FRA"],
+["USA"],
+["ESP"],
+["ESP"],
+["CZE"],
+["CRO"],
+["USA"],
+["AUS"],
+]
+var continentList = [["NAM"],
+["EUR","NAM"],
+["NAM"],
+["AUS"],
+["ASA","EUR"],
+["AUS"],
+["EUR"],
+["SAM"],
+["NAM"],
+["NAM"],
+["AUS"],
+["EUR"],
+["SAM"],
+["EUR"],
+["NAM"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["NAM"],
+["NAM"],
+["EUR"],
+["NAM"],
+["NAM"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["AUS"],
+["EUR"],
+["EUR"],
+["NAM","AFR"],
+["EUR"],
+["ASA"],
+["SAM"],
+["ASA"],
+["NAM"],
+["ASA","EUR"],
+["EUR"],
+["AUS"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["NAM"],
+["EUR"],
+["NAM"],
+["EUR"],
+["AUS"],
+["AUS"],
+["NAM"],
+["EUR"],
+["NAM"],
+["AUS"],
+["NAM"],
+["NAM"],
+["EUR"],
+["EUR"],
+["NAM"],
+["EUR"],
+["SAM"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["ASA","EUR"],
+["EUR"],
+["AUS"],
+["EUR"],
+["EUR"],
+["EUR"],
+["NAM"],
+["SAM"],
+["SAM"],
+["ASA","EUR"],
+["EUR"],
+["AUS"],
+["EUR"],
+["NAM"],
+["EUR"],
+["EUR"],
+["NAM"],
+["AUS"],
+["EUR"],
+["ASA","EUR"],
+["EUR"],
+["NAM"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["ASA","EUR"],
+["NAM"],
+["AUS"],
+["EUR"],
+["EUR"],
+["EUR"],
+["NAM"],
+["EUR"],
+["NAM"],
+["EUR"],
+["EUR"],
+["EUR"],
+["EUR"],
+["NAM"],
+["AUS"],
+]
+var firstnameList = ["Tracy",
+"Monica",
+"Roscoe",
+"Margaret",
+"Svetlana",
+"Chris",
+"Yannick",
+"Gabriela",
+"Sofia",
+"BillieJean",
+"Rod",
+"Carlos",
+"Gaston",
+"Petra",
+"Andre",
+"Angelique",
+"Sue",
+"Garbine",
+"Jan",
+"Mima",
+"Martina",
+"Jim",
+"John",
+"Roger",
+"Venus",
+"Serena",
+"Steffi",
+"Ana",
+"Mats",
+"Michael",
+"Rafael",
+"Ken",
+"Bjorn",
+"Marin",
+"Johan",
+"Ivan",
+"Li",
+"Guillermo",
+"Naomi",
+"Jimmy",
+"Maria",
+"Novak",
+"John",
+"Albert",
+"Iga",
+"Boris",
+"Virginia",
+"Simona",
+"Jennifer",
+"Francesca",
+"Stan",
+"Stan",
+"Patrick",
+"Evonne",
+"Arthur",
+"Hana",
+"Martina",
+"Kerry",
+"Chris",
+"Pete",
+"Stefan",
+"Arantxa",
+"Lindsay",
+"Goran",
+"JuanMartin",
+"Caroline",
+"Richard",
+"Barbora",
+"Flavia",
+"Andy",
+"Anastasia",
+"Justine",
+"Pat",
+"Adriano",
+"Emma",
+"Virginia",
+"Vitas",
+"Gustavo",
+"Andres",
+"Yevgeny",
+"Dominic",
+"Mark",
+"Ilie",
+"Andy",
+"Victoria",
+"Thomas",
+"Nancy",
+"Ashleigh",
+"Mary",
+"Daniil",
+"Andres",
+"Brian",
+"Kim",
+"Marion",
+"Jelena",
+"Petr",
+"Marat",
+"Barbara",
+"Lleyton",
+"Conchita",
+"Thomas",
+"Sergi",
+"Bianca",
+"Amelie",
+"Sloane",
+"Manuel",
+"JuanCarlos",
+"Jana",
+"Iva",
+"Michael",
+"Samantha",
+]
+var lastnameList = ["Austin",
+"Seles",
+"Tanner",
+"Court",
+"Kuznetsova",
+"ONeil",
+"Noah",
+"Sabatini",
+"Kenin",
+"King",
+"Laver",
+"Moya",
+"Gaudio",
+"Kvitova",
+"Agassi",
+"Kerber",
+"Barker",
+"Muguruza",
+"Kodes",
+"Jausovec",
+"Hingis",
+"Courier",
+"McEnroe",
+"Federer",
+"Williams",
+"Williams",
+"Graf",
+"Ivanovic",
+"Wilander",
+"Stich",
+"Nadal",
+"Rosewall",
+"Borg",
+"Cilic",
+"Kriek",
+"Lendl",
+"Na",
+"Vilas",
+"Osaka",
+"Connors",
+"Sharapova",
+"Djokovic",
+"Newcombe",
+"Costa",
+"Swiatek",
+"Becker",
+"Wade",
+"Halep",
+"Capriati",
+"Schiavone",
+"Smith",
+"Wawrinka",
+"Rafter",
+"Goolagong",
+"Ashe",
+"Mandlikova",
+"Navratilova",
+"Reid",
+"Evert",
+"Sampras",
+"Edberg",
+"Sanchez",
+"Davenport",
+"Ivanisevic",
+"DelPotro",
+"Wozniacki",
+"Krajicek",
+"Krejcikova",
+"Pennetta",
+"Murray",
+"Myskina",
+"Henin",
+"Cash",
+"Panatta",
+"Raducanu",
+"Ruzici",
+"Gerulaitis",
+"Kuerten",
+"Gomez",
+"Kafelnikov",
+"Thiem",
+"Edmondson",
+"Nastase",
+"Roddick",
+"Azarenka",
+"Muster",
+"Richey",
+"Barty",
+"Pierce",
+"Medvedev",
+"Gimeno",
+"Teacher",
+"Clijsters",
+"Bartoli",
+"Ostapenko",
+"Korda",
+"Safin",
+"Jordan",
+"Hewitt",
+"Martinez",
+"Johansson",
+"Bruguera",
+"Andreescu",
+"Mauresmo",
+"Stephens",
+"Orantes",
+"Ferrero",
+"Novotna",
+"Majoli",
+"Chang",
+"Stosur",
+]
+var nameList = ["tracyaustin",
+"monicaseles",
+"roscoetanner",
+"margaretcourt",
+"svetlanakuznetsova",
+"chrisoneil",
+"yannicknoah",
+"gabrielasabatini",
+"sofiakenin",
+"billiejeanking",
+"rodlaver",
+"carlosmoya",
+"gastongaudio",
+"petrakvitova",
+"andreagassi",
+"angeliquekerber",
+"suebarker",
+"garbinemuguruza",
+"jankodes",
+"mimajausovec",
+"martinahingis",
+"jimcourier",
+"johnmcenroe",
+"rogerfederer",
+"venuswilliams",
+"serenawilliams",
+"steffigraf",
+"anaivanovic",
+"matswilander",
+"michaelstich",
+"rafaelnadal",
+"kenrosewall",
+"bjornborg",
+"marincilic",
+"johankriek",
+"ivanlendl",
+"lina",
+"guillermovilas",
+"naomiosaka",
+"jimmyconnors",
+"mariasharapova",
+"novakdjokovic",
+"johnnewcombe",
+"albertcosta",
+"igaswiatek",
+"borisbecker",
+"virginiawade",
+"simonahalep",
+"jennifercapriati",
+"francescaschiavone",
+"stansmith",
+"stanwawrinka",
+"patrickrafter",
+"evonnegoolagong",
+"arthurashe",
+"hanamandlikova",
+"martinanavratilova",
+"kerryreid",
+"chrisevert",
+"petesampras",
+"stefanedberg",
+"arantxasanchez",
+"lindsaydavenport",
+"goranivanisevic",
+"juanmartindelpotro",
+"carolinewozniacki",
+"richardkrajicek",
+"barborakrejcikova",
+"flaviapennetta",
+"andymurray",
+"anastasiamyskina",
+"justinehenin",
+"patcash",
+"adrianopanatta",
+"emmaraducanu",
+"virginiaruzici",
+"vitasgerulaitis",
+"gustavokuerten",
+"andresgomez",
+"yevgenykafelnikov",
+"dominicthiem",
+"markedmondson",
+"ilienastase",
+"andyroddick",
+"victoriaazarenka",
+"thomasmuster",
+"nancyrichey",
+"ashleighbarty",
+"marypierce",
+"daniilmedvedev",
+"andresgimeno",
+"brianteacher",
+"kimclijsters",
+"marionbartoli",
+"jelenaostapenko",
+"petrkorda",
+"maratsafin",
+"barbarajordan",
+"lleytonhewitt",
+"conchitamartinez",
+"thomasjohansson",
+"sergibruguera",
+"biancaandreescu",
+"ameliemauresmo",
+"sloanestephens",
+"manuelorantes",
+"juancarlosferrero",
+"jananovotna",
+"ivamajoli",
+"michaelchang",
+"samanthastosur",
+]
+var GSList = [["USO"],
+["AO","FO","USO"],
+["AO"],
+["AO","FO","WIM","USO"],
+["FO","USO"],
+["AO"],
+["FO"],
+["USO"],
+["AO"],
+["AO","FO","WIM","USO"],
+["AO","FO","WIM","USO"],
+["FO"],
+["FO"],
+["WIM"],
+["AO","FO","WIM","USO"],
+["AO","WIM","USO"],
+["FO"],
+["FO","WIM"],
+["FO","WIM"],
+["FO"],
+["AO","WIM","USO"],
+["AO","FO"],
+["WIM","USO"],
+["AO","FO","WIM","USO"],
+["WIM","USO"],
+["AO","FO","WIM","USO"],
+["AO","FO","WIM","USO"],
+["FO"],
+["AO","FO","USO"],
+["WIM"],
+["AO","FO","WIM","USO"],
+["AO","FO","USO"],
+["FO","WIM"],
+["USO"],
+["AO"],
+["AO","FO","USO"],
+["AO","FO"],
+["AO","FO","USO"],
+["AO","USO"],
+["AO","WIM","USO"],
+["AO","FO","WIM","USO"],
+["AO","FO","WIM","USO"],
+["AO","WIM","USO"],
+["FO"],
+["FO"],
+["AO","WIM","USO"],
+["AO","WIM","USO"],
+["FO","WIM"],
+["AO","FO"],
+["FO"],
+["WIM","USO"],
+["AO","FO","USO"],
+["USO"],
+["AO","FO","WIM"],
+["AO","WIM","USO"],
+["AO","FO","USO"],
+["AO","FO","WIM","USO"],
+["AO"],
+["AO","FO","WIM","USO"],
+["AO","WIM","USO"],
+["AO","WIM","USO"],
+["FO","USO"],
+["AO","WIM","USO"],
+["WIM"],
+["USO"],
+["AO"],
+["WIM"],
+["FO"],
+["USO"],
+["WIM","USO"],
+["FO"],
+["AO","FO","USO"],
+["WIM"],
+["FO"],
+["USO"],
+["FO"],
+["AO"],
+["FO"],
+["FO"],
+["AO","FO"],
+["USO"],
+["AO"],
+["FO","USO"],
+["USO"],
+["AO"],
+["FO"],
+["AO","FO"],
+["AO","FO","WIM"],
+["AO","FO"],
+["USO"],
+["FO"],
+["AO"],
+["AO","USO"],
+["WIM"],
+["FO"],
+["AO"],
+["AO","USO"],
+["AO"],
+["WIM","USO"],
+["WIM"],
+["AO"],
+["FO"],
+["USO"],
+["AO","WIM"],
+["USO"],
+["USO"],
+["FO"],
+["WIM"],
+["FO"],
+["FO"],
+["USO"],
+]
+var GenList = ["SHE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"SHE",
+"HE",
+"SHE",
+"HE",
+"HE",
+"SHE",
+"SHE",
+"SHE",
+"HE",
+"HE",
+"SHE",
+"SHE",
+"HE",
+"SHE",
+]
+var GSTitleList = ["2",
+"9",
+"1",
+"24",
+"2",
+"1",
+"1",
+"1",
+"1",
+"12",
+"11",
+"1",
+"1",
+"2",
+"8",
+"3",
+"1",
+"2",
+"3",
+"1",
+"5",
+"4",
+"7",
+"20",
+"7",
+"23",
+"22",
+"1",
+"7",
+"1",
+"22",
+"8",
+"11",
+"1",
+"2",
+"8",
+"2",
+"4",
+"4",
+"8",
+"5",
+"20",
+"7",
+"1",
+"2",
+"6",
+"3",
+"2",
+"3",
+"1",
+"2",
+"3",
+"2",
+"7",
+"3",
+"4",
+"18",
+"1",
+"18",
+"14",
+"6",
+"4",
+"3",
+"1",
+"1",
+"1",
+"1",
+"1",
+"1",
+"3",
+"1",
+"7",
+"1",
+"1",
+"1",
+"1",
+"1",
+"3",
+"1",
+"2",
+"1",
+"1",
+"2",
+"1",
+"2",
+"1",
+"2",
+"3",
+"2",
+"1",
+"1",
+"1",
+"4",
+"1",
+"1",
+"1",
+"2",
+"1",
+"2",
+"1",
+"1",
+"2",
+"1",
+"2",
+"1",
+"1",
+"1",
+"1",
+"1",
+"1",
+"1",
+]
+var PlaysList = ["RH",
+"LH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"LH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+"LH",
+"RH",
+"RH",
+"RH",
+"RH",
+"RH",
+]
+//var index = days - 1;
+if (days%yearList.length > 0){
+	var offset = Math.floor(days/yearList.length);
+}
+else{
+	var offset = (days/yearList.length) - 1;
+}
+if (days > yearList.length){
+	var index  = days - 1 - (offset * yearList.length);
+}
+else {
+	var index = days - 1;
+}
 var firstname = firstnameList[index].toLowerCase();
 var lastname = lastnameList[index].toLowerCase();
 //var firstname = "martina"
@@ -806,7 +2122,7 @@ openHintmodalButtons.forEach(button => {
 })
 
 overlay2.addEventListener('click', () => {
-	const hintmodals = document.querySelectorAll('.modal.active')
+	const hintmodals = document.querySelectorAll('.hintmodal.active')
 	hintmodals.forEach(hintmodal => {
 		closeHintmodal(hintmodal)
 	})
@@ -830,6 +2146,51 @@ function closeHintmodal(hintmodal) {
 	hintmodal.classList.remove('active')
 	overlay2.classList.remove('active')
 }
+
+
+
+
+
+
+
+const openFBmodalButtons = document.querySelectorAll('[data-fbmodal-target]')
+const closeFBmodalButtons = document.querySelectorAll('[data-close3-button]')
+const overlay3 = document.getElementById('overlay3')
+
+
+openFBmodalButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		const fbmodal = document.querySelector(button.dataset.fbmodalTarget)
+		openFBmodal(fbmodal)
+	})
+})
+
+overlay3.addEventListener('click', () => {
+	const fbmodals = document.querySelectorAll('.fbmodal.active')
+	fbmodals.forEach(fbmodal => {
+		closeFBmodal(fbmodal)
+	})
+})
+
+closeFBmodalButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		const fbmodal = button.closest('.fbmodal')
+		closeFBmodal(fbmodal)
+	})
+})
+
+function openFBmodal(fbmodal) {
+	if (fbmodal == null) return
+	fbmodal.classList.add('active')
+	overlay3.classList.add('active')
+}
+
+function closeFBmodal(fbmodal) {
+	if (fbmodal == null) return
+	fbmodal.classList.remove('active')
+	overlay3.classList.remove('active')
+}
+
 //Chart Code
 //color0 = "brown"
 color1 = "brown"
@@ -877,12 +2238,14 @@ window.onload = function () {
 function intialize() {
 	let ele = document.getElementById("daycount");
 	ele.innerHTML += (days);
+	document.getElementById("tier-item").innerHTML = "<center>🏆 TIER : " + localStorage.tiert + " 🏆 </center>";
 	document.getElementById("pzlhdr").style.display = "none";
 	document.getElementById("pzl").style.display = "none";
 	document.getElementById("bbhdr").style.display = "none";
 	document.getElementById("bb").style.display = "none";
 	document.getElementById("HTMLButton").style.display = "none";
 	document.getElementById("CoffeButton").style.display = "none";
+	document.getElementById("points-item").style.display = "none";
 	document.getElementById("historyfirst").style.display = "none";
 	document.getElementById("historylast").style.display = "none";
 	document.getElementById("trydetail1").style.display = "none";
@@ -911,7 +2274,7 @@ function intialize() {
 		clue.id = clueindex;
 		clue.classList.add("clue-ball");
 		if (clueindex == 0) {
-			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Year</div>';
+			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Born</div>';
 		}
 		else if (clueindex == 1) {
 			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slam</div>';
@@ -949,12 +2312,12 @@ function intialize() {
 		histile.innerText = "";
 		document.getElementById("historylast").appendChild(histile);
 	}
-
 	var winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
 	document.getElementById(6).innerText = "Played: " + localStorage.totaltgames;
 	document.getElementById(7).innerText = "Win %: " + winpct;
-	document.getElementById(8).innerText = "Current Streak: " + localStorage.currenttstreak;
-	document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;
+	document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
+	//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;
+	document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
 	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
 	//Current Day Game Over
 	if (localStorage.getItem('gameover' + days) == 1) {
@@ -992,6 +2355,7 @@ function intialize() {
 	}
 	// Default Path
 	else {
+		setTimeout(OpenRules, 1100);
 		if (localStorage.firsttload == 0) {
 			document.getElementById("answer").classList.remove("popanswer");
 			document.getElementById("answer").style.color = "#FDFEFF";
@@ -1016,21 +2380,49 @@ function intialize() {
 			}
 			if (localStorage.yeartopen == 1) {
 				if (localStorage.modet == "Easy") {
-					document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Year)</span>";
+					document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
 				}
 				arrayid.splice(arrayid.indexOf(0), 1);
 				SetClueCount();
 			}
 			if (localStorage.slamtopen == 1) {
 				if (localStorage.modet == "Easy") {
-					document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+					document.getElementById(1).innerHTML = "";
+					switch (GSList[index].length) {
+						case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+							break;	
+						case 2: for (let k = 0; k < GSList[index].length; k++) { 
+									document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
+								}
+								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+							break;
+						case 3: for (let k = 0; k < GSList[index].length; k++) { 
+									document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
+								}
+								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+							break;	
+						case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
+								document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
+								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+							break;				
+					}	
 				}
 				arrayid.splice(arrayid.indexOf(1), 1);
 				SetClueCount();
 			}
 			if (localStorage.ctrytopen == 1) {
 				if (localStorage.modet == "Easy") {
-					document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+					//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+					document.getElementById(2).innerHTML = "";
+					switch (countryList[index].length) {
+						case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+							break;	
+						case 2: for (let k = 0; k < countryList[index].length; k++) { 
+									document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
+								}
+								document.getElementById(2).innerHTML += "<span class='revealsiz'>(Country)</span>";
+							break;			
+					}						
 				}
 				arrayid.splice(arrayid.indexOf(2), 1);
 				SetClueCount();
@@ -1072,7 +2464,7 @@ function intialize() {
 							document.getElementById(i).innerHTML = "<span class='revealicon'>" + "🟢";
 						}                                        
 					}
-					document.getElementById(0).innerHTML += "</span><br><span class='revealsiz'>Year</span>";
+					document.getElementById(0).innerHTML += "</span><br><span class='revealsiz'>Born</span>";
 					document.getElementById(1).innerHTML += "</span><br><span class='revealsiz'>Slam</span>";
 					document.getElementById(2).innerHTML += "</span><br><span class='revealsiz'>Country</span>";
 					document.getElementById(3).innerHTML += "</span><br><span class='revealsiz'>Gender</span>";
@@ -1117,7 +2509,7 @@ function switchmode() {
     for (let i = 0; i < 6; i++) {
         document.getElementById(i).innerHTML = "";
     }
-	document.getElementById(0).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Year</div>';	
+	document.getElementById(0).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Born</div>';	
 	document.getElementById(1).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slam</div>';
 	document.getElementById(2).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Country</div>';
 	document.getElementById(3).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Gender</div>';
@@ -1132,13 +2524,41 @@ function switchmode() {
 		 document.getElementById("answer").innerText = "ADDITIONAL HINT ENABLED!";
 	}	
 	if (localStorage.yeartopen == 1) {
-		document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Year)</span>";
+		document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
 	}
 	if (localStorage.slamtopen == 1) {
-		document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+		document.getElementById(1).innerHTML = "";
+		switch (GSList[index].length) {
+			case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+				break;	
+			case 2: for (let k = 0; k < GSList[index].length; k++) { 
+						document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
+					}
+					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+				break;
+			case 3: for (let k = 0; k < GSList[index].length; k++) { 
+						document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
+					}
+					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+				break;	
+			case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
+					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
+					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+				break;				
+		}
 	}
 	if (localStorage.ctrytopen == 1) {
-		document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+		//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+		document.getElementById(2).innerHTML = "";
+		switch (countryList[index].length) {
+			case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+				break;	
+			case 2: for (let k = 0; k < countryList[index].length; k++) { 
+						document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
+					}
+					document.getElementById(2).innerHTML += "<span class='revealsiz'>(Country)</span>";
+				break;			
+		}			
 	}
 	if (localStorage.gndrtopen == 1) {
 		document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>(Gender)</span>";
@@ -1273,19 +2693,23 @@ function update(input) {
 		else {
 			localStorage.cluetcount = Number(clueCount);
 		}
-		document.getElementById(6).innerText = "Played: " + localStorage.totaltgames;
-		document.getElementById(7).innerText = "Win %: " + winpct;
-		document.getElementById(8).innerText = "Current Streak: " + localStorage.currenttstreak;
-		document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;
 		document.getElementById("answer").innerText = "GAME, SET and MATCH!\nDONT FORGET TO SHARE YOUR RESULTS.";
 		setTimeout(ConfettiStart, 1000);
 		gameOver = true;
 		finalcluereveal();
 		document.getElementById("answertext").hidden = true;
 		document.getElementById("submitbutton").hidden = true;
-		displayFooter();
 		localStorage.gametwon = 1;
 		localStorage.setItem(('gameover' + days), 1);
+		calculatepoints();
+		localStorage.totaltpoints = Number(localStorage.totaltpoints) + Number(localStorage.dailytpoints);
+		computetier();
+		displayFooter();
+		document.getElementById(6).innerText = "Played: " + localStorage.totaltgames;
+		document.getElementById(7).innerText = "Win %: " + winpct;
+		document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
+		//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;		
+		document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
 		setTimeout(OpenStats, 4800);
 	}
 	/* 	else if (guess == "") {
@@ -1346,7 +2770,7 @@ function update(input) {
 			localStorage.cluetcount = "X";
 			document.getElementById(6).innerText = "Played:	 " + localStorage.totaltgames;
 			document.getElementById(7).innerText = "Win %: " + winpct;
-			document.getElementById(8).innerText = "Current Streak: " + localStorage.currenttstreak;
+			document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
 			gameOver = true;
 			document.getElementById('try6').innerText += " ❌ ";
 			document.getElementById("try6").classList.add("shaketile");
