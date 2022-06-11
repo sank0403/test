@@ -11,872 +11,6 @@ for (_x in localStorage) {
 console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB"); */
 var addontextarr =[];
 var search_terms = ["Adriano Panatta", "Albert Costa", "Amelie Mauresmo", "Ana Ivanovic", "Anastasia Myskina", "Andre Agassi", "Andres Gimeno", "Andres Gomez", "Andy Murray", "Andy Roddick", "Angelique Kerber", "Arantxa Sanchez", "Arthur Ashe", "Ashleigh Barty", "Barbara Jordan", "Barbora Krejcikova", "Bianca Andreescu", "Billie Jean King", "Bjorn Borg", "Boris Becker", "Brian Teacher", "Carlos Moya", "Caroline Wozniacki", "Chris Evert", "Chris O Neil", "Conchita Martinez", "Daniil Medvedev", "Dominic Thiem", "Emma Raducanu", "Evonne Goolagong", "Flavia Pennetta", "Francesca Schiavone", "Gabriela Sabatini", "Garbine Muguruza", "Gaston Gaudio", "Goran Ivanisevic", "Guillermo Vilas", "Gustavo Kuerten", "Hana Mandlikova", "Iga Swiatek", "Ilie Nastase", "Iva Majoli", "Ivan Lendl", "Jan Kodes", "Jana Novotna", "Jelena Ostapenko", "Jennifer Capriati", "Jim Courier", "Jimmy Connors", "Johan Kriek", "John McEnroe", "John Newcombe", "Juan Carlos Ferrero", "Juan Martin Del Potro", "Justine Henin", "Ken Rosewall", "Kerry Reid", "Kim Clijsters", "Li Na", "Lindsay Davenport", "Lleyton Hewitt", "Manuel Orantes", "Marat Safin", "Margaret Court", "Maria Sharapova", "Marin Cilic", "Marion Bartoli", "Mark Edmondson", "Martina Hingis", "Martina Navratilova", "Mary Pierce", "Mats Wilander", "Michael Chang", "Michael Stich", "Mima Jausovec", "Monica Seles", "Nancy Richey", "Naomi Osaka", "Novak Djokovic", "Pat Cash", "Patrick Rafter", "Pete Sampras", "Petr Korda", "Petra Kvitova", "Rafael Nadal", "Richard Krajicek", "Rod Laver", "Roger Federer", "Roscoe Tanner", "Samantha Stosur", "Serena Williams", "Sergi Bruguera", "Simona Halep", "Sloane Stephens", "Sofia Kenin", "Stan Smith", "Stan Wawrinka", "Stefan Edberg", "Steffi Graf", "Sue Barker", "Svetlana Kuznetsova", "Thomas Johansson", "Thomas Muster", "Tracy Austin", "Venus Williams", "Victoria Azarenka", "Virginia Ruzici", "Virginia Wade", "Vitas Gerulaitis", "Yannick Noah", "Yevgeny Kafelnikov",];
-var ul = document.getElementById("result");
-ul.onclick = function (event) {
-	var target = getEventTarget(event);
-	document.getElementById("submitbutton").disabled = false;
-	document.getElementById("answertext").value = target.innerHTML;
-};
-function autocompleteMatch(input) {
-	input = input.toLowerCase();
-	if (input == '') {
-		return [];
-	}
-	var reg = new RegExp(input)
-	return search_terms.filter(function (term) {
-		if (term.toLowerCase().match(reg)) {
-			return term;
-		}
-	});
-}
-
-function showResults(val) {
-	document.getElementById("result").hidden = false;
-	document.getElementById("submitbutton").disabled = true;
-	res = document.getElementById("result");
-	res.innerHTML = '';
-	let list = '';
-	let terms = autocompleteMatch(val);
-	for (i = 0; i < terms.length; i++) {
-		if (i === 5) { break; }
-		list += '<li>' + terms[i] + '</li>';
-	}
-	res.innerHTML = '<ul>' + list + '</ul>';
-	document.getElementById("result").focus();
-	document.getElementById("result").scrollIntoView(true);
-}
-
-
-function getEventTarget(e) {
-	e = e || window.event;
-	return e.target || e.srcElement;
-}
-
-function clearzoomin() {
-	document.getElementById(0).classList.remove("zoom-in-box");
-	document.getElementById(1).classList.remove("zoom-in-box");
-	document.getElementById(2).classList.remove("zoom-in-box");
-	document.getElementById(3).classList.remove("zoom-in-box");
-	document.getElementById(4).classList.remove("zoom-in-box");
-	document.getElementById(5).classList.remove("zoom-in-box");
-}
-
-function clearanimated() {
-document.getElementById("clue-ball").classList.remove("animated");
-}
-
-function changemode() {
-	if (confirm("Acknowledge Penalty Points?\n - 2 Points docked for Easy Mode.\n - 2 more Points docked for Additional Hint.") == true) {
-		localStorage.modet = "Easy";	
-		localStorage.gltttext = localStorage.gltttext.replace("Normal", "Easy");
-		//document. location. reload();
-		switchmode();
-	}
-}
-
-function calculatepoints() {
-	if (localStorage.gametwon == 1) {
-		switch (clueCount) {
-			case 1: localStorage.dailytpoints = 10;
-				break;
-			case 2: localStorage.dailytpoints = 9;
-				break;
-			case 3: localStorage.dailytpoints = 8;
-				break;
-			case 4: localStorage.dailytpoints = 7;
-				break;
-			case 5: localStorage.dailytpoints = 6;
-				break;
-			case 7: localStorage.dailytpoints = 5;
-				break;
-		}
-		if (localStorage.modet == "Easy"){
-		localStorage.dailytpoints = Number(localStorage.dailytpoints) - 2;
-		}
-		if (localStorage.hinttused == 1){
-		localStorage.dailytpoints = Number(localStorage.dailytpoints) - 2;
-		}		
-	}
-	else {
-		localStorage.dailytpoints = 0;
-	}
-}
-
-function computetier() {
-	if (localStorage.totaltpoints < 100){
-		localStorage.tiert = "FUTURES"
-	}
-	else if (localStorage.totaltpoints >= 100 && localStorage.totaltpoints < 250){
-		localStorage.tiert = "CHALLENGERS"
-	}
-	else if (localStorage.totaltpoints >= 250 && localStorage.totaltpoints < 500){
-		localStorage.tiert = "LEVEL 250"
-	}
-	else if (localStorage.totaltpoints >= 500 && localStorage.totaltpoints < 1000){
-		localStorage.tiert = "LEVEL 500"
-	}
-	else if (localStorage.totaltpoints >= 1000 && localStorage.totaltpoints < 1500){
-		localStorage.tiert = "LEVEL 1000"
-	}
-	else if (localStorage.totaltpoints >= 1500 && localStorage.totaltpoints < 2000){
-		localStorage.tiert = "TOUR FINALS"
-	}
-	else if (localStorage.totaltpoints >= 2000){
-		localStorage.tiert = "GRAND SLAMS"
-	}	
-}
-
-function additionalhint() {
-	document.getElementById("additionalhint").innerHTML = firstname.slice(0, 1).toUpperCase();
-	for (f = 1; f < firstname.length; f++) {
-		document.getElementById("additionalhint").innerHTML += "🔳"
-	}
-	document.getElementById("additionalhint").innerHTML += "<br>" + lastname.slice(0, 1).toUpperCase();
-	for (l = 1; l < lastname.length; l++) {
-		document.getElementById("additionalhint").innerHTML += "🔳"
-	}
-	document.getElementById("try6").scrollIntoView(true);	
-	localStorage.hinttused = 1;
-}
-
-function storedadd() {
-	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
-	for (let j = 0; j < storedaddon.length; j++) {
-		var storedaddonelem = storedaddon[j];
-		for (let k = 0; k < storedaddonelem.length; k++) {
-			document.getElementById("trydetail"+(j+1)).style.display = "flex";
-			if (storedaddonelem[k] == "r"){
-				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🔴";
-			}
-			else if (storedaddonelem[k] == "y"){
-				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🟡";
-			}
-			else if (storedaddonelem[k] == "g"){
-				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🟢";
-			}        
-		}					
-	}
-}
-
-function getindices() {
-	const indices = [];
-	//const element = guess;
-	let idx = nameList.indexOf(guess);
-	//while (idx != -1) {
-	indices.push(idx);
-		//idx = nameList.indexOf(element, idx + 1);
-	//}
-	//console.log(indices);
-	var addyr = "🔴";
-	var icon1 = "r";
-	//for (let i = 0; i < indices.length; i++) {
-		if (yearList[idx] == yearList[index]) {
-			addyr = "🟢";
-			icon1 = "g";
-			//break;
-		}
-		else if (Math.abs(Number(yearList[idx]) - Number(yearList[index])) <= 3) {
-			addyr = "🟡";
-			icon1 = "y";
-		}		
-	//}
-	document.getElementById("answertext").disabled = true;
-	document.getElementById("submitbutton").disabled = true;	
-	document.getElementById("MODEButton").disabled = true;		
-	if (localStorage.modet == "Normal"){
-		document.getElementById(0).classList.add("zoom-in-box");
-		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>Born</span>";
-	}
-	//var tempyear = [];
-	//for (let j = 0; j < indices.length; j++) {
-	    //tempyear.push(yearList[indices[0]]);
-		//tempyear.sort();
-		//tempyear = [...new Set(tempyear)];
-	//}	
-	setTimeout(function(){ 
-		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
-			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex"; 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
-		}
-	}, 0);
-	//for (let k = 0; k < tempyear.length; k++) { 
-		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + yearList[idx] + "</span>";	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + yearList[idx] + "</span>";
-		}
-	//}
-	var addongs = "🔴";
-	var icon2 = "r";
-	//for (let i = 0; i < indices.length; i++) {
-		if (JSON.stringify(GSList[idx]) == JSON.stringify(GSList[index])) {
-			addongs = "🟢";
-			icon2 = "g";
-			//break;
-		}
-		else {
-			 for (let m = 0; m < GSList[idx].length; m++) {
-				 for (let n = 0; n < GSList[index].length; n++) {
-					if (JSON.stringify(GSList[idx][m]) == JSON.stringify(GSList[index][n])){
-						addongs = "🟡";
-						icon2 = "y";
-						break;						
-					}
-				 }
-			 }
-		}
-	//}
-	if (localStorage.modet == "Normal"){
-		document.getElementById(1).classList.add("zoom-in-box");
-		document.getElementById(1).innerHTML = "<span class='revealicon'>" + addongs + "</span><br><span class='revealsiz'>Slam</span>";
-	}
-/* 	var tempslam = [];
-	for (let j = 0; j < indices.length; j++) {
-	    tempslam.push(GSList[indices[j]]);
-		tempslam.sort();
-		tempslam = [...new Set(tempslam)];
-	}	 */
-	  setTimeout(function(){ 
-		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
-			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + addongs;	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + addongs;
-		}
-	}, 300);
-	for (let k = 0; k < GSList[idx].length; k++) { 
-		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSList[idx][k] + "</span>";	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSList[idx][k] + "</span>";
-		}
-	}	
-	var addonctry = "🔴";
-	var icon3 = "r";
-	
-	//for (let i = 0; i < indices.length; i++) {
-/* 		if (JSON.stringify(countryList[idx]) == JSON.stringify(countryList[index])) {
-			addonctry = "🟢";
-			icon3 = "g";
-			//break;
-		}
-		else {
-			 for (let m = 0; m < continentList[idx].length; m++) {
-				 for (let n = 0; n < continentList[index].length; n++) {
-					if (JSON.stringify(continentList[idx][m]) == JSON.stringify(continentList[index][n])){
-						addonctry = "🟡";
-						icon3 = "y";
-						break;						
-					}
-				 }
-			 }
-		} */
-	//}
-	
-	 for (let m = 0; m < continentList[idx].length; m++) {
-		 for (let n = 0; n < continentList[index].length; n++) {
-			if (JSON.stringify(continentList[idx][m]) == JSON.stringify(continentList[index][n])){
-				addonctry = "🟡";
-				icon3 = "y";
-				break;						
-			}
-		 }
-	 }	
-	 
-	 for (let m = 0; m < countryList[idx].length; m++) {
-		 for (let n = 0; n < countryList[index].length; n++) {
-			if (JSON.stringify(countryList[idx][m]) == JSON.stringify(countryList[index][n])){
-				addonctry = "🟢";
-				icon3 = "g";
-				break;						
-			}
-		 }
-	 }		 
-	
-	
-/* 	for (let i = 0; i < indices.length; i++) {
-		if (countryList[indices[i]] == countryList[index]) {
-			addonctry = "🟢";
-			icon3 = "g";
-			break;
-		}
-		else if (continentList[indices[i]] == continentList[index]) {
-			addonctry = "🟡";
-			icon3 = "y";
-		}	
-		else if ((countryList[indices[i]] == "RUS" &&  continentList[index] == "EUR") || (countryList[index] == "RUS" &&  continentList[indices[i]] == "EUR")){
-		addonctry = "🟡";
-		icon3 = "y";	
-		}		
-	} */
-	if (localStorage.modet == "Normal"){
-		document.getElementById(2).classList.add("zoom-in-box");	
-		document.getElementById(2).innerHTML = "<span class='revealicon'>" + addonctry + "</span><br><span class='revealsiz'>Country</span>";
-	}
-/* 	var tempctry = [];
-	for (let j = 0; j < indices.length; j++) {
-	    tempctry.push(countryList[indices[j]]);
-		tempctry.sort();
-		tempctry = [...new Set(tempctry)];
-	} */
-	  setTimeout(function(){ 
-		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
-			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + addonctry;	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + addonctry;
-		}
-	}, 600);	
-	for (let k = 0; k < countryList[idx].length; k++) { 
-		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + countryList[idx][k] + "</span>";
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + countryList[idx][k] + "</span>";
-		}
-	}	
-	var addongnder = "🔴";
-	var icon4 = "r";
-	if (GenList[indices[0]] == GenList[index]) {
-		addongnder = "🟢";
-		icon4 = "g";
-	}
-	if (localStorage.modet == "Normal"){
-		document.getElementById(3).classList.add("zoom-in-box");	
-		document.getElementById(3).innerHTML = "<span class='revealicon'>" + addongnder + "</span><br><span class='revealsiz'>Gender</span>";
-	}
-	  setTimeout(function(){ 
-		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
-			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + addongnder;	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + addongnder;
-		}
-	}, 900);
-	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GenList[indices[0]] + "</span>";
-	}
-	else{
-		document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GenList[indices[0]] + "</span>";
-	}	
-	var addontitle = "🔴";
-	var icon5 = "r";
-	if (GSTitleList[indices[0]] == GSTitleList[index]) {
-		addontitle = "🟢";
-		icon5 = "g";
-	}
-	else if (Math.abs(Number(GSTitleList[indices[0]]) - Number(GSTitleList[index])) <= 3) {
-		addontitle = "🟡";
-		icon5 = "y";
-	}	
-	if (localStorage.modet == "Normal"){
-		document.getElementById(4).classList.add("zoom-in-box");	
-		document.getElementById(4).innerHTML = "<span class='revealicon'>" + addontitle + "</span><br><span class='revealsiz'>Titles</span>";
-	}
-	  setTimeout(function(){ 
-		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
-			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + addontitle;	
-		}
-		else{
-			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + addontitle;
-		}
-	}, 1200);	
-	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSTitleList[indices[0]] + "</span>";	
-	}
-	else{
-		document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSTitleList[indices[0]] + "</span>";
-	}	
-	var addonplays = "🔴";
-	var icon6 = "r";
-	if (PlaysList[indices[0]] == PlaysList[index]) {
-		addonplays = "🟢";
-		icon6 = "g";
-	}
-	if (localStorage.modet == "Normal"){
-		document.getElementById(5).classList.add("zoom-in-box");	
-		document.getElementById(5).innerHTML = "<span class='revealicon'>" + addonplays + "</span><br><span class='revealsiz'>Plays</span>";		
-	}
-	  setTimeout(function(){ 
-		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
-			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + addonplays;
-		}
-		else {
-			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
-			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + addonplays;
-		}
-		document.getElementById("answertext").disabled = false;
-		document.getElementById("submitbutton").disabled = false;
-		document.getElementById("MODEButton").disabled = false;
-	}, 1500);		
-	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
-		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + "<span class='smallfont'>" + PlaysList[indices[0]] + "</span>";	
-	}
-	else{
-		document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + "<span class='smallfont'>" + PlaysList[indices[0]] + "</span>";
-	}	
-	addon = addyr + addongs + addonctry + addongnder + addontitle + addonplays;
-	var addonttext = icon1 + icon2 + icon3 + icon4 + icon5 + icon6;
-	if (addontextarr.length == 0){
-		var temp = JSON.parse(localStorage.getItem("addonttext"));
-		if (temp != ""){
-			addontextarr.push(temp);
-		}
-	}
-	addontextarr.push(addonttext);
-	addontextarr = [].concat.apply([], addontextarr);
-	localStorage.setItem("addonttext", JSON.stringify(addontextarr));
-	return addon;
-}
-
-//Confetti Begin
-btnParty.addEventListener("click", () => {
-	confetti("tsparticles", {
-		angle: 90,
-		count: 300,
-		position: { x: 50, y: 50 },
-		spread: 90,
-		startVelocity: 50,
-		decay: 0.9,
-		gravity: 1,
-		drift: 0,
-		ticks: 200,
-		colors: ["#fff", "#f00"],
-		shapes: ["square", "circle"],
-		scalar: 1,
-		zIndex: 2000,
-		disableForReducedMotion: true
-	});
-});
-//Confetti End
-//Local Storage Initial Setting
-window.localStorage;
-if (!localStorage.totaltgames) {
-	localStorage.setItem("totaltgames", 0);
-	localStorage.setItem("totaltwins", 0)
-	localStorage.setItem("currenttstreak", 0)
-	localStorage.setItem("longesttstreak", 0);
-	//localStorage.setItem("cluet0count", 0);
-	localStorage.setItem("cluet1count", 0);
-	localStorage.setItem("cluet2count", 0);
-	localStorage.setItem("cluet3count", 0);
-	localStorage.setItem("cluet4count", 0);
-	localStorage.setItem("cluet5count", 0);
-	localStorage.setItem("cluet6count", 0);
-	localStorage.setItem("cluetxcount", 0);
-	localStorage.setItem("cluetcount", "");
-	localStorage.setItem("gametwon", 0);
-	//setTimeout(OpenRules, 1100);
-}
-
-if (!localStorage.totaltpoints) {
-	localStorage.setItem("totaltpoints", 0);
-	localStorage.setItem("tiert", "FUTURES");
-}
-
-if (localStorage.cluet0count > 0) {
-	localStorage.cluet1count = Number(localStorage.cluet0count) + Number(localStorage.cluet1count);
-	localStorage.setItem("tempcluet0count", 0);
-	localStorage.tempcluet0count = localStorage.cluet0count;
-	localStorage.removeItem("cluet0count");
-}
-
-//Counter Construct
-var div = document.getElementById("bb");
-setInterval(function () {
-	var toDate = new Date();
-	var tomorrow = new Date();
-	tomorrow.setHours(24, 0, 0, 0);
-	var diffMS = tomorrow.getTime() / 1000 - toDate.getTime() / 1000;
-	var diffHr = Math.floor(diffMS / 3600);
-	diffMS = diffMS - diffHr * 3600;
-	var diffMi = Math.floor(diffMS / 60);
-	diffMS = diffMS - diffMi * 60;
-	var diffS = Math.floor(diffMS);
-	var result = ((diffHr < 10) ? "0" + diffHr : diffHr);
-	result += ":" + ((diffMi < 10) ? "0" + diffMi : diffMi);
-	result += ":" + ((diffS < 10) ? "0" + diffS : diffS);
-	if (localStorage.getItem('gameover' + days) == 1) {
-		div.innerHTML = result;
-	}
-}, 1000);
-
-//Open Stats at end of game
-function OpenStats() {
-	document.getElementById("statsbutton").click();
-}
-
-//Open Rules the very first time
-function OpenRules() {
-	document.getElementById("rulesbutton").click();
-}
-
-/* function OpenFeedback() {
-	document.getElementById("fbmodalbut").click();
-} */
-
-//Confetti after game successfully completed 
-function ConfettiStart() {
-	document.getElementById("btnParty").click();
-}
-
-//Final Clue Text Attenion 
-function FinalClue() {
-	document.getElementById("answer").classList.add("popanswer");
-}
-
-function disablederror() {
-	if (document.getElementById("submitbutton").disabled == true) {
-		document.getElementById("answer").style.color = "#dc143c";
-		document.getElementById("answer").innerText = "CODE VIOLATION! \nSELECT PLAYER FROM SEARCH RESULTS!";
-	}
-}
-
-//Button Text
-function ResetButton() {
-	let HTMLButton = document.getElementById("HTMLButton");
-	HTMLButton.innerText = "Share Stats🔊"
-}
-
-//Adjustment of ClueCount for last guess
-function SetClueCount() {
-	clueCount += 1;
-	if (clueCount == 6) {
-		clueCount = 7;
-	}
-}
-
-//Display Footer after game
-function displayFooter() {
-	document.getElementById("pzlhdr").style.display = "block";
-	document.getElementById("pzl").style.display = "block";
-	document.getElementById("bbhdr").style.display = "block";
-	document.getElementById("bb").style.display = "block";
-	document.getElementById("HTMLButton").style.display = "block";
-	document.getElementById("CoffeButton").style.display = "block";
-	document.getElementById("tier-item").innerHTML = "<center>🏆 TIER : " + localStorage.tiert + " 🏆 </center>";
-	document.getElementById("points-item").innerHTML = "<center>⭐ You Won " + localStorage.dailytpoints + " Ranking Points Today ⭐ </center>";
-	document.getElementById("points-item").style.display = "block";
-}
-//Baseline Date
-var a = new Date(); // Current date now.
-var b = new Date(2022, 3, 11, 0, 0, 0, 0); // Start of TENIZ.
-var d = (a - b); // Difference in milliseconds.
-var days = parseInt((d / 1000) / 86400);
-if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameover' + days) != 1) {
-	localStorage['gameover' + days] = 0;
-	localStorage.yeartopen = 0;
-	localStorage.slamtopen = 0;
-	localStorage.ctrytopen = 0;
-	localStorage.gndrtopen = 0;
-	//localStorage.fnfltopen = 0;
-	//localStorage.lnfltopen = 0;
-	localStorage.titltopen = 0;
-	localStorage.playtopen = 0;
-	localStorage.try1topen = "-----";
-	localStorage.try2topen = "-----";
-	localStorage.try3topen = "-----";
-	localStorage.try4topen = "-----";
-	localStorage.try5topen = "-----";
-	localStorage.try6topen = "-----";
-	//localStorage.try7topen = "";	
-	localStorage.firsttload = 0;
-    localStorage.modet = "Normal";
-	localStorage.gltttext = "ATTEMPT: 1/6 " + "MODE: " + localStorage.modet;	
-	localStorage.setItem("addonttext", JSON.stringify(""));
-	localStorage.hinttused = 0;
-	localStorage.dailytpoints = 0;
-}
-
-for (var d = 1; d < Number(days) ; d++){
-	localStorage.removeItem('gameover' + d);
-}
-
-function tryload() {
-	localStorage.try1topen = document.getElementById('try1').innerText;
-	localStorage.try2topen = document.getElementById('try2').innerText;
-	localStorage.try3topen = document.getElementById('try3').innerText;
-	localStorage.try4topen = document.getElementById('try4').innerText;
-	localStorage.try5topen = document.getElementById('try5').innerText;
-	localStorage.try6topen = document.getElementById('try6').innerText;
-	localStorage.gltttext = document.getElementById('glt').innerText;
-	//localStorage.try7topen = document.getElementById('try7').innerText;
-}
-
-//Clipboard Code
-function myFunction() {
-
-	if (Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) < 50) {
-		var winhdr = "🔴"
-	}
-	else if (Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) >= 50 && Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) < 75) {
-		var winhdr = "🟡"
-	}
-	else if (Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) >= 75) {
-		var winhdr = "🟢"
-	}
-	// //
-	if (localStorage.currenttstreak == 0) {
-		var cshdr = "🔴"
-	}
-	else if (localStorage.currenttstreak > 0 && localStorage.currenttstreak < 5) {
-		var cshdr = "🟡"
-	}
-	else if (localStorage.currenttstreak >= 5) {
-		var cshdr = "🟢"
-	}
-	
-	// //
-	// if (localStorage.longesttstreak == 0) {
-	// 	var mshdr = "\n🔴Max Streak: "
-	// }
-	// else if (localStorage.longesttstreak > 0 && localStorage.longesttstreak < 20) {
-	// 	var mshdr = "\n🟡Max Streak: "
-	// }
-	// else if (localStorage.longesttstreak >= 20) {
-	// 	var mshdr = "\n🟢Max Streak: "
-	// }
-	cluehdr = "/6 Attempts | Ranking Points: " + localStorage.dailytpoints;
-/* 	if (localStorage.cluetcount == 0) {
-		var clueicon = "🟢⚪⚪⚪⚪⚪⚪";
-	}
-	else */ if (localStorage.cluetcount == 1) {
-		var clueicon = "🟢⚪⚪⚪⚪⚪";
-	}
-	else if (localStorage.cluetcount == 2) {
-		var clueicon = "🔴🟢⚪⚪⚪⚪";
-	}
-	else if (localStorage.cluetcount == 3) {
-		var clueicon = "🔴🔴🟢⚪⚪⚪";
-	}
-	else if (localStorage.cluetcount == 4) {
-		var clueicon = "🔴🔴🔴🟢⚪⚪";
-	}
-	else if (localStorage.cluetcount == 5) {
-		var clueicon = "🔴🔴🔴🔴🟢⚪";
-	}
-	else if (localStorage.cluetcount == 6) {
-		var clueicon = "🔴🔴🔴🔴🔴🟢";
-	}
-	else if (localStorage.cluetcount == "X") {
-		var clueicon = "🔴🔴🔴🔴🔴🔴";
-		//cluehdr = "/6. All Clues Exhausted!";
-	}
-	var avggss = Math.round(((localStorage.cluet1count * 1) + (localStorage.cluet2count * 2) + (localStorage.cluet3count * 3) + (localStorage.cluet4count * 4) + (localStorage.cluet5count * 5) + (localStorage.cluet6count * 6) + (localStorage.cluetxcount * 7)) / (Number(localStorage.cluet1count) + Number(localStorage.cluet2count) + Number(localStorage.cluet3count) + Number(localStorage.cluet4count) + Number(localStorage.cluet5count) + Number(localStorage.cluet6count) + Number(localStorage.cluetxcount)));
-	if (avggss <= 3) {
-		var avggsshdr = "🟢"
-	}
-	else if (avggss > 3 && avggss < 6) {
-		var avggsshdr = "🟡"
-	}
-	else if (avggss >= 6) {
-		var avggsshdr = "🔴"
-	}		
-	//var copyText = "🎾 TENIZ! - Day " + days + " 🎾: " + localStorage.cluetcount + "/6" + "\n\n🟢Played: " + localStorage.totaltgames + winhdr + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + cshdr + localStorage.currenttstreak + mshdr + localStorage.longesttstreak + "\n\n💻https://tenizgame.github.io/";
-/* 	if (localStorage.hinttused == 0) {
-		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";
-	}
-	else {
-		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";	
-	} */
-	
-	if (localStorage.hinttused == 0) {
-		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";
-	}
-	else {
-		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";	
-	}
-	
-	/* Copy the text inside the text field */
-	navigator.clipboard.writeText(copyText);
-
-	//Button Text
-	let HTMLButton = document.getElementById("HTMLButton");
-	HTMLButton.innerText = "Copied☑️"
-	setTimeout(ResetButton, 1000);
-}
-
-//clue reveal 
-function ballvanish0() {
-	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
-}
-function ballvanish1() {
-	document.getElementById(1).innerHTML = "";
-	switch (GSList[index].length) {
-		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
-			break;	
-		case 2: for (let k = 0; k < GSList[index].length; k++) { 
-					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
-				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
-			break;
-		case 3: for (let k = 0; k < GSList[index].length; k++) { 
-					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
-				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
-			break;	
-		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
-				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
-			break;				
-	}
-}
-function ballvanish2() {
-	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
-	document.getElementById(2).innerHTML = "";
-	switch (countryList[index].length) {
-		case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
-			break;	
-		case 2: for (let k = 0; k < countryList[index].length; k++) { 
-					document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
-				}
-				document.getElementById(2).innerHTML += "<span class='revealsiz'>(Country)</span>";
-			break;			
-	}	
-}
-function ballvanish3() {
-	document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>(Gender)</span>";
-}
-function ballvanish4() {
-	document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles + "</span><br><br><span class='revealsiz'>(Titles)</span>";
-}
-function ballvanish5() {
-	document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays + "</span><br><br><span class='revealsiz'>(Plays)</span>";
-}
-
-//final clue reveal 
-function finalcluereveal() {
-	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>Born</span>";
-	document.getElementById(1).innerHTML = "";
-	switch (GSList[index].length) {
-		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slam</span>";
-			break;	
-		case 2: for (let k = 0; k < GSList[index].length; k++) { 
-					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
-				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
-			break;
-		case 3: for (let k = 0; k < GSList[index].length; k++) { 
-					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
-				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
-			break;	
-		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
-				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
-			break;				
-	}
-	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
-	document.getElementById(2).innerHTML = "";
-	switch (countryList[index].length) {
-		case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
-			break;	
-		case 2: for (let k = 0; k < countryList[index].length; k++) { 
-					document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
-				}
-				document.getElementById(2).innerHTML += "<span class='revealsiz'>Country</span>";
-			break;			
-	}		
-	document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>Gender</span>";
-	document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles + "</span><br><br><span class='revealsiz'>Titles</span>";
-	document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays + "</span><br><br><span class='revealsiz'>Plays</span>";
-}
-
-//Array Manipulation for Clues
-function FetchDataEasy() {
-	if (!gameOver) {
-		var elementid = GetElemid(arrayid);
-		elementid = Number(elementid);
-		switch (elementid) {
-			case 0: document.getElementById(0).classList.add("zoom-in-out-box");
-				setTimeout(ballvanish0, 1500);
-				localStorage.yeartopen = 1;
-				break;
-			case 1: document.getElementById(1).classList.add("zoom-in-out-box");
-				setTimeout(ballvanish1, 1500);
-				localStorage.slamtopen = 1;
-				break;
-			case 2: document.getElementById(2).classList.add("zoom-in-out-box");
-				setTimeout(ballvanish2, 1500);
-				localStorage.ctrytopen = 1;
-				break;
-			case 3: document.getElementById(3).classList.add("zoom-in-out-box");
-				setTimeout(ballvanish3, 1500);
-				localStorage.gndrtopen = 1;
-				break;
-			case 4: document.getElementById(4).classList.add("zoom-in-out-box");
-				setTimeout(ballvanish4, 1500);
-				//localStorage.fnfltopen = 1;
-				localStorage.titltopen = 1;
-				break;
-			case 5: document.getElementById(5).classList.add("zoom-in-out-box");
-				setTimeout(ballvanish5, 1500);
-				//localStorage.lnfltopen = 1;
-				localStorage.playtopen = 1;
-				break;
-		}
-		arrayid.splice(arrayid.indexOf(elementid), 1);
-		clueCount += 1;
-	}
-}
-
-function FetchDataNormal() {
-	if (!gameOver) {
-		var elementid = GetElemid(arrayid);
-		elementid = Number(elementid);
-		switch (elementid) {
-			case 0: 
-				localStorage.yeartopen = 1;
-				break;
-			case 1: 
-				localStorage.slamtopen = 1;
-				break;
-			case 2: 
-				localStorage.ctrytopen = 1;
-				break;
-			case 3: 
-				localStorage.gndrtopen = 1;
-				break;
-			case 4: 
-				//localStorage.fnfltopen = 1;
-				localStorage.titltopen = 1;
-				break;
-			case 5: 
-				//localStorage.lnfltopen = 1;
-				localStorage.playtopen = 1;
-				break;
-		}
-		arrayid.splice(arrayid.indexOf(elementid), 1);
-		clueCount += 1;
-	}
-}
-
-function GetElemid() {
-	var arrayidind = [Math.floor(Math.random() * arrayid.length)];
-	var returnid = arrayid[arrayidind];
-	return returnid;
-}
-
-// *************************Initial Declaration******************************
-var enterHit = false;
-var clueCount = 0;
-var gameOver = false;
-var arrayid = [0, 1, 2, 3, 4, 5]
 var yearList = ["1962",
 "1973",
 "1951",
@@ -1997,8 +1131,875 @@ var PlaysList = ["RH",
 "RH",
 "RH",
 ]
-//var index = days - 1;
-if (days%yearList.length > 0){
+var ul = document.getElementById("result");
+ul.onclick = function (event) {
+	var target = getEventTarget(event);
+	document.getElementById("submitbutton").disabled = false;
+	document.getElementById("answertext").value = target.innerHTML;
+};
+function autocompleteMatch(input) {
+	input = input.toLowerCase();
+	if (input == '') {
+		return [];
+	}
+	var reg = new RegExp(input)
+	return search_terms.filter(function (term) {
+		if (term.toLowerCase().match(reg)) {
+			return term;
+		}
+	});
+}
+
+function showResults(val) {
+	document.getElementById("result").hidden = false;
+	document.getElementById("submitbutton").disabled = true;
+	res = document.getElementById("result");
+	res.innerHTML = '';
+	let list = '';
+	let terms = autocompleteMatch(val);
+	for (i = 0; i < terms.length; i++) {
+		if (i === 5) { break; }
+		list += '<li>' + terms[i] + '</li>';
+	}
+	res.innerHTML = '<ul>' + list + '</ul>';
+	document.getElementById("result").focus();
+	document.getElementById("result").scrollIntoView(true);
+}
+
+
+function getEventTarget(e) {
+	e = e || window.event;
+	return e.target || e.srcElement;
+}
+
+function clearzoomin() {
+	document.getElementById(0).classList.remove("zoom-in-box");
+	document.getElementById(1).classList.remove("zoom-in-box");
+	document.getElementById(2).classList.remove("zoom-in-box");
+	document.getElementById(3).classList.remove("zoom-in-box");
+	document.getElementById(4).classList.remove("zoom-in-box");
+	document.getElementById(5).classList.remove("zoom-in-box");
+}
+
+function clearanimated() {
+document.getElementById("clue-ball").classList.remove("animated");
+}
+
+function changemode() {
+	if (confirm("Acknowledge Penalty Points?\n - 2 Points docked for Easy Mode.\n - 2 more Points docked for Additional Hint.") == true) {
+		localStorage.modet = "Easy";	
+		localStorage.gltttext = localStorage.gltttext.replace("Normal", "Easy");
+		//document. location. reload();
+		switchmode();
+	}
+}
+
+function calculatepoints() {
+	if (localStorage.gametwon == 1) {
+		switch (clueCount) {
+			case 1: localStorage.dailytpoints = 10;
+				break;
+			case 2: localStorage.dailytpoints = 9;
+				break;
+			case 3: localStorage.dailytpoints = 8;
+				break;
+			case 4: localStorage.dailytpoints = 7;
+				break;
+			case 5: localStorage.dailytpoints = 6;
+				break;
+			case 7: localStorage.dailytpoints = 5;
+				break;
+		}
+		if (localStorage.modet == "Easy"){
+		localStorage.dailytpoints = Number(localStorage.dailytpoints) - 2;
+		}
+		if (localStorage.hinttused == 1){
+		localStorage.dailytpoints = Number(localStorage.dailytpoints) - 2;
+		}		
+	}
+	else {
+		localStorage.dailytpoints = 0;
+	}
+}
+
+function computetier() {
+	if (localStorage.totaltpoints < 100){
+		localStorage.tiert = "FUTURES"
+	}
+	else if (localStorage.totaltpoints >= 100 && localStorage.totaltpoints < 250){
+		localStorage.tiert = "CHALLENGERS"
+	}
+	else if (localStorage.totaltpoints >= 250 && localStorage.totaltpoints < 500){
+		localStorage.tiert = "LEVEL 250"
+	}
+	else if (localStorage.totaltpoints >= 500 && localStorage.totaltpoints < 1000){
+		localStorage.tiert = "LEVEL 500"
+	}
+	else if (localStorage.totaltpoints >= 1000 && localStorage.totaltpoints < 1500){
+		localStorage.tiert = "LEVEL 1000"
+	}
+	else if (localStorage.totaltpoints >= 1500 && localStorage.totaltpoints < 2000){
+		localStorage.tiert = "TOUR FINALS"
+	}
+	else if (localStorage.totaltpoints >= 2000){
+		localStorage.tiert = "GRAND SLAMS"
+	}	
+}
+
+function additionalhint() {
+	document.getElementById("additionalhint").innerHTML = firstname.slice(0, 1).toUpperCase();
+	for (f = 1; f < firstname.length; f++) {
+		document.getElementById("additionalhint").innerHTML += "🔳"
+	}
+	document.getElementById("additionalhint").innerHTML += "<br>" + lastname.slice(0, 1).toUpperCase();
+	for (l = 1; l < lastname.length; l++) {
+		document.getElementById("additionalhint").innerHTML += "🔳"
+	}
+	document.getElementById("try6").scrollIntoView(true);	
+	localStorage.hinttused = 1;
+}
+
+function storedadd() {
+	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
+	for (let j = 0; j < storedaddon.length; j++) {
+		var storedaddonelem = storedaddon[j];
+		for (let k = 0; k < storedaddonelem.length; k++) {
+			document.getElementById("trydetail"+(j+1)).style.display = "flex";
+			if (storedaddonelem[k] == "r"){
+				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🔴";
+			}
+			else if (storedaddonelem[k] == "y"){
+				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🟡";
+			}
+			else if (storedaddonelem[k] == "g"){
+				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🟢";
+			}        
+		}					
+	}
+}
+
+function getindices() {
+	const indices = [];
+	//const element = guess;
+	let idx = nameList.indexOf(guess);
+	//while (idx != -1) {
+	indices.push(idx);
+		//idx = nameList.indexOf(element, idx + 1);
+	//}
+	//console.log(indices);
+	var addyr = "🔴";
+	var icon1 = "r";
+	//for (let i = 0; i < indices.length; i++) {
+		if (yearList[idx] == yearList[index]) {
+			addyr = "🟢";
+			icon1 = "g";
+			//break;
+		}
+		else if (Math.abs(Number(yearList[idx]) - Number(yearList[index])) <= 3) {
+			addyr = "🟡";
+			icon1 = "y";
+		}		
+	//}
+	document.getElementById("answertext").disabled = true;
+	document.getElementById("submitbutton").disabled = true;	
+	document.getElementById("MODEButton").disabled = true;		
+	if (localStorage.modet == "Normal"){
+		document.getElementById(0).classList.add("zoom-in-box");
+		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>Born</span>";
+	}
+	//var tempyear = [];
+	//for (let j = 0; j < indices.length; j++) {
+	    //tempyear.push(yearList[indices[0]]);
+		//tempyear.sort();
+		//tempyear = [...new Set(tempyear)];
+	//}	
+	setTimeout(function(){ 
+		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
+			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex"; 
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
+		}
+	}, 0);
+	//for (let k = 0; k < tempyear.length; k++) { 
+		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + yearList[idx] + "</span>";	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + "<span class='smallfont'>" + yearList[idx] + "</span>";
+		}
+	//}
+	var addongs = "🔴";
+	var icon2 = "r";
+	//for (let i = 0; i < indices.length; i++) {
+		if (JSON.stringify(GSList[idx]) == JSON.stringify(GSList[index])) {
+			addongs = "🟢";
+			icon2 = "g";
+			//break;
+		}
+		else {
+			 for (let m = 0; m < GSList[idx].length; m++) {
+				 for (let n = 0; n < GSList[index].length; n++) {
+					if (JSON.stringify(GSList[idx][m]) == JSON.stringify(GSList[index][n])){
+						addongs = "🟡";
+						icon2 = "y";
+						break;						
+					}
+				 }
+			 }
+		}
+	//}
+	if (localStorage.modet == "Normal"){
+		document.getElementById(1).classList.add("zoom-in-box");
+		document.getElementById(1).innerHTML = "<span class='revealicon'>" + addongs + "</span><br><span class='revealsiz'>Slam</span>";
+	}
+/* 	var tempslam = [];
+	for (let j = 0; j < indices.length; j++) {
+	    tempslam.push(GSList[indices[j]]);
+		tempslam.sort();
+		tempslam = [...new Set(tempslam)];
+	}	 */
+	  setTimeout(function(){ 
+		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
+			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + addongs;	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + addongs;
+		}
+	}, 300);
+	for (let k = 0; k < GSList[idx].length; k++) { 
+		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSList[idx][k] + "</span>";	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail2")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSList[idx][k] + "</span>";
+		}
+	}	
+	var addonctry = "🔴";
+	var icon3 = "r";
+	
+	//for (let i = 0; i < indices.length; i++) {
+/* 		if (JSON.stringify(countryList[idx]) == JSON.stringify(countryList[index])) {
+			addonctry = "🟢";
+			icon3 = "g";
+			//break;
+		}
+		else {
+			 for (let m = 0; m < continentList[idx].length; m++) {
+				 for (let n = 0; n < continentList[index].length; n++) {
+					if (JSON.stringify(continentList[idx][m]) == JSON.stringify(continentList[index][n])){
+						addonctry = "🟡";
+						icon3 = "y";
+						break;						
+					}
+				 }
+			 }
+		} */
+	//}
+	
+	 for (let m = 0; m < continentList[idx].length; m++) {
+		 for (let n = 0; n < continentList[index].length; n++) {
+			if (JSON.stringify(continentList[idx][m]) == JSON.stringify(continentList[index][n])){
+				addonctry = "🟡";
+				icon3 = "y";
+				break;						
+			}
+		 }
+	 }	
+	 
+	 for (let m = 0; m < countryList[idx].length; m++) {
+		 for (let n = 0; n < countryList[index].length; n++) {
+			if (JSON.stringify(countryList[idx][m]) == JSON.stringify(countryList[index][n])){
+				addonctry = "🟢";
+				icon3 = "g";
+				break;						
+			}
+		 }
+	 }		 
+	
+	
+/* 	for (let i = 0; i < indices.length; i++) {
+		if (countryList[indices[i]] == countryList[index]) {
+			addonctry = "🟢";
+			icon3 = "g";
+			break;
+		}
+		else if (continentList[indices[i]] == continentList[index]) {
+			addonctry = "🟡";
+			icon3 = "y";
+		}	
+		else if ((countryList[indices[i]] == "RUS" &&  continentList[index] == "EUR") || (countryList[index] == "RUS" &&  continentList[indices[i]] == "EUR")){
+		addonctry = "🟡";
+		icon3 = "y";	
+		}		
+	} */
+	if (localStorage.modet == "Normal"){
+		document.getElementById(2).classList.add("zoom-in-box");	
+		document.getElementById(2).innerHTML = "<span class='revealicon'>" + addonctry + "</span><br><span class='revealsiz'>Country</span>";
+	}
+/* 	var tempctry = [];
+	for (let j = 0; j < indices.length; j++) {
+	    tempctry.push(countryList[indices[j]]);
+		tempctry.sort();
+		tempctry = [...new Set(tempctry)];
+	} */
+	  setTimeout(function(){ 
+		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
+			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + addonctry;	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + addonctry;
+		}
+	}, 600);	
+	for (let k = 0; k < countryList[idx].length; k++) { 
+		if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + countryList[idx][k] + "</span>";
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail3")[0].innerHTML += "<br>" + "<span class='smallfont'>" + countryList[idx][k] + "</span>";
+		}
+	}	
+	var addongnder = "🔴";
+	var icon4 = "r";
+	if (GenList[indices[0]] == GenList[index]) {
+		addongnder = "🟢";
+		icon4 = "g";
+	}
+	if (localStorage.modet == "Normal"){
+		document.getElementById(3).classList.add("zoom-in-box");	
+		document.getElementById(3).innerHTML = "<span class='revealicon'>" + addongnder + "</span><br><span class='revealsiz'>Gender</span>";
+	}
+	  setTimeout(function(){ 
+		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
+			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + addongnder;	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + addongnder;
+		}
+	}, 900);
+	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
+		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GenList[indices[0]] + "</span>";
+	}
+	else{
+		document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail4")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GenList[indices[0]] + "</span>";
+	}	
+	var addontitle = "🔴";
+	var icon5 = "r";
+	if (GSTitleList[indices[0]] == GSTitleList[index]) {
+		addontitle = "🟢";
+		icon5 = "g";
+	}
+	else if (Math.abs(Number(GSTitleList[indices[0]]) - Number(GSTitleList[index])) <= 3) {
+		addontitle = "🟡";
+		icon5 = "y";
+	}	
+	if (localStorage.modet == "Normal"){
+		document.getElementById(4).classList.add("zoom-in-box");	
+		document.getElementById(4).innerHTML = "<span class='revealicon'>" + addontitle + "</span><br><span class='revealsiz'>Titles</span>";
+	}
+	  setTimeout(function(){ 
+		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
+			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + addontitle;	
+		}
+		else{
+			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + addontitle;
+		}
+	}, 1200);	
+	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
+		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSTitleList[indices[0]] + "</span>";	
+	}
+	else{
+		document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail5")[0].innerHTML += "<br>" + "<span class='smallfont'>" + GSTitleList[indices[0]] + "</span>";
+	}	
+	var addonplays = "🔴";
+	var icon6 = "r";
+	if (PlaysList[indices[0]] == PlaysList[index]) {
+		addonplays = "🟢";
+		icon6 = "g";
+	}
+	if (localStorage.modet == "Normal"){
+		document.getElementById(5).classList.add("zoom-in-box");	
+		document.getElementById(5).innerHTML = "<span class='revealicon'>" + addonplays + "</span><br><span class='revealsiz'>Plays</span>";		
+	}
+	  setTimeout(function(){ 
+		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
+			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + addonplays;
+		}
+		else {
+			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";			
+			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + addonplays;
+		}
+		document.getElementById("answertext").disabled = false;
+		document.getElementById("submitbutton").disabled = false;
+		document.getElementById("MODEButton").disabled = false;
+	}, 1500);		
+	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
+		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + "<span class='smallfont'>" + PlaysList[indices[0]] + "</span>";	
+	}
+	else{
+		document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + "<span class='smallfont'>" + PlaysList[indices[0]] + "</span>";
+	}	
+	addon = addyr + addongs + addonctry + addongnder + addontitle + addonplays;
+	var addonttext = icon1 + icon2 + icon3 + icon4 + icon5 + icon6;
+	if (addontextarr.length == 0){
+		var temp = JSON.parse(localStorage.getItem("addonttext"));
+		if (temp != ""){
+			addontextarr.push(temp);
+		}
+	}
+	addontextarr.push(addonttext);
+	addontextarr = [].concat.apply([], addontextarr);
+	localStorage.setItem("addonttext", JSON.stringify(addontextarr));
+	return addon;
+}
+
+//Confetti Begin
+btnParty.addEventListener("click", () => {
+	confetti("tsparticles", {
+		angle: 90,
+		count: 300,
+		position: { x: 50, y: 50 },
+		spread: 90,
+		startVelocity: 50,
+		decay: 0.9,
+		gravity: 1,
+		drift: 0,
+		ticks: 200,
+		colors: ["#fff", "#f00"],
+		shapes: ["square", "circle"],
+		scalar: 1,
+		zIndex: 2000,
+		disableForReducedMotion: true
+	});
+});
+//Confetti End
+//Local Storage Initial Setting
+window.localStorage;
+if (!localStorage.totaltgames) {
+	localStorage.setItem("totaltgames", 0);
+	localStorage.setItem("totaltwins", 0)
+	localStorage.setItem("currenttstreak", 0)
+	localStorage.setItem("longesttstreak", 0);
+	//localStorage.setItem("cluet0count", 0);
+	localStorage.setItem("cluet1count", 0);
+	localStorage.setItem("cluet2count", 0);
+	localStorage.setItem("cluet3count", 0);
+	localStorage.setItem("cluet4count", 0);
+	localStorage.setItem("cluet5count", 0);
+	localStorage.setItem("cluet6count", 0);
+	localStorage.setItem("cluetxcount", 0);
+	localStorage.setItem("cluetcount", "");
+	localStorage.setItem("gametwon", 0);
+	//setTimeout(OpenRules, 1100);
+}
+
+if (!localStorage.totaltpoints) {
+	localStorage.setItem("totaltpoints", 0);
+	localStorage.setItem("tiert", "FUTURES");
+}
+
+if (localStorage.cluet0count > 0) {
+	localStorage.cluet1count = Number(localStorage.cluet0count) + Number(localStorage.cluet1count);
+	localStorage.setItem("tempcluet0count", 0);
+	localStorage.tempcluet0count = localStorage.cluet0count;
+	localStorage.removeItem("cluet0count");
+}
+
+//Counter Construct
+var div = document.getElementById("bb");
+setInterval(function () {
+	var toDate = new Date();
+	var tomorrow = new Date();
+	tomorrow.setHours(24, 0, 0, 0);
+	var diffMS = tomorrow.getTime() / 1000 - toDate.getTime() / 1000;
+	var diffHr = Math.floor(diffMS / 3600);
+	diffMS = diffMS - diffHr * 3600;
+	var diffMi = Math.floor(diffMS / 60);
+	diffMS = diffMS - diffMi * 60;
+	var diffS = Math.floor(diffMS);
+	var result = ((diffHr < 10) ? "0" + diffHr : diffHr);
+	result += ":" + ((diffMi < 10) ? "0" + diffMi : diffMi);
+	result += ":" + ((diffS < 10) ? "0" + diffS : diffS);
+	if (localStorage.getItem('gameover' + days) == 1) {
+		div.innerHTML = result;
+	}
+}, 1000);
+
+//Open Stats at end of game
+function OpenStats() {
+	document.getElementById("statsbutton").click();
+}
+
+//Open Rules the very first time
+function OpenRules() {
+	document.getElementById("rulesbutton").click();
+}
+
+/* function OpenFeedback() {
+	document.getElementById("fbmodalbut").click();
+} */
+
+//Confetti after game successfully completed 
+function ConfettiStart() {
+	document.getElementById("btnParty").click();
+}
+
+//Final Clue Text Attenion 
+function FinalClue() {
+	document.getElementById("answer").classList.add("popanswer");
+}
+
+function disablederror() {
+	if (document.getElementById("submitbutton").disabled == true) {
+		document.getElementById("answer").style.color = "#dc143c";
+		document.getElementById("answer").innerText = "CODE VIOLATION! \nSELECT PLAYER FROM SEARCH RESULTS!";
+	}
+}
+
+//Button Text
+function ResetButton() {
+	let HTMLButton = document.getElementById("HTMLButton");
+	HTMLButton.innerText = "Share Stats🔊"
+}
+
+//Adjustment of ClueCount for last guess
+function SetClueCount() {
+	clueCount += 1;
+	if (clueCount == 6) {
+		clueCount = 7;
+	}
+}
+
+//Display Footer after game
+function displayFooter() {
+	document.getElementById("pzlhdr").style.display = "block";
+	document.getElementById("pzl").style.display = "block";
+	document.getElementById("bbhdr").style.display = "block";
+	document.getElementById("bb").style.display = "block";
+	document.getElementById("HTMLButton").style.display = "block";
+	document.getElementById("CoffeButton").style.display = "block";
+	document.getElementById("tier-item").innerHTML = "<center>🏆 TIER : " + localStorage.tiert + " 🏆 </center>";
+	document.getElementById("points-item").innerHTML = "<center>⭐ You Won " + localStorage.dailytpoints + " Ranking Points Today ⭐ </center>";
+	document.getElementById("points-item").style.display = "block";
+}
+//Baseline Date
+var a = new Date(); // Current date now.
+var b = new Date(2022, 3, 11, 0, 0, 0, 0); // Start of TENIZ.
+var d = (a - b); // Difference in milliseconds.
+//var days = parseInt((d / 1000) / 86400);
+var days = [Math.floor(Math.random()*yearList.length)];
+if (localStorage.getItem('gameover' + days) != 0 && localStorage.getItem('gameover' + days) != 1) {
+	localStorage['gameover' + days] = 0;
+	localStorage.yeartopen = 0;
+	localStorage.slamtopen = 0;
+	localStorage.ctrytopen = 0;
+	localStorage.gndrtopen = 0;
+	//localStorage.fnfltopen = 0;
+	//localStorage.lnfltopen = 0;
+	localStorage.titltopen = 0;
+	localStorage.playtopen = 0;
+	localStorage.try1topen = "-----";
+	localStorage.try2topen = "-----";
+	localStorage.try3topen = "-----";
+	localStorage.try4topen = "-----";
+	localStorage.try5topen = "-----";
+	localStorage.try6topen = "-----";
+	//localStorage.try7topen = "";	
+	localStorage.firsttload = 0;
+    localStorage.modet = "Normal";
+	localStorage.gltttext = "ATTEMPT: 1/6 " + "MODE: " + localStorage.modet;	
+	localStorage.setItem("addonttext", JSON.stringify(""));
+	localStorage.hinttused = 0;
+	localStorage.dailytpoints = 0;
+}
+
+for (var d = 1; d < Number(days) ; d++){
+	localStorage.removeItem('gameover' + d);
+}
+
+function tryload() {
+	localStorage.try1topen = document.getElementById('try1').innerText;
+	localStorage.try2topen = document.getElementById('try2').innerText;
+	localStorage.try3topen = document.getElementById('try3').innerText;
+	localStorage.try4topen = document.getElementById('try4').innerText;
+	localStorage.try5topen = document.getElementById('try5').innerText;
+	localStorage.try6topen = document.getElementById('try6').innerText;
+	localStorage.gltttext = document.getElementById('glt').innerText;
+	//localStorage.try7topen = document.getElementById('try7').innerText;
+}
+
+//Clipboard Code
+function myFunction() {
+
+	if (Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) < 50) {
+		var winhdr = "🔴"
+	}
+	else if (Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) >= 50 && Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) < 75) {
+		var winhdr = "🟡"
+	}
+	else if (Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) >= 75) {
+		var winhdr = "🟢"
+	}
+	// //
+	if (localStorage.currenttstreak == 0) {
+		var cshdr = "🔴"
+	}
+	else if (localStorage.currenttstreak > 0 && localStorage.currenttstreak < 5) {
+		var cshdr = "🟡"
+	}
+	else if (localStorage.currenttstreak >= 5) {
+		var cshdr = "🟢"
+	}
+	
+	// //
+	// if (localStorage.longesttstreak == 0) {
+	// 	var mshdr = "\n🔴Max Streak: "
+	// }
+	// else if (localStorage.longesttstreak > 0 && localStorage.longesttstreak < 20) {
+	// 	var mshdr = "\n🟡Max Streak: "
+	// }
+	// else if (localStorage.longesttstreak >= 20) {
+	// 	var mshdr = "\n🟢Max Streak: "
+	// }
+	cluehdr = "/6 Attempts | Ranking Points: " + localStorage.dailytpoints;
+/* 	if (localStorage.cluetcount == 0) {
+		var clueicon = "🟢⚪⚪⚪⚪⚪⚪";
+	}
+	else */ if (localStorage.cluetcount == 1) {
+		var clueicon = "🟢⚪⚪⚪⚪⚪";
+	}
+	else if (localStorage.cluetcount == 2) {
+		var clueicon = "🔴🟢⚪⚪⚪⚪";
+	}
+	else if (localStorage.cluetcount == 3) {
+		var clueicon = "🔴🔴🟢⚪⚪⚪";
+	}
+	else if (localStorage.cluetcount == 4) {
+		var clueicon = "🔴🔴🔴🟢⚪⚪";
+	}
+	else if (localStorage.cluetcount == 5) {
+		var clueicon = "🔴🔴🔴🔴🟢⚪";
+	}
+	else if (localStorage.cluetcount == 6) {
+		var clueicon = "🔴🔴🔴🔴🔴🟢";
+	}
+	else if (localStorage.cluetcount == "X") {
+		var clueicon = "🔴🔴🔴🔴🔴🔴";
+		//cluehdr = "/6. All Clues Exhausted!";
+	}
+	var avggss = Math.round(((localStorage.cluet1count * 1) + (localStorage.cluet2count * 2) + (localStorage.cluet3count * 3) + (localStorage.cluet4count * 4) + (localStorage.cluet5count * 5) + (localStorage.cluet6count * 6) + (localStorage.cluetxcount * 7)) / (Number(localStorage.cluet1count) + Number(localStorage.cluet2count) + Number(localStorage.cluet3count) + Number(localStorage.cluet4count) + Number(localStorage.cluet5count) + Number(localStorage.cluet6count) + Number(localStorage.cluetxcount)));
+	if (avggss <= 3) {
+		var avggsshdr = "🟢"
+	}
+	else if (avggss > 3 && avggss < 6) {
+		var avggsshdr = "🟡"
+	}
+	else if (avggss >= 6) {
+		var avggsshdr = "🔴"
+	}		
+	//var copyText = "🎾 TENIZ! - Day " + days + " 🎾: " + localStorage.cluetcount + "/6" + "\n\n🟢Played: " + localStorage.totaltgames + winhdr + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + cshdr + localStorage.currenttstreak + mshdr + localStorage.longesttstreak + "\n\n💻https://tenizgame.github.io/";
+/* 	if (localStorage.hinttused == 0) {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";
+	}
+	else {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";	
+	} */
+	
+	if (localStorage.hinttused == 0) {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";
+	}
+	else {
+		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";	
+	}
+	
+	/* Copy the text inside the text field */
+	navigator.clipboard.writeText(copyText);
+
+	//Button Text
+	let HTMLButton = document.getElementById("HTMLButton");
+	HTMLButton.innerText = "Copied☑️"
+	setTimeout(ResetButton, 1000);
+}
+
+//clue reveal 
+function ballvanish0() {
+	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(Born)</span>";
+}
+function ballvanish1() {
+	document.getElementById(1).innerHTML = "";
+	switch (GSList[index].length) {
+		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+			break;	
+		case 2: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+			break;
+		case 3: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+			break;	
+		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+			break;				
+	}
+}
+function ballvanish2() {
+	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+	document.getElementById(2).innerHTML = "";
+	switch (countryList[index].length) {
+		case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>(Country)</span>";
+			break;	
+		case 2: for (let k = 0; k < countryList[index].length; k++) { 
+					document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
+				}
+				document.getElementById(2).innerHTML += "<span class='revealsiz'>(Country)</span>";
+			break;			
+	}	
+}
+function ballvanish3() {
+	document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>(Gender)</span>";
+}
+function ballvanish4() {
+	document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles + "</span><br><br><span class='revealsiz'>(Titles)</span>";
+}
+function ballvanish5() {
+	document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays + "</span><br><br><span class='revealsiz'>(Plays)</span>";
+}
+
+//final clue reveal 
+function finalcluereveal() {
+	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>Born</span>";
+	document.getElementById(1).innerHTML = "";
+	switch (GSList[index].length) {
+		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slam</span>";
+			break;	
+		case 2: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+			break;
+		case 3: for (let k = 0; k < GSList[index].length; k++) { 
+					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
+				}
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+			break;	
+		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+			break;				
+	}
+	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
+	document.getElementById(2).innerHTML = "";
+	switch (countryList[index].length) {
+		case 1: document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
+			break;	
+		case 2: for (let k = 0; k < countryList[index].length; k++) { 
+					document.getElementById(2).innerHTML += "<span class='revealcol'>" + countryList[index][k] + "<br></span>";
+				}
+				document.getElementById(2).innerHTML += "<span class='revealsiz'>Country</span>";
+			break;			
+	}		
+	document.getElementById(3).innerHTML = "<span class='revealcol'>" + gender + "</span><br><br><span class='revealsiz'>Gender</span>";
+	document.getElementById(4).innerHTML = "<span class='revealcol'>" + titles + "</span><br><br><span class='revealsiz'>Titles</span>";
+	document.getElementById(5).innerHTML = "<span class='revealcol'>" + plays + "</span><br><br><span class='revealsiz'>Plays</span>";
+}
+
+//Array Manipulation for Clues
+function FetchDataEasy() {
+	if (!gameOver) {
+		var elementid = GetElemid(arrayid);
+		elementid = Number(elementid);
+		switch (elementid) {
+			case 0: document.getElementById(0).classList.add("zoom-in-out-box");
+				setTimeout(ballvanish0, 1500);
+				localStorage.yeartopen = 1;
+				break;
+			case 1: document.getElementById(1).classList.add("zoom-in-out-box");
+				setTimeout(ballvanish1, 1500);
+				localStorage.slamtopen = 1;
+				break;
+			case 2: document.getElementById(2).classList.add("zoom-in-out-box");
+				setTimeout(ballvanish2, 1500);
+				localStorage.ctrytopen = 1;
+				break;
+			case 3: document.getElementById(3).classList.add("zoom-in-out-box");
+				setTimeout(ballvanish3, 1500);
+				localStorage.gndrtopen = 1;
+				break;
+			case 4: document.getElementById(4).classList.add("zoom-in-out-box");
+				setTimeout(ballvanish4, 1500);
+				//localStorage.fnfltopen = 1;
+				localStorage.titltopen = 1;
+				break;
+			case 5: document.getElementById(5).classList.add("zoom-in-out-box");
+				setTimeout(ballvanish5, 1500);
+				//localStorage.lnfltopen = 1;
+				localStorage.playtopen = 1;
+				break;
+		}
+		arrayid.splice(arrayid.indexOf(elementid), 1);
+		clueCount += 1;
+	}
+}
+
+function FetchDataNormal() {
+	if (!gameOver) {
+		var elementid = GetElemid(arrayid);
+		elementid = Number(elementid);
+		switch (elementid) {
+			case 0: 
+				localStorage.yeartopen = 1;
+				break;
+			case 1: 
+				localStorage.slamtopen = 1;
+				break;
+			case 2: 
+				localStorage.ctrytopen = 1;
+				break;
+			case 3: 
+				localStorage.gndrtopen = 1;
+				break;
+			case 4: 
+				//localStorage.fnfltopen = 1;
+				localStorage.titltopen = 1;
+				break;
+			case 5: 
+				//localStorage.lnfltopen = 1;
+				localStorage.playtopen = 1;
+				break;
+		}
+		arrayid.splice(arrayid.indexOf(elementid), 1);
+		clueCount += 1;
+	}
+}
+
+function GetElemid() {
+	var arrayidind = [Math.floor(Math.random() * arrayid.length)];
+	var returnid = arrayid[arrayidind];
+	return returnid;
+}
+
+// *************************Initial Declaration******************************
+var enterHit = false;
+var clueCount = 0;
+var gameOver = false;
+var arrayid = [0, 1, 2, 3, 4, 5]
+var index = days;
+/* if (days%yearList.length > 0){
 	var offset = Math.floor(days/yearList.length);
 }
 else{
@@ -2009,7 +2010,7 @@ if (days > yearList.length){
 }
 else {
 	var index = days - 1;
-}
+} */
 var firstname = firstnameList[index].toLowerCase();
 var lastname = lastnameList[index].toLowerCase();
 //var firstname = "martina"
@@ -2236,8 +2237,8 @@ window.onload = function () {
 
 
 function intialize() {
-	let ele = document.getElementById("daycount");
-	ele.innerHTML += (days);
+	//let ele = document.getElementById("daycount");
+	//ele.innerHTML += (days);
 	document.getElementById("tier-item").innerHTML = "<center>🏆 TIER : " + localStorage.tiert + " 🏆 </center>";
 	document.getElementById("pzlhdr").style.display = "none";
 	document.getElementById("pzl").style.display = "none";
