@@ -1186,12 +1186,12 @@ document.getElementById("clue-ball").classList.remove("animated");
 }
 
 function changemode() {
-	if (confirm("Acknowledge Penalty Points?\n - 2 Points docked for Easy Mode.\n - 2 more Points docked for Additional Hint.") == true) {
+	//if (confirm("Acknowledge Penalty Points?\n - 2 Points docked for Easy Mode.\n - 2 more Points docked for Additional Hint.") == true) {
 		localStorage.modet = "Easy";	
 		localStorage.gltttext = localStorage.gltttext.replace("Normal", "Easy");
 		//document. location. reload();
 		switchmode();
-	}
+	//}
 }
 
 function calculatepoints() {
