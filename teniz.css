@@ -148,7 +148,8 @@ td, th {
     border-style: solid;
     background-color: #fff;
     border-color: #fff;
-    width: 50px;
+    width: 75px;
+    text-align: center;		
 }
 
 .waviy {
