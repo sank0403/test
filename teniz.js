@@ -2299,6 +2299,7 @@ function intialize() {
 	document.getElementById("trydetail4").style.display = "none";
 	document.getElementById("trydetail5").style.display = "none";
 	document.getElementById("trydetail6").style.display = "none";
+	document.getElementById("buttonref").style.display = "none";
 	if (localStorage.modet == "Easy"){
 		document.getElementById("MODEButton").style.display = "none";
 		//document.getElementById("historyfirst").style.display = "flex";
