@@ -2743,7 +2743,7 @@ function update(input) {
 			localStorage.cluetcount = Number(clueCount);
 		}
 		document.getElementById("answer").innerText = "GAME, SET and MATCH!\nREFRESH THE PAGE TO PLAY AGAIN.";
-		//document.getElementById("buttonref").style.display = "flex";
+		document.getElementById("buttonref").style.visibility = "visible";
 		setTimeout(ConfettiStart, 1000);
 		gameOver = true;
 		finalcluereveal();
@@ -2812,7 +2812,7 @@ function update(input) {
 			document.getElementById("clue-ball").classList.add("animated");
 			document.getElementById("answer").style.color = "#dc143c";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY. \nREFRESH THE PAGE TO PLAY AGAIN.";
-			//document.getElementById("buttonref").style.display = "flex";
+			document.getElementById("buttonref").style.visibility = "visible";
 			localStorage.totaltgames = Number(localStorage.totaltgames) + 1;
 			winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
 			localStorage.currenttstreak = 0;
