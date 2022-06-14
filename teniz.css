@@ -149,7 +149,7 @@ td, th {
     background-color: #fff;
     border-color: #fff;
     width: 75px;
-    text-align: center;		
+    align-items: center;		
 }
 
 .waviy {
