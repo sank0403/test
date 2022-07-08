@@ -1176,7 +1176,7 @@ function showResults(val) {
 	}
 	res.innerHTML = '<ul>' + list + '</ul>';
 	document.getElementById("result").focus();
-	document.getElementById("result").scrollIntoView(true);
+	//document.getElementById("result").scrollIntoView(true);
 }
 
 
@@ -1268,7 +1268,7 @@ function additionalhint() {
 	for (l = 1; l < lastname.length; l++) {
 		document.getElementById("additionalhint").innerHTML += "🔳"
 	}
-	document.getElementById("try6").scrollIntoView(true);	
+	//document.getElementById("try6").scrollIntoView(true);	
 	localStorage.hinttused = 1;
 }
 
@@ -2784,21 +2784,21 @@ function update(input) {
 							//color0 = "green";
 							break; */
 			case 1: localStorage.cluet1count = Number(localStorage.cluet1count) + 1;
-			    document.getElementById("try1").scrollIntoView(true);
+			    //document.getElementById("try1").scrollIntoView(true);
 				document.getElementById('try1').innerText += " ✔️";
 				document.getElementById("try1").style.display = "block";
 				document.getElementById('try1').style.border = "2px solid #6AAA64";
 				color1 = "green";
 				break;
 			case 2: localStorage.cluet2count = Number(localStorage.cluet2count) + 1;
-			    document.getElementById("try2").scrollIntoView(true);
+			   // document.getElementById("try2").scrollIntoView(true);
 				document.getElementById('try2').innerText += " ✔️";
 				document.getElementById("try2").style.display = "block";
 				document.getElementById('try2').style.border = "2px solid #6AAA64";
 				color2 = "green";
 				break;
 			case 3: localStorage.cluet3count = Number(localStorage.cluet3count) + 1;
-				document.getElementById("try3").scrollIntoView(true);
+				//document.getElementById("try3").scrollIntoView(true);
 				document.getElementById('try3').innerText += " ✔️";
 				document.getElementById("try3").style.display = "block";
 				document.getElementById('try3').style.border = "2px solid #6AAA64";
@@ -2812,14 +2812,14 @@ function update(input) {
 				color4 = "green";
 				break;
 			case 5: localStorage.cluet5count = Number(localStorage.cluet5count) + 1;
-				document.getElementById("try5").scrollIntoView(true);
+				//document.getElementById("try5").scrollIntoView(true);
 				document.getElementById('try5').innerText += " ✔️";
 				document.getElementById("try5").style.display = "block";
 				document.getElementById('try5').style.border = "2px solid #6AAA64";
 				color5 = "green";
 				break;
 			case 7: localStorage.cluet6count = Number(localStorage.cluet6count) + 1;
-				document.getElementById("try6").scrollIntoView(true);
+				//document.getElementById("try6").scrollIntoView(true);
 				document.getElementById('try6').innerText += " ✔️";
 				document.getElementById("try6").style.display = "block";
 				document.getElementById('try6').style.border = "2px solid #6AAA64";
@@ -2925,7 +2925,7 @@ function update(input) {
 			displayFooter();
 			localStorage.gametwon = 0;
 			localStorage.setItem(('gameover' + days), 1);
-			document.getElementById("try6").scrollIntoView(true);
+			//document.getElementById("try6").scrollIntoView(true);
 			setTimeout(OpenStats, 3000);
 		}
 		if (!gameOver) {
@@ -2933,7 +2933,7 @@ function update(input) {
 				/* 				case 1: document.getElementById('try1').innerText += " ❌";
 									break; */
 				case 2: document.getElementById('try1').innerText += " ❌ ";
-					document.getElementById("try1").scrollIntoView(true);
+					//document.getElementById("try1").scrollIntoView(true);
 					document.getElementById("try1").classList.add("shaketile");
 					document.getElementById('glt').innerText = "ATTEMPT: 2/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
@@ -2943,7 +2943,7 @@ function update(input) {
 					document.getElementById('try2').style.border = "2px solid #6AAA64";
 					break;
 				case 3: document.getElementById('try2').innerText += " ❌ ";
-					document.getElementById("try2").scrollIntoView(true);
+					//document.getElementById("try2").scrollIntoView(true);
 					document.getElementById("try2").classList.add("shaketile");
 					document.getElementById('glt').innerText = "ATTEMPT: 3/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
@@ -2953,7 +2953,7 @@ function update(input) {
 					document.getElementById('try3').style.border = "2px solid #6AAA64";					
 					break;
 				case 4: document.getElementById('try3').innerText += " ❌ ";
-					document.getElementById("try3").scrollIntoView(true);
+					//document.getElementById("try3").scrollIntoView(true);
 					document.getElementById("try3").classList.add("shaketile");
 					document.getElementById('glt').innerText = "ATTEMPT: 4/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
@@ -2963,7 +2963,7 @@ function update(input) {
 					document.getElementById('try4').style.border = "2px solid #6AAA64";					
 					break;
 				case 5: document.getElementById('try4').innerText += " ❌ ";
-					document.getElementById("try4").scrollIntoView(true);	
+					//document.getElementById("try4").scrollIntoView(true);	
 					document.getElementById("try4").classList.add("shaketile");
 					document.getElementById('glt').innerText = "ATTEMPT: 5/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
@@ -2977,7 +2977,7 @@ function update(input) {
 						document.getElementById("hintbutton").hidden = false;
 					}
 					document.getElementById("helpbuttons").classList.add("animated");
-				    document.getElementById("try5").scrollIntoView(true);			
+				   // document.getElementById("try5").scrollIntoView(true);			
 					document.getElementById("try5").classList.add("shaketile");
 					document.getElementById('glt').innerText = "ATTEMPT: 6/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
