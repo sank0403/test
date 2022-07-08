@@ -235,7 +235,7 @@ var countryList = [["USA"],
 ["CRO"],
 ["USA"],
 ["AUS"],
-["GBR"],	   
+["GBR"],
 ]
 var continentList = [["NAM"],
 ["EUR","NAM"],
@@ -913,7 +913,7 @@ var GenList = ["SHE",
 "SHE",
 "HE",
 "SHE",
-"SHE",       
+"SHE",
 ]
 var GSTitleList = ["2",
 "9",
@@ -1026,7 +1026,7 @@ var GSTitleList = ["2",
 "1",
 "1",
 "1",
-"3",		   
+"3",
 ]
 var PlaysList = ["RH",
 "LH",
@@ -1139,13 +1139,16 @@ var PlaysList = ["RH",
 "RH",
 "RH",
 "RH",
-"LH",	 
+"LH",
 ]
 var ul = document.getElementById("result");
 ul.onclick = function (event) {
 	var target = getEventTarget(event);
 	document.getElementById("submitbutton").disabled = false;
+	document.getElementById("submitbutton").focus();
 	document.getElementById("answertext").value = target.innerHTML;
+	res = document.getElementById("result");
+	res.innerHTML = '';
 };
 function autocompleteMatch(input) {
 	input = input.toLowerCase();
@@ -1283,7 +1286,7 @@ function storedadd() {
 			}
 			else if (storedaddonelem[k] == "g"){
 				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🟢";
-			}    
+			}      
 			else if (storedaddonelem[k] == "b"){
 				document.getElementById("trydetail"+(j+1)).getElementsByClassName("detail"+(k+1))[0].innerHTML += "<br>🔵";
 			} 			
@@ -1333,10 +1336,10 @@ function getindices() {
 		}
 		else if (Number(yearList[idx]) < Number(yearList[index])){
 			addyr += "🔺";
-		}	
+		}
 		if (clueCount == 7 && localStorage.try5topen != "-----" && localStorage.try6topen == "-----"){
 			document.getElementById("trydetail"+(clueCount-2)).style.display = "flex"; 
-			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;	
+			document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail1")[0].innerHTML += "<br>" + addyr;				
 		}
 		else{
 			document.getElementById("trydetail"+(clueCount-1)).style.display = "flex";
@@ -1389,7 +1392,7 @@ function getindices() {
 	//}
 	if (localStorage.modet == "Normal"){
 		document.getElementById(1).classList.add("zoom-in-box");
-		document.getElementById(1).innerHTML = "<span class='revealicon'>" + addongs + "</span><br><span class='revealsiz'>Slam</span>";
+		document.getElementById(1).innerHTML = "<span class='revealicon'>" + addongs + "</span><br><span class='revealsiz'>Slams</span>";
 	}
 /* 	var tempslam = [];
 	for (let j = 0; j < indices.length; j++) {
@@ -1537,7 +1540,6 @@ function getindices() {
 		addontitle = "🟡";
 		icon5 = "y";
 	}	
-
 	
 	if (localStorage.modet == "Normal"){
 		document.getElementById(4).classList.add("zoom-in-box");	
@@ -1585,8 +1587,9 @@ function getindices() {
 			document.getElementById("trydetail"+(clueCount-1)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + addonplays;
 		}
 		document.getElementById("answertext").disabled = false;
-		document.getElementById("submitbutton").disabled = false;
+		/* document.getElementById("submitbutton").disabled = false; */
 		document.getElementById("MODEButton").disabled = false;
+		document.getElementById("answertext").focus();
 	}, 1500);		
 	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
 		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + "<span class='smallfont'>" + PlaysList[indices[0]] + "</span>";	
@@ -1645,7 +1648,7 @@ if (!localStorage.totaltgames) {
 	localStorage.setItem("cluetxcount", 0);
 	localStorage.setItem("cluetcount", "");
 	localStorage.setItem("gametwon", 0);
-	//setTimeout(OpenRules, 1100);
+	/* setTimeout(OpenRules, 1100) */;
 }
 
 if (!localStorage.totaltpoints) {
@@ -1852,20 +1855,15 @@ function myFunction() {
 	else if (avggss >= 6) {
 		var avggsshdr = "🔴"
 	}		
-	//var copyText = "🎾 TENIZ! - Day " + days + " 🎾: " + localStorage.cluetcount + "/6" + "\n\n🟢Played: " + localStorage.totaltgames + winhdr + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + cshdr + localStorage.currenttstreak + mshdr + localStorage.longesttstreak + "\n\n💻https://tenizgame.github.io/";
-/* 	if (localStorage.hinttused == 0) {
-		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";
-	}
-	else {
-		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\nPlayed: " + localStorage.totaltgames + "🟢 | Win %: " + Math.round(localStorage.totaltwins / localStorage.totaltgames * 100) + winhdr + "\n 🔥 Streak: " + localStorage.currenttstreak + " | ⭐ Points: " + localStorage.totaltpoints + "\n🏆 TIER : " + localStorage.tiert + " 🏆" + "\n\n💻https://tenizgame.github.io/";	
-	} */
 	
-	if (localStorage.hinttused == 0) {
+/* 	if (localStorage.hinttused == 0) {
 		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + ") 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";
 	}
 	else {
 		var copyText = "🎾 TENIZ # " + days + " (Mode: " + localStorage.modet + " with💡) 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";	
-	}
+	} */
+	
+	var copyText = "🎾 TENIZ # " + days + " 🎾\n\n" + localStorage.cluetcount + cluehdr + "\n" + clueicon + "\n⭐ Points: " + localStorage.totaltpoints + "\n🏆 Tier: " + localStorage.tiert + "\n\nhttps://tenizgame.github.io/";
 	
 	/* Copy the text inside the text field */
 	navigator.clipboard.writeText(copyText);
@@ -1883,21 +1881,21 @@ function ballvanish0() {
 function ballvanish1() {
 	document.getElementById(1).innerHTML = "";
 	switch (GSList[index].length) {
-		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slams)</span>";
 			break;	
 		case 2: for (let k = 0; k < GSList[index].length; k++) { 
 					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
 				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 			break;
 		case 3: for (let k = 0; k < GSList[index].length; k++) { 
 					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
 				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 			break;	
 		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
 				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 			break;				
 	}
 }
@@ -1929,21 +1927,21 @@ function finalcluereveal() {
 	document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>1st Win</span>";
 	document.getElementById(1).innerHTML = "";
 	switch (GSList[index].length) {
-		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slam</span>";
+		case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>Slams</span>";
 			break;	
 		case 2: for (let k = 0; k < GSList[index].length; k++) { 
 					document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
 				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slams</span>";
 			break;
 		case 3: for (let k = 0; k < GSList[index].length; k++) { 
 					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
 				}
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slams</span>";
 			break;	
 		case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
 				document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
-				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slam</span>";
+				document.getElementById(1).innerHTML += "<span class='revealsiz'>Slams</span>";
 			break;				
 	}
 	//document.getElementById(2).innerHTML = "<span class='revealcol'>" + country + "</span><br><br><span class='revealsiz'>Country</span>";
@@ -2042,6 +2040,7 @@ var enterHit = false;
 var clueCount = 0;
 var gameOver = false;
 var arrayid = [0, 1, 2, 3, 4, 5]
+
 var index = days;
 /* if (days%yearList.length > 0){
 	var offset = Math.floor(days/yearList.length);
@@ -2192,12 +2191,6 @@ function closeHintmodal(hintmodal) {
 	overlay2.classList.remove('active')
 }
 
-
-
-
-
-
-
 const openFBmodalButtons = document.querySelectorAll('[data-fbmodal-target]')
 const closeFBmodalButtons = document.querySelectorAll('[data-close3-button]')
 const overlay3 = document.getElementById('overlay3')
@@ -2266,8 +2259,8 @@ function UpdateChart() {
 		options: {
 			legend: { display: false },
 			title: {
-				display: true,
-				text: "Guess Distribution"
+				display: false,
+				text: "GUESS DISTRIBUTION"
 			}
 		}
 	});
@@ -2293,13 +2286,18 @@ function intialize() {
 	document.getElementById("points-item").style.display = "none";
 	document.getElementById("historyfirst").style.display = "none";
 	document.getElementById("historylast").style.display = "none";
+	document.getElementById("try1").style.display = "none";
+	document.getElementById("try2").style.display = "none";
+	document.getElementById("try3").style.display = "none";
+	document.getElementById("try4").style.display = "none";
+	document.getElementById("try5").style.display = "none";
+	document.getElementById("try6").style.display = "none";	
 	document.getElementById("trydetail1").style.display = "none";
 	document.getElementById("trydetail2").style.display = "none";
 	document.getElementById("trydetail3").style.display = "none";
 	document.getElementById("trydetail4").style.display = "none";
 	document.getElementById("trydetail5").style.display = "none";
 	document.getElementById("trydetail6").style.display = "none";
-	document.getElementById("buttonref").style.visibility = "hidden";
 	if (localStorage.modet == "Easy"){
 		document.getElementById("MODEButton").style.display = "none";
 		//document.getElementById("historyfirst").style.display = "flex";
@@ -2323,7 +2321,7 @@ function intialize() {
 			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">1st Win</div>';
 		}
 		else if (clueindex == 1) {
-			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slam</div>';
+			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slams</div>';
 		}
 		else if (clueindex == 2) {
 			clue.innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Country</div>';
@@ -2366,7 +2364,7 @@ function intialize() {
 	document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
 	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
 	//Current Day Game Over
-/* 	if (localStorage.getItem('gameover' + days) == 1) {
+	if (localStorage.getItem('gameover' + days) == 1) {
 		document.getElementById("answertext").hidden = true;
 		document.getElementById("submitbutton").hidden = true;
 		document.getElementById("MODEButton").style.display = "none";
@@ -2374,8 +2372,60 @@ function intialize() {
 		document.getElementById("historyfirst").style.display = "flex";
 		document.getElementById("historylast").style.display = "flex";	
 		finalcluereveal();
-		storedadd();
+		storedadd();		
 		if (localStorage.gametwon == 1) {
+			var cluetcount = Number(localStorage.cluetcount);
+			switch (cluetcount) {
+				//case 0: localStorage.cluet0count = Number(localStorage.cluet0count) + 1;
+				/* 			case 0: document.getElementById('try1').innerText += " ✔️";
+								//color0 = "green";
+								break; */
+				case 1:
+					document.getElementById("try1").style.display = "block";
+					document.getElementById('try1').style.border = "2px solid #6AAA64";
+					color1 = "green";
+					break;
+				case 2: 
+				    document.getElementById("try1").style.display = "block";
+					document.getElementById("try2").style.display = "block";
+					document.getElementById('try2').style.border = "2px solid #6AAA64";
+					color2 = "green";
+					break;
+				case 3: 
+				    document.getElementById("try1").style.display = "block";
+					document.getElementById("try2").style.display = "block";				
+					document.getElementById("try3").style.display = "block";
+					document.getElementById('try3').style.border = "2px solid #6AAA64";
+					color3 = "green";
+					break;
+				case 4: 
+				    document.getElementById("try1").style.display = "block";
+					document.getElementById("try2").style.display = "block";				
+					document.getElementById("try3").style.display = "block";				
+					document.getElementById("try4").style.display = "block";
+					document.getElementById('try4').style.border = "2px solid #6AAA64";
+					color4 = "green";
+					break;
+				case 5: 
+				    document.getElementById("try1").style.display = "block";
+					document.getElementById("try2").style.display = "block";				
+					document.getElementById("try3").style.display = "block";				
+					document.getElementById("try4").style.display = "block";				
+					document.getElementById("try5").style.display = "block";
+					document.getElementById('try5').style.border = "2px solid #6AAA64";
+					color5 = "green";
+					break;
+				case 6: 
+				    document.getElementById("try1").style.display = "block";
+					document.getElementById("try2").style.display = "block";				
+					document.getElementById("try3").style.display = "block";				
+					document.getElementById("try4").style.display = "block";				
+					document.getElementById("try5").style.display = "block";				
+					document.getElementById("try6").style.display = "block";
+					document.getElementById('try6').style.border = "2px solid #6AAA64";
+					color6 = "green";
+					break;
+			}		
 			for (let c = 0; c < width; c++) {
 				let gameTile = document.getElementById(2 + '-' + c.toString());
 				gameTile.innerText = answername[c];
@@ -2384,9 +2434,17 @@ function intialize() {
 			document.getElementById("answer").style.color = "#FDFEFF";
 			document.getElementById("answer").innerText = "YOU HAVE ALREADY WON THIS ROUND.\nNEXT MATCH SCHEDULED FOR TOMORROW!";
 			/* setTimeout(ConfettiStart, 1000); */
-/* 			setTimeout(OpenStats, 1100);
+			setTimeout(OpenStats, 1100);
 		}
 		else {
+			var cluetcount = Number(localStorage.cluetcount);
+			colorx = "green";
+			document.getElementById("try1").style.display = "block";
+			document.getElementById("try2").style.display = "block";				
+			document.getElementById("try3").style.display = "block";				
+			document.getElementById("try4").style.display = "block";				
+			document.getElementById("try5").style.display = "block";				
+			document.getElementById("try6").style.display = "block";			
 			for (let c = 0; c < width; c++) {
 				let gameTile = document.getElementById(2 + '-' + c.toString());
 				gameTile.innerText = answername[c];
@@ -2398,9 +2456,9 @@ function intialize() {
 			setTimeout(OpenStats, 1100);
 		}
 		displayFooter();
-	} */
+	}
 	// Default Path
-	//else {
+	else {
 		//setTimeout(OpenRules, 1100);
 		if (localStorage.firsttload == 0) {
 			document.getElementById("answer").classList.remove("popanswer");
@@ -2435,21 +2493,21 @@ function intialize() {
 				if (localStorage.modet == "Easy") {
 					document.getElementById(1).innerHTML = "";
 					switch (GSList[index].length) {
-						case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+						case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slams)</span>";
 							break;	
 						case 2: for (let k = 0; k < GSList[index].length; k++) { 
 									document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
 								}
-								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 							break;
 						case 3: for (let k = 0; k < GSList[index].length; k++) { 
 									document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
 								}
-								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 							break;	
 						case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
 								document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
-								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+								document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 							break;				
 					}	
 				}
@@ -2508,13 +2566,13 @@ function intialize() {
 						}
 						else if (storedaddonlast[i] == "g"){
 							document.getElementById(i).innerHTML = "<span class='revealicon'>" + "🟢";
-						}  
+						}     
 						else if (storedaddonlast[i] == "b"){
 							document.getElementById(i).innerHTML = "<span class='revealicon'>" + "🔵";
 						} 						
 					}
 					document.getElementById(0).innerHTML += "</span><br><span class='revealsiz'>1st Win</span>";
-					document.getElementById(1).innerHTML += "</span><br><span class='revealsiz'>Slam</span>";
+					document.getElementById(1).innerHTML += "</span><br><span class='revealsiz'>Slams</span>";
 					document.getElementById(2).innerHTML += "</span><br><span class='revealsiz'>Country</span>";
 					document.getElementById(3).innerHTML += "</span><br><span class='revealsiz'>Gender</span>";
 					document.getElementById(4).innerHTML += "</span><br><span class='revealsiz'>Titles</span>";
@@ -2524,21 +2582,42 @@ function intialize() {
 			storedadd();
 		}	
 		if (localStorage.try1topen == "-----"){
+			/* document.getElementById("try1").style.display = "block"; */
 			document.getElementById('try1').style.border = "2px solid #6AAA64"
 		}
 		else if (localStorage.try2topen == "-----"){
+			document.getElementById("try1").style.display = "block";
+			/* document.getElementById("try2").style.display = "block"; */
 			document.getElementById('try2').style.border = "2px solid #6AAA64"
 		}
 		else if (localStorage.try3topen == "-----"){
+			document.getElementById("try1").style.display = "block";
+			document.getElementById("try2").style.display = "block";			
+			/* document.getElementById("try3").style.display = "block"; */
 			document.getElementById('try3').style.border = "2px solid #6AAA64"
 		}
 		else if (localStorage.try4topen == "-----"){
+			document.getElementById("try1").style.display = "block";
+			document.getElementById("try2").style.display = "block";			
+			document.getElementById("try3").style.display = "block";			
+			/* document.getElementById("try4").style.display = "block"; */
 			document.getElementById('try4').style.border = "2px solid #6AAA64"
 		}
 		else if (localStorage.try5topen == "-----"){
+			document.getElementById("try1").style.display = "block";
+			document.getElementById("try2").style.display = "block";			
+			document.getElementById("try3").style.display = "block";			
+			document.getElementById("try4").style.display = "block";			
+			/* document.getElementById("try5").style.display = "block"; */
 			document.getElementById('try5').style.border = "2px solid #6AAA64"
 		}
 		else if (localStorage.try6topen == "-----"){
+			document.getElementById("try1").style.display = "block";
+			document.getElementById("try2").style.display = "block";			
+			document.getElementById("try3").style.display = "block";			
+			document.getElementById("try4").style.display = "block";			
+			document.getElementById("try5").style.display = "block";			
+			/* document.getElementById("try6").style.display = "block"; */
 			document.getElementById('try6').style.border = "2px solid #6AAA64"
 		}	
 		// Listen for Key Press
@@ -2548,7 +2627,7 @@ function intialize() {
 		if (clueCount == 7 && localStorage.modet == "Easy") {
 			 document.getElementById("hintbutton").hidden = false;
 		}
-	//}
+	}
 }
 
 function switchmode() {
@@ -2559,7 +2638,7 @@ function switchmode() {
         document.getElementById(i).innerHTML = "";
     }
 	document.getElementById(0).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">1st Win</div>';	
-	document.getElementById(1).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slam</div>';
+	document.getElementById(1).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Slams</div>';
 	document.getElementById(2).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Country</div>';
 	document.getElementById(3).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Gender</div>';
 	document.getElementById(4).innerHTML = '<img class="image" src="ball.png" alt="Alt text"/><div class="centered">Titles</div>';
@@ -2578,21 +2657,21 @@ function switchmode() {
 	if (localStorage.slamtopen == 1) {
 		document.getElementById(1).innerHTML = "";
 		switch (GSList[index].length) {
-			case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slam)</span>";
+			case 1: document.getElementById(1).innerHTML = "<span class='revealcol'>" + grandslam + "</span><br><br><span class='revealsiz'>(Slams)</span>";
 				break;	
 			case 2: for (let k = 0; k < GSList[index].length; k++) { 
 						document.getElementById(1).innerHTML += "<span class='revealcol'>" + GSList[index][k] + "<br></span>";
 					}
-					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 				break;
 			case 3: for (let k = 0; k < GSList[index].length; k++) { 
 						document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][k] + "<br></span>";
 					}
-					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 				break;	
 			case 4: document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][0] + ", " + GSList[index][1] + "<br></span>";
 					document.getElementById(1).innerHTML += "<span class='revealcol GSsiz'>" + GSList[index][2] + ", " + GSList[index][3] + "<br><br></span>";
-					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slam)</span>";
+					document.getElementById(1).innerHTML += "<span class='revealsiz'>(Slams)</span>";
 				break;				
 		}
 	}
@@ -2707,31 +2786,43 @@ function update(input) {
 			case 1: localStorage.cluet1count = Number(localStorage.cluet1count) + 1;
 			    document.getElementById("try1").scrollIntoView(true);
 				document.getElementById('try1').innerText += " ✔️";
+				document.getElementById("try1").style.display = "block";
+				document.getElementById('try1').style.border = "2px solid #6AAA64";
 				color1 = "green";
 				break;
 			case 2: localStorage.cluet2count = Number(localStorage.cluet2count) + 1;
 			    document.getElementById("try2").scrollIntoView(true);
 				document.getElementById('try2').innerText += " ✔️";
+				document.getElementById("try2").style.display = "block";
+				document.getElementById('try2').style.border = "2px solid #6AAA64";
 				color2 = "green";
 				break;
 			case 3: localStorage.cluet3count = Number(localStorage.cluet3count) + 1;
 				document.getElementById("try3").scrollIntoView(true);
 				document.getElementById('try3').innerText += " ✔️";
+				document.getElementById("try3").style.display = "block";
+				document.getElementById('try3').style.border = "2px solid #6AAA64";
 				color3 = "green";
 				break;
 			case 4: localStorage.cluet4count = Number(localStorage.cluet4count) + 1;
 				document.getElementById("try4").scrollIntoView(true);
 				document.getElementById('try4').innerText += " ✔️";
+				document.getElementById("try4").style.display = "block";
+				document.getElementById('try4').style.border = "2px solid #6AAA64";
 				color4 = "green";
 				break;
 			case 5: localStorage.cluet5count = Number(localStorage.cluet5count) + 1;
 				document.getElementById("try5").scrollIntoView(true);
 				document.getElementById('try5').innerText += " ✔️";
+				document.getElementById("try5").style.display = "block";
+				document.getElementById('try5').style.border = "2px solid #6AAA64";
 				color5 = "green";
 				break;
 			case 7: localStorage.cluet6count = Number(localStorage.cluet6count) + 1;
 				document.getElementById("try6").scrollIntoView(true);
 				document.getElementById('try6').innerText += " ✔️";
+				document.getElementById("try6").style.display = "block";
+				document.getElementById('try6').style.border = "2px solid #6AAA64";
 				color6 = "green";
 				break;
 		}
@@ -2742,8 +2833,7 @@ function update(input) {
 		else {
 			localStorage.cluetcount = Number(clueCount);
 		}
-		document.getElementById("answer").innerText = "GAME, SET and MATCH!\nREFRESH THE PAGE TO PLAY AGAIN.";
-		document.getElementById("buttonref").style.visibility = "visible";
+		document.getElementById("answer").innerText = "GAME, SET and MATCH!\nDONT FORGET TO SHARE YOUR RESULTS.";
 		setTimeout(ConfettiStart, 1000);
 		gameOver = true;
 		finalcluereveal();
@@ -2760,7 +2850,7 @@ function update(input) {
 		document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
 		//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;		
 		document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
-		//setTimeout(OpenStats, 4800);
+		setTimeout(OpenStats, 4800);
 	}
 	/* 	else if (guess == "") {
 			document.getElementById("boardfirst").classList.add("shaketile");
@@ -2811,8 +2901,7 @@ function update(input) {
 			document.getElementById("historylast").style.display = "flex";	
 			document.getElementById("clue-ball").classList.add("animated");
 			document.getElementById("answer").style.color = "#dc143c";
-			document.getElementById("answer").innerText = "HARD LUCK TODAY. \nREFRESH THE PAGE TO PLAY AGAIN.";
-			document.getElementById("buttonref").style.visibility = "visible";
+			document.getElementById("answer").innerText = "HARD LUCK TODAY. \nNEXT TOURNAMENT STARTS TOMORROW!";
 			localStorage.totaltgames = Number(localStorage.totaltgames) + 1;
 			winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
 			localStorage.currenttstreak = 0;
@@ -2827,7 +2916,8 @@ function update(input) {
 			document.getElementById("try6").classList.add("shaketile");
 			var addon = getindices();
 			//document.getElementById('try6').innerText += addon;
-			document.getElementById('try6').style.border = "2px solid #dc143c";			
+			document.getElementById('try6').style.border = "2px solid #dc143c";	
+			document.getElementById("try6").style.display = "block";			
 			tryload();
 			document.getElementById("answertext").hidden = true;
 			document.getElementById("submitbutton").hidden = true;
@@ -2836,7 +2926,7 @@ function update(input) {
 			localStorage.gametwon = 0;
 			localStorage.setItem(('gameover' + days), 1);
 			document.getElementById("try6").scrollIntoView(true);
-			//setTimeout(OpenStats, 3000);
+			setTimeout(OpenStats, 3000);
 		}
 		if (!gameOver) {
 			switch (clueCount) {
@@ -2849,6 +2939,7 @@ function update(input) {
 					var addon = getindices();
 					//document.getElementById('try1').innerText += addon;
 					document.getElementById('try1').style.border = "2px solid #dc143c";
+					document.getElementById("try1").style.display = "block";
 					document.getElementById('try2').style.border = "2px solid #6AAA64";
 					break;
 				case 3: document.getElementById('try2').innerText += " ❌ ";
@@ -2858,6 +2949,7 @@ function update(input) {
 					var addon = getindices();
 					//document.getElementById('try2').innerText += addon;
 					document.getElementById('try2').style.border = "2px solid #dc143c";
+					document.getElementById("try2").style.display = "block";
 					document.getElementById('try3').style.border = "2px solid #6AAA64";					
 					break;
 				case 4: document.getElementById('try3').innerText += " ❌ ";
@@ -2867,6 +2959,7 @@ function update(input) {
 					var addon = getindices();
 					//document.getElementById('try3').innerText += addon;
 					document.getElementById('try3').style.border = "2px solid #dc143c";
+					document.getElementById("try3").style.display = "block";
 					document.getElementById('try4').style.border = "2px solid #6AAA64";					
 					break;
 				case 5: document.getElementById('try4').innerText += " ❌ ";
@@ -2876,6 +2969,7 @@ function update(input) {
 					var addon = getindices();
 					//document.getElementById('try4').innerText += addon;
 					document.getElementById('try4').style.border = "2px solid #dc143c";
+					document.getElementById("try4").style.display = "block";
 					document.getElementById('try5').style.border = "2px solid #6AAA64";					
 					break;
 				case 7: document.getElementById('try5').innerText += " ❌ ";
@@ -2889,6 +2983,7 @@ function update(input) {
 					var addon = getindices();
 					//document.getElementById('try5').innerText += addon;
 					document.getElementById('try5').style.border = "2px solid #dc143c";
+					document.getElementById("try5").style.display = "block";
 					document.getElementById('try6').style.border = "2px solid #6AAA64";					
 					break;
 			}
