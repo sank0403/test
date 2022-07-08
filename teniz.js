@@ -2298,7 +2298,7 @@ function intialize() {
 	document.getElementById("trydetail4").style.display = "none";
 	document.getElementById("trydetail5").style.display = "none";
 	document.getElementById("trydetail6").style.display = "none";
-	document.getElementById("buttonref").style.visibility = "hidden";	
+	document.getElementById("buttonref").style.display = "none";	
 	if (localStorage.modet == "Easy"){
 		document.getElementById("MODEButton").style.display = "none";
 		//document.getElementById("historyfirst").style.display = "flex";
@@ -2836,7 +2836,7 @@ function update(input) {
 		}
 		document.getElementById("answer").innerText = "GAME, SET and MATCH!\nREFRESH THE PAGE TO PLAY AGAIN.";
 		setTimeout(ConfettiStart, 1000);
-		document.getElementById("buttonref").style.visibility = "visible";
+		document.getElementById("buttonref").style.display = "block";
 		gameOver = true;
 		finalcluereveal();
 		document.getElementById("answertext").hidden = true;
@@ -2904,7 +2904,7 @@ function update(input) {
 			document.getElementById("clue-ball").classList.add("animated");
 			document.getElementById("answer").style.color = "#dc143c";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY! \nREFRESH THE PAGE TO PLAY AGAIN.";
-			document.getElementById("buttonref").style.visibility = "visible";
+			document.getElementById("buttonref").style.display = "block";
 			localStorage.totaltgames = Number(localStorage.totaltgames) + 1;
 			winpct = Math.round(localStorage.totaltwins / localStorage.totaltgames * 100);
 			localStorage.currenttstreak = 0;
