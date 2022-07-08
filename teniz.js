@@ -2364,103 +2364,6 @@ function intialize() {
 	//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;
 	document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
 	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
-	//Current Day Game Over
-	//if (localStorage.getItem('gameover' + days) == 1) {
-		document.getElementById("answertext").hidden = true;
-		document.getElementById("submitbutton").hidden = true;
-		document.getElementById("MODEButton").style.display = "none";
-		document.getElementById("hintbutton").style.display = "none";
-		document.getElementById("historyfirst").style.display = "flex";
-		document.getElementById("historylast").style.display = "flex";	
-		finalcluereveal();
-		storedadd();		
-		if (localStorage.gametwon == 1) {
-			var cluetcount = Number(localStorage.cluetcount);
-			switch (cluetcount) {
-				//case 0: localStorage.cluet0count = Number(localStorage.cluet0count) + 1;
-				/* 			case 0: document.getElementById('try1').innerText += " ✔️";
-								//color0 = "green";
-								break; */
-				case 1:
-					document.getElementById("try1").style.display = "block";
-					document.getElementById('try1').style.border = "2px solid #6AAA64";
-					color1 = "green";
-					break;
-				case 2: 
-				    document.getElementById("try1").style.display = "block";
-					document.getElementById("try2").style.display = "block";
-					document.getElementById('try2').style.border = "2px solid #6AAA64";
-					color2 = "green";
-					break;
-				case 3: 
-				    document.getElementById("try1").style.display = "block";
-					document.getElementById("try2").style.display = "block";				
-					document.getElementById("try3").style.display = "block";
-					document.getElementById('try3').style.border = "2px solid #6AAA64";
-					color3 = "green";
-					break;
-				case 4: 
-				    document.getElementById("try1").style.display = "block";
-					document.getElementById("try2").style.display = "block";				
-					document.getElementById("try3").style.display = "block";				
-					document.getElementById("try4").style.display = "block";
-					document.getElementById('try4').style.border = "2px solid #6AAA64";
-					color4 = "green";
-					break;
-				case 5: 
-				    document.getElementById("try1").style.display = "block";
-					document.getElementById("try2").style.display = "block";				
-					document.getElementById("try3").style.display = "block";				
-					document.getElementById("try4").style.display = "block";				
-					document.getElementById("try5").style.display = "block";
-					document.getElementById('try5').style.border = "2px solid #6AAA64";
-					color5 = "green";
-					break;
-				case 6: 
-				    document.getElementById("try1").style.display = "block";
-					document.getElementById("try2").style.display = "block";				
-					document.getElementById("try3").style.display = "block";				
-					document.getElementById("try4").style.display = "block";				
-					document.getElementById("try5").style.display = "block";				
-					document.getElementById("try6").style.display = "block";
-					document.getElementById('try6').style.border = "2px solid #6AAA64";
-					color6 = "green";
-					break;
-			}		
-			for (let c = 0; c < width; c++) {
-				let gameTile = document.getElementById(2 + '-' + c.toString());
-				gameTile.innerText = answername[c];
-				gameTile.classList.add("correct", "animated");
-			}
-			document.getElementById("answer").style.color = "#FDFEFF";
-			document.getElementById("answer").innerText = "YOU HAVE ALREADY WON THIS ROUND.\nNEXT MATCH SCHEDULED FOR TOMORROW!";
-			/* setTimeout(ConfettiStart, 1000); */
-			//setTimeout(OpenStats, 1100);
-		}
-		else {
-			var cluetcount = Number(localStorage.cluetcount);
-			colorx = "green";
-			document.getElementById("try1").style.display = "block";
-			document.getElementById("try2").style.display = "block";				
-			document.getElementById("try3").style.display = "block";				
-			document.getElementById("try4").style.display = "block";				
-			document.getElementById("try5").style.display = "block";				
-			document.getElementById("try6").style.display = "block";			
-			for (let c = 0; c < width; c++) {
-				let gameTile = document.getElementById(2 + '-' + c.toString());
-				gameTile.innerText = answername[c];
-				gameTile.classList.remove("correct");
-				gameTile.classList.add("absent", "animated");
-			}
-			document.getElementById("answer").style.color = "#dc143c";
-			document.getElementById("answer").innerText = "HARD LUCK TODAY. \nNEXT TOURNAMENT STARTS TOMORROW!";
-			//setTimeout(OpenStats, 1100);
-		}
-		displayFooter();
-	//}
-	// Default Path
-	//else {
-		//setTimeout(OpenRules, 1100);
 		if (localStorage.firsttload == 0) {
 			document.getElementById("answer").classList.remove("popanswer");
 			document.getElementById("answer").style.color = "#FDFEFF";
@@ -2628,7 +2531,6 @@ function intialize() {
 		if (clueCount == 7 && localStorage.modet == "Easy") {
 			 document.getElementById("hintbutton").hidden = false;
 		}
-	//}
 }
 
 function switchmode() {
