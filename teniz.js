@@ -1589,7 +1589,7 @@ function getindices() {
 		document.getElementById("answertext").disabled = false;
 		/* document.getElementById("submitbutton").disabled = false; */
 		document.getElementById("MODEButton").disabled = false;
-		document.getElementById("answertext").focus();
+		//document.getElementById("answertext").focus();
 	}, 1500);		
 	if (clueCount == 7 && localStorage.try5topen == "-----" && localStorage.try6topen == "-----"){ 
 		document.getElementById("trydetail"+(clueCount-2)).getElementsByClassName("detail6")[0].innerHTML += "<br>" + "<span class='smallfont'>" + PlaysList[indices[0]] + "</span>";	
