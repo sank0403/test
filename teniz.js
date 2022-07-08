@@ -2365,7 +2365,7 @@ function intialize() {
 	document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
 	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
 	//Current Day Game Over
-	if (localStorage.getItem('gameover' + days) == 1) {
+	//if (localStorage.getItem('gameover' + days) == 1) {
 		document.getElementById("answertext").hidden = true;
 		document.getElementById("submitbutton").hidden = true;
 		document.getElementById("MODEButton").style.display = "none";
@@ -2435,7 +2435,7 @@ function intialize() {
 			document.getElementById("answer").style.color = "#FDFEFF";
 			document.getElementById("answer").innerText = "YOU HAVE ALREADY WON THIS ROUND.\nNEXT MATCH SCHEDULED FOR TOMORROW!";
 			/* setTimeout(ConfettiStart, 1000); */
-			setTimeout(OpenStats, 1100);
+			//setTimeout(OpenStats, 1100);
 		}
 		else {
 			var cluetcount = Number(localStorage.cluetcount);
@@ -2454,12 +2454,12 @@ function intialize() {
 			}
 			document.getElementById("answer").style.color = "#dc143c";
 			document.getElementById("answer").innerText = "HARD LUCK TODAY. \nNEXT TOURNAMENT STARTS TOMORROW!";
-			setTimeout(OpenStats, 1100);
+			//setTimeout(OpenStats, 1100);
 		}
 		displayFooter();
 	}
 	// Default Path
-	else {
+	//else {
 		//setTimeout(OpenRules, 1100);
 		if (localStorage.firsttload == 0) {
 			document.getElementById("answer").classList.remove("popanswer");
@@ -2628,7 +2628,7 @@ function intialize() {
 		if (clueCount == 7 && localStorage.modet == "Easy") {
 			 document.getElementById("hintbutton").hidden = false;
 		}
-	}
+	//}
 }
 
 function switchmode() {
@@ -2852,7 +2852,7 @@ function update(input) {
 		document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
 		//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;		
 		document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
-		setTimeout(OpenStats, 4800);
+		//setTimeout(OpenStats, 4800);
 	}
 	/* 	else if (guess == "") {
 			document.getElementById("boardfirst").classList.add("shaketile");
@@ -2929,7 +2929,7 @@ function update(input) {
 			localStorage.gametwon = 0;
 			localStorage.setItem(('gameover' + days), 1);
 			//document.getElementById("try6").scrollIntoView(true);
-			setTimeout(OpenStats, 3000);
+			//setTimeout(OpenStats, 3000);
 		}
 		if (!gameOver) {
 			switch (clueCount) {
