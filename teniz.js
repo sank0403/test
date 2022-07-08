@@ -2364,6 +2364,10 @@ function intialize() {
 	//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;
 	document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
 	var storedaddon = JSON.parse(localStorage.getItem("addonttext"));
+	//Current Day Game Over
+	// Default Path
+	//else {
+		//setTimeout(OpenRules, 1100);
 		if (localStorage.firsttload == 0) {
 			document.getElementById("answer").classList.remove("popanswer");
 			document.getElementById("answer").style.color = "#FDFEFF";
@@ -2531,6 +2535,7 @@ function intialize() {
 		if (clueCount == 7 && localStorage.modet == "Easy") {
 			 document.getElementById("hintbutton").hidden = false;
 		}
+	//}
 }
 
 function switchmode() {
@@ -2754,7 +2759,7 @@ function update(input) {
 		document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
 		//document.getElementById(9).innerText = "Max Streak: " + localStorage.longesttstreak;		
 		document.getElementById(9).innerText = "Points: " + localStorage.totaltpoints;
-		//setTimeout(OpenStats, 4800);
+		setTimeout(OpenStats, 4800);
 	}
 	/* 	else if (guess == "") {
 			document.getElementById("boardfirst").classList.add("shaketile");
@@ -2831,7 +2836,7 @@ function update(input) {
 			localStorage.gametwon = 0;
 			localStorage.setItem(('gameover' + days), 1);
 			//document.getElementById("try6").scrollIntoView(true);
-			//setTimeout(OpenStats, 3000);
+			setTimeout(OpenStats, 3000);
 		}
 		if (!gameOver) {
 			switch (clueCount) {
