@@ -33,51 +33,68 @@ td, th {
   padding: 8px;
 }
 
+/* The point of this tutorial is here */
+
 .containers {
   margin: 0px auto;
-  width: 250px;
+  width: 275px;
 }
 
-/* The point of this tutorial is here */
 .form {
   display: flex;
   margin:0;
-
 }
 
 .search-field {
-  width: 100%;
+  width: 200px;
   padding: 5px 35px 5px 15px;
   border: none;
   border-radius: 100px;
   outline: none;
 }
 
-.search-button {
+/* .search-button {
   background: transparent;
   border: none;
   outline: none;
   margin-left: -33px;
-}
+} */
 
-.search-button img {
+/* .search-button img {
   width: 20px;
   height: 20px;
   object-fit: cover;
-}
+} */
 
 
-#submitbutton, #answertext
+/* #submitbutton, #answertext
+{ border: none;
+  border-radius: 0px;
+ } */
+ 
+ #submitbutton
+{ border: none;
+  border-radius: 12px;
+  margin-left : 20px;
+  height : 30px;
+  /* background-color: #6AAA64; */
+ }
+ 
+ #answertext
 { border: none;
   border-radius: 0px;
  }
 
 #result {
-  width:250px;
+  width:200px;
+
   background-color: white;
   color:black;
   text-align:left;
-  margin: 0 auto;
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 0 ;
+  margin-right: 75 ;
   font-size:10pt;
 }
 
@@ -293,7 +310,7 @@ td, th {
 #board {
   width: 350;
   margin: 0 auto;
-  margin-top: 3px;
+  margin-top: 0px;
   /* background-image: url("pitch.jpg"); */
   background-position: center;
 }
@@ -356,6 +373,11 @@ td, th {
   border-radius: 0px;
   margin-bottom: 10px;
  font-size:13px;
+}
+
+.tryhdr {
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 #stats {
