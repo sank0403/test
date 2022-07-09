@@ -2742,7 +2742,7 @@ function update(input) {
 			localStorage.cluetcount = Number(clueCount);
 		}
 		document.getElementById("answer").innerText = "GAME, SET and MATCH!\nREFRESH THE PAGE TO PLAY AGAIN.";
-		setTimeout(ConfettiStart, 1000);
+		//setTimeout(ConfettiStart, 1000);
 		document.getElementById("buttonref").style.display = "block";
 		gameOver = true;
 		finalcluereveal();
