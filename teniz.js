@@ -1320,10 +1320,12 @@ function getindices() {
 	document.getElementById("answertext").disabled = true;
 	document.getElementById("submitbutton").disabled = true;	
 	document.getElementById("MODEButton").disabled = true;		
-	if (localStorage.modet == "Normal"){
-		document.getElementById(0).classList.add("zoom-in-box");
-		document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>1st Win</span>";
-	}
+	setTimeout(function(){ 
+		if (localStorage.modet == "Normal"){
+			document.getElementById(0).classList.add("zoom-in-box");
+			document.getElementById(0).innerHTML = "<span class='revealicon'>" + addyr + "</span><br><span class='revealsiz'>1st Win</span>";
+		}
+	}, 2500);
 	//var tempyear = [];
 	//for (let j = 0; j < indices.length; j++) {
 	    //tempyear.push(yearList[indices[0]]);
