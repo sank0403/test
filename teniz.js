@@ -846,10 +846,10 @@ var GSList = [
 ["FO","WIM","USO"],
 ["AO","FO","USO"],
 ["AO"],
-["AO"],
+["AO","USO"],
 ["WIM"],
 ["USO"],
-["AO"],
+["AO","USO"],
 ]
 var GenList = [
 "SHE",
@@ -1086,10 +1086,10 @@ var GSTitleList = [
 "4",
 "9",
 "1",
-"2",
+"3",
 "1",
 "1",	
-"1",
+"2",
 ]
 var PlaysList = [
 "RH",
