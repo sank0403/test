@@ -779,7 +779,7 @@ var GSList = [
 ["AO","FO","WIM","USO"],
 ["AO","WIM","USO"],
 ["FO"],
-["FO","USO"],
+["FO","WIM","USO"],
 ["AO","WIM","USO"],
 ["AO","WIM","USO"],
 ["FO","WIM"],
@@ -855,7 +855,7 @@ var GSList = [
 ["AO","USO"],
 ["WIM"],
 ["FO","USO"],
-["AO","USO"],
+["AO","WIM","USO"],
 ["AO"],	
 ]
 var GenList = [
@@ -1021,7 +1021,7 @@ var GSTitleList = [
 "24",
 "7",
 "1",
-"5",
+"6",
 "6",
 "3",
 "2",
@@ -1097,7 +1097,7 @@ var GSTitleList = [
 "3",
 "1",
 "2",	
-"3",
+"4",
 "1",	
 ]
 var PlaysList = [
