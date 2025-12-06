@@ -88,7 +88,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<h3 class="animate-charcter">How To Play</h3>
+								<h3>How To Play...</h3>
 							</div>
 						</div>
 					</div>
@@ -118,7 +118,7 @@
 				 🟡 - Indicates that there are <strong style="color:white;">SOME COMMON</strong> Grand Slam titles between the player your entered and the person in question. But, it is not an exact match.<br>
 				 🔴 - Indicates that there are <strong style="color:white;">NO COMMON</strong> Grand Slam titles between the player your entered and the person in question. Useful in the process of elimination.<br>		 
 			<br><br>				
-			(vii) Switch to the <strong style="color:white;">EASY Mode</strong> any time during the game, where the attributes are revealed, as shown below, after each <strong style="color:white;">INCORRECT</strong> guess. The clues are more direct in this Mode.  
+			(vii) In this mode you can switch to the <strong style="color:white;">EASY Mode</strong> any time during the game, where the attributes are revealed, as shown below, after each <strong style="color:white;">INCORRECT</strong> guess. The clues are more direct in this Mode. In the daily version you can only do this for the final try.  
 			<center><img class="howtogif" src="howto.gif" alt="clue"></center>
 			<br>
 			(viii) On your <strong style="color:white;">Final Try</strong>, after you have enabled the Easy Mode, you have the option to look at an <strong style="color:white;">ADDITIONAL HINT</strong>. This is an absolute give-away 😀!
@@ -237,11 +237,6 @@
 	<div id="overlay2"></div>
 	<div id="overlay3"></div>
 	<hr>
-	<div id="clue">
-		<div id="clue-ball">
-		</div>
-	</div>
-	<hr>
 	<div id="glt"></div>
 	<br>
 	<div class="containers">
@@ -262,8 +257,8 @@
 	<div id="historylast">
 	</div><br>	
 	<div id="helpbuttons">
-		<button id="MODEButton" class="buttonmode" onclick="changemode();">Switch To EASY MODE</button>	
-		<class data-hintmodal-target="#hintmodal" id="hintbutton" hidden><button id="hint" class="buttonmode" onclick="	additionalhint();">Additional HINT</button></class>	
+		<button id="MODEButton" class="buttonmode" onclick="changemode();">EASY MODE</button>	
+		<class data-hintmodal-target="#hintmodal" id="hintbutton" hidden><button id="hint" class="buttonmode" onclick="	additionalhint();">ADDITIONAL HINT</button></class>	
 		<class data-fbmodal-target="#fbmodal" id="fbmodal" hidden><button id="fbmodalbut" class="buttonmode">TEST</button></class>	
 		<!-- <class data-fbmodal-target="#fbmodal" id="fbmodal"> -->
 	</div>	
@@ -272,6 +267,11 @@
 	<br>	
 	<input type="button" id="buttonref" value="🔄" onclick="window.location.reload(); this.blur();" class="buttonref">
 	<hr>	
+		<div id="clue">
+		<div id="clue-ball">
+		</div>
+	</div>
+	<hr>
 	<div id="board" class="scroll"> 
 	<!-- <div id="board"> -->
 		<div id="try6" class="tryhdr">	</div>
