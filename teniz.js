@@ -1243,6 +1243,17 @@ function autocompleteMatch(input) {
 	});
 }
 
+// Function to blink only the inner text
+function blinkInnerText(elementId) {
+    const el = document.getElementById(elementId);
+    if (!el) return; // Safety check
+
+    // Wrap only the text in a span so only it blinks
+    const text = el.innerText;
+    el.innerHTML = `<span class="shaketile">${text}</span>`;
+}
+
+
 function showResults(val) {
 	document.getElementById("result").hidden = false;
 	document.getElementById("submitbutton").disabled = true;
@@ -2654,7 +2665,9 @@ function switchmode() {
     document.getElementById('glt').innerText = localStorage.gltttext;
 	if (clueCount == 7 && localStorage.modet == "Easy") {
 		 document.getElementById("hintbutton").hidden = false;
+		 document.getElementById("answer").style.color = "#dc143c";
 		 document.getElementById("answer").innerText = "ADDITIONAL HINT ENABLED!";
+		 setTimeout(FinalClue, 2000);
 	}	
 	if (localStorage.yeartopen == 1) {
 		document.getElementById(0).innerHTML = "<span class='revealcol'>" + year + "</span><br><br><span class='revealsiz'>(1st Win)</span>";
@@ -2920,7 +2933,8 @@ function update(input) {
 			document.getElementById(8).innerText = "Streak: " + localStorage.currenttstreak;
 			gameOver = true;
 			document.getElementById('try6').innerText += " ❌ ";
-			document.getElementById("try6").classList.add("shaketile");
+			//document.getElementById("try6").classList.add("shaketile");
+			blinkInnerText("try6");
 			var addon = getindices();
 			//document.getElementById('try6').innerText += addon;
 			document.getElementById('try6').style.border = "2px solid #dc143c";	
@@ -2941,7 +2955,8 @@ function update(input) {
 									break; */
 				case 2: document.getElementById('try1').innerText += " ❌ ";
 					//document.getElementById("try1").scrollIntoView(true);
-					document.getElementById("try1").classList.add("shaketile");
+					//document.getElementById("try1").classList.add("shaketile");
+					blinkInnerText("try1");
 					document.getElementById('glt').innerText = "ATTEMPT: 2/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
 					//document.getElementById('try1').innerText += addon;
@@ -2951,7 +2966,8 @@ function update(input) {
 					break;
 				case 3: document.getElementById('try2').innerText += " ❌ ";
 					//document.getElementById("try2").scrollIntoView(true);
-					document.getElementById("try2").classList.add("shaketile");
+					//document.getElementById("try2").classList.add("shaketile");
+					blinkInnerText("try2");
 					document.getElementById('glt').innerText = "ATTEMPT: 3/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
 					//document.getElementById('try2').innerText += addon;
@@ -2961,7 +2977,8 @@ function update(input) {
 					break;
 				case 4: document.getElementById('try3').innerText += " ❌ ";
 					//document.getElementById("try3").scrollIntoView(true);
-					document.getElementById("try3").classList.add("shaketile");
+					//document.getElementById("try3").classList.add("shaketile");
+					blinkInnerText("try3");
 					document.getElementById('glt').innerText = "ATTEMPT: 4/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
 					//document.getElementById('try3').innerText += addon;
@@ -2971,7 +2988,8 @@ function update(input) {
 					break;
 				case 5: document.getElementById('try4').innerText += " ❌ ";
 					//document.getElementById("try4").scrollIntoView(true);	
-					document.getElementById("try4").classList.add("shaketile");
+					//document.getElementById("try4").classList.add("shaketile");
+					blinkInnerText("try4");
 					document.getElementById('glt').innerText = "ATTEMPT: 5/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
 					//document.getElementById('try4').innerText += addon;
@@ -2983,9 +3001,10 @@ function update(input) {
 				    if (localStorage.modet == "Easy") {
 						document.getElementById("hintbutton").hidden = false;
 					}
-					document.getElementById("helpbuttons").classList.add("animated");
+					//document.getElementById("helpbuttons").classList.add("animated");
 				   // document.getElementById("try5").scrollIntoView(true);			
-					document.getElementById("try5").classList.add("shaketile");
+					//document.getElementById("try5").classList.add("shaketile");
+					blinkInnerText("try5");
 					document.getElementById('glt').innerText = "ATTEMPT: 6/6 " + "MODE: " + localStorage.modet;
 					var addon = getindices();
 					//document.getElementById('try5').innerText += addon;

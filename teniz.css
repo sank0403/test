@@ -150,7 +150,7 @@ td, th {
     border-color: #fff;
 	width:80px;
 	margin-bottom:10px;
-	margin-top:10px;
+	margin-top:0px;
 	height:25px;
 }
 
@@ -181,8 +181,8 @@ td, th {
   font-size: 12px;
   color: #6AAA64;
   text-transform: uppercase;
-  animation: flipmain 2s;
-  animation-delay: calc(.075s * var(--i));
+/*   animation: flipmain 2s;
+  animation-delay: calc(.075s * var(--i)); */
 }
 
 @keyframes flipmain {
@@ -944,13 +944,19 @@ padding: 0px;
 
 .shaketile {
   /* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: shake 0.5s;
+  animation: shake .7s;
 
   /* When the animation is finished, start again */
-  animation-iteration-count: 1;
+  animation-iteration-count: 3;
 }
 
+ /* For a single blink instead of shake */
 @keyframes shake {
+70% { opacity: 0; }
+} 
+
+
+/* @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
   20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -962,7 +968,7 @@ padding: 0px;
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
+} */
 
 @media screen and (min-width: 400px) {
   .keyboard-row {
