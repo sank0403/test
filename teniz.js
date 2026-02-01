@@ -847,9 +847,9 @@ var GSList = [
 ["FO"],
 ["USO"],
 ["FO","WIM"],
-["WIM"],
+["AO","WIM"],
 ["USO"],
-["FO","WIM","USO"],
+["AO","FO","WIM","USO"],
 ["AO","FO","USO"],
 ["AO"],
 ["AO","USO"],
@@ -1089,9 +1089,9 @@ var GSTitleList = [
 "1",
 "1",
 "3",
-"1",
 "2",
-"6",
+"2",
+"7",
 "9",
 "1",
 "4",
@@ -3017,5 +3017,6 @@ function update(input) {
 		tryload();
 	}
 } 
+
 
 
